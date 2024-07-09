@@ -19,5 +19,4 @@ Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/cyberapper/
 ### Chores
 
 * go live ([#2](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/2)) ([297efde](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/297efde1cac91c66b134b491c8e35d13f63ce30e))
-* go live ([#6](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/6)) ([5befb34](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/5befb34bfbed85ae354303d4d31c95e3e2d91571))
 * update SDK settings ([#4](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/4)) ([0b8c480](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/0b8c480b5a603e519fcb82c1372644cfd268b852))
