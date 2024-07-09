@@ -68,7 +68,7 @@ Methods:
 - <code title="post /api/v2/trading/cancelOrder">client.trades.<a href="./src/resources/trades.ts">cancelOrder</a>({ ...params }) -> TradeCancelOrderResponse</code>
 - <code title="post /api/v2/trading/fetchQuotes">client.trades.<a href="./src/resources/trades.ts">fetchQuotes</a>({ ...params }) -> TradeFetchQuotesResponse</code>
 - <code title="post /api/v2/trading/getQuoteExecutionReport">client.trades.<a href="./src/resources/trades.ts">getQuoteExecutionReport</a>({ ...params }) -> TradeGetQuoteExecutionReportResponse</code>
-- <code title="get /api/v2/trading/listOrders">client.trades.<a href="./src/resources/trades.ts">listOrders</a>({ ...params }) -> TradeListOrdersResponse</code>
+- <code title="get /api/v2/trading/listOrders">client.trades.<a href="./src/resources/trades.ts">listOrders</a>({ ...params }) -> TradeListOrdersResponsesOffset</code>
 - <code title="post /api/v2/trading/placeOrder">client.trades.<a href="./src/resources/trades.ts">placeOrder</a>({ ...params }) -> TradePlaceOrderResponse</code>
 - <code title="post /api/v2/exchange/setExchangePriority">client.trades.<a href="./src/resources/trades.ts">setExchangePriority</a>({ ...params }) -> TradeSetExchangePriorityResponse</code>
 
