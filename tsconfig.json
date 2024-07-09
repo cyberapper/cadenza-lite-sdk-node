@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "cadenza-lite/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "cadenza-lite/*": ["src/*"],
-      "cadenza-lite": ["src/index.ts"],
+      "cadenza_lite/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "cadenza_lite/*": ["src/*"],
+      "cadenza_lite": ["src/index.ts"],
     },
     "noEmit": true,
 

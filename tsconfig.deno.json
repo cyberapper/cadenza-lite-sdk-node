@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "cadenza-lite/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "cadenza-lite/*": ["deno/*"],
-      "cadenza-lite": ["deno/index.ts"],
+      "cadenza_lite/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "cadenza_lite/*": ["deno/*"],
+      "cadenza_lite": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

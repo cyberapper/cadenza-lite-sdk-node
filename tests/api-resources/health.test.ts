@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Cadenza from 'cadenza-lite';
+import Cadenza from 'cadenza_lite';
 import { Response } from 'node-fetch';
 
 const cadenza = new Cadenza({
