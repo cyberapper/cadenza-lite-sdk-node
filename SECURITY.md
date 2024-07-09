@@ -20,7 +20,7 @@ or products provided by Cadenza please follow the respective company's security 
 
 ### Cadenza Terms and Policies
 
-Please contact dev-feedback@cadenza-client-sdk.com for any questions or concerns regarding security of our services.
+Please contact info@algo724.com for any questions or concerns regarding security of our services.
 
 ---
 
