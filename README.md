@@ -26,7 +26,7 @@ The full API of this library can be found in [api.md](api.md).
 import CadenzaClient from 'cadenza-lite';
 
 const cadenzaClient = new CadenzaClient({
-  environment: 'environment_1', // defaults to 'production'
+  environment: 'uat', // defaults to 'prod'
 });
 
 async function main() {
@@ -47,7 +47,7 @@ This library includes TypeScript definitions for all request params and response
 import CadenzaClient from 'cadenza-lite';
 
 const cadenzaClient = new CadenzaClient({
-  environment: 'environment_1', // defaults to 'production'
+  environment: 'uat', // defaults to 'prod'
 });
 
 async function main() {

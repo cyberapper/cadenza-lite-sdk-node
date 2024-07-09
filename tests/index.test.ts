@@ -157,11 +157,11 @@ describe('instantiate client', () => {
     test('env variable with environment', () => {
       process.env['CADENZA_CLIENT_BASE_URL'] = 'https://example.com/from_env';
 
-      expect(() => new CadenzaClient({ environment: 'production' })).toThrowErrorMatchingInlineSnapshot(
+      expect(() => new CadenzaClient({ environment: 'prod' })).toThrowErrorMatchingInlineSnapshot(
         `"Ambiguous URL; The \`baseURL\` option (or CADENZA_CLIENT_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
       );
 
-      const client = new CadenzaClient({ baseURL: null, environment: 'production' });
+      const client = new CadenzaClient({ baseURL: null, environment: 'prod' });
       expect(client.baseURL).toEqual('https://cadenza-lite.algo724.com');
     });
   });
