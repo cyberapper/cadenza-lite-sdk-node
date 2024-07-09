@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'cadenza_lite/core';
-import { Headers } from 'cadenza_lite/_shims/index';
+import { createResponseHeaders } from 'cadenza-sdk/core';
+import { Headers } from 'cadenza-sdk/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

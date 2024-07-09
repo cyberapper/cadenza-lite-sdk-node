@@ -55,12 +55,12 @@ cd cadenza-lite-node
 # With yarn
 yarn link
 cd ../my-package
-yarn link cadenza_lite
+yarn link cadenza-sdk
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global cadenza_lite
+pnpm link -—global cadenza-sdk
 ```
 
 ## Running tests

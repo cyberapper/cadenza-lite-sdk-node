@@ -1,5 +1,5 @@
 {
-  "name": "cadenza_lite",
+  "name": "cadenza-sdk",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Cadenza API",
   "author": "Cadenza <dev-feedback@cadenza-client-sdk.com>",
@@ -60,8 +60,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "cadenza_lite": ".",
-    "cadenza_lite/*": "./src/*"
+    "cadenza-sdk": ".",
+    "cadenza-sdk/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

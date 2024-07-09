@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "cadenza_lite/*": ["dist/src/*"],
-      "cadenza_lite": ["dist/src/index.ts"],
+      "cadenza-sdk/*": ["dist/src/*"],
+      "cadenza-sdk": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Cadenza } from 'cadenza_lite';
+import { Cadenza } from 'cadenza-sdk';
 
 const { stringifyQuery } = Cadenza.prototype as any;
 

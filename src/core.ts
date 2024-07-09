@@ -97,9 +97,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'cadenza_lite'`:
-   * - `import 'cadenza_lite/shims/node'` (if you're running on Node)
-   * - `import 'cadenza_lite/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'cadenza-sdk'`:
+   * - `import 'cadenza-sdk/shims/node'` (if you're running on Node)
+   * - `import 'cadenza-sdk/shims/web'` (otherwise)
    */
   asResponse(): Promise<Response> {
     return this.responsePromise.then((p) => p.response);
@@ -113,9 +113,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'cadenza_lite'`:
-   * - `import 'cadenza_lite/shims/node'` (if you're running on Node)
-   * - `import 'cadenza_lite/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'cadenza-sdk'`:
+   * - `import 'cadenza-sdk/shims/node'` (if you're running on Node)
+   * - `import 'cadenza-sdk/shims/web'` (otherwise)
    */
   async withResponse(): Promise<{ data: T; response: Response }> {
     const [data, response] = await Promise.all([this.parse(), this.asResponse()]);

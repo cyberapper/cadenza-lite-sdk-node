@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'cadenza_lite/core';
-import { Blob } from 'cadenza_lite/_shims/index';
-import { toFile } from 'cadenza_lite';
+import { multipartFormRequestOptions, createForm } from 'cadenza-sdk/core';
+import { Blob } from 'cadenza-sdk/_shims/index';
+import { toFile } from 'cadenza-sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
