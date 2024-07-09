@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'cadenza_lite/uploads';
-import { File } from 'cadenza_lite/_shims/index';
+import { toFile, type ResponseLike } from 'cadenza-sdk/uploads';
+import { File } from 'cadenza-sdk/_shims/index';
 
 class MyClass {
   name: string = 'foo';

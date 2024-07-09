@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'cadenza_lite/shims/node'
- *   import 'cadenza_lite/shims/web'
+ *   import 'cadenza-sdk/shims/node'
+ *   import 'cadenza-sdk/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */
