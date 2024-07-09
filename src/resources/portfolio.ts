@@ -61,42 +61,6 @@ export class Portfolio extends APIResource {
   }
 }
 
-export interface ExchangeAccountBalance {
-  /**
-   * List of balances
-   */
-  balances: Array<ExchangeAccountBalance.Balance>;
-
-  /**
-   * Exchange account ID
-   */
-  exchangeAccountId: string;
-}
-
-export namespace ExchangeAccountBalance {
-  export interface Balance {
-    /**
-     * Asset
-     */
-    asset: string;
-
-    /**
-     * Free balance
-     */
-    free: number;
-
-    /**
-     * Locked balance
-     */
-    locked: number;
-
-    /**
-     * Total balance
-     */
-    total: number;
-  }
-}
-
 /**
  * Exchange Account Credit Info
  */
@@ -213,7 +177,46 @@ export namespace ExchangeAccountPosition {
   }
 }
 
-export type PortfolioListBalancesResponse = Array<ExchangeAccountBalance>;
+export type PortfolioListBalancesResponse =
+  Array<PortfolioListBalancesResponse.PortfolioListBalancesResponseItem>;
+
+export namespace PortfolioListBalancesResponse {
+  export interface PortfolioListBalancesResponseItem {
+    /**
+     * List of balances
+     */
+    balances: Array<PortfolioListBalancesResponseItem.Balance>;
+
+    /**
+     * Exchange account ID
+     */
+    exchangeAccountId: string;
+  }
+
+  export namespace PortfolioListBalancesResponseItem {
+    export interface Balance {
+      /**
+       * Asset
+       */
+      asset: string;
+
+      /**
+       * Free balance
+       */
+      free: number;
+
+      /**
+       * Locked balance
+       */
+      locked: number;
+
+      /**
+       * Total balance
+       */
+      total: number;
+    }
+  }
+}
 
 /**
  * List of account credit info
@@ -259,7 +262,6 @@ export interface PortfolioListPositionsParams {
 }
 
 export namespace Portfolio {
-  export import ExchangeAccountBalance = PortfolioAPI.ExchangeAccountBalance;
   export import ExchangeAccountCredit = PortfolioAPI.ExchangeAccountCredit;
   export import ExchangeAccountPosition = PortfolioAPI.ExchangeAccountPosition;
   export import PortfolioListBalancesResponse = PortfolioAPI.PortfolioListBalancesResponse;

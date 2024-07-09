@@ -15,7 +15,6 @@ export {
   ExchangeAccounts,
 } from './exchange-accounts';
 export {
-  ExchangeAccountBalance,
   ExchangeAccountCredit,
   ExchangeAccountPosition,
   PortfolioListBalancesResponse,
