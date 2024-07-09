@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 import { Response } from 'node-fetch';
 
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource instrument', () => {
   test('list', async () => {
-    const responsePromise = cadenzaClient.market.instrument.list();
+    const responsePromise = cadenza.market.instrument.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,18 +22,18 @@ describe('resource instrument', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.market.instrument.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.market.instrument.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.market.instrument.list(
+      cadenza.market.instrument.list(
         { detail: false, exchangeType: 'BINANCE', symbol: 'string' },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 });
