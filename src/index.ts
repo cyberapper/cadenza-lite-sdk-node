@@ -25,7 +25,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['CADENZA_LITE_BASE_URL'].
+   * Defaults to process.env['CADENZA_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -80,16 +80,16 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Cadenza Lite API.
+ * API Client for interfacing with the Cadenza Client API.
  */
-export class CadenzaLite extends Core.APIClient {
+export class CadenzaClient extends Core.APIClient {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Cadenza Lite API.
+   * API Client for interfacing with the Cadenza Client API.
    *
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['CADENZA_LITE_BASE_URL'] ?? https://cadenza-lite.algo724.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['CADENZA_CLIENT_BASE_URL'] ?? https://cadenza-lite.algo724.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -97,7 +97,7 @@ export class CadenzaLite extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('CADENZA_LITE_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('CADENZA_CLIENT_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
       baseURL,
@@ -105,8 +105,8 @@ export class CadenzaLite extends Core.APIClient {
     };
 
     if (baseURL && opts.environment) {
-      throw new Errors.CadenzaLiteError(
-        'Ambiguous URL; The `baseURL` option (or CADENZA_LITE_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      throw new Errors.CadenzaClientError(
+        'Ambiguous URL; The `baseURL` option (or CADENZA_CLIENT_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
       );
     }
 
@@ -139,9 +139,9 @@ export class CadenzaLite extends Core.APIClient {
     };
   }
 
-  static CadenzaLite = this;
+  static CadenzaClient = this;
 
-  static CadenzaLiteError = Errors.CadenzaLiteError;
+  static CadenzaClientError = Errors.CadenzaClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -160,7 +160,7 @@ export class CadenzaLite extends Core.APIClient {
 }
 
 export const {
-  CadenzaLiteError,
+  CadenzaClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -178,7 +178,7 @@ export const {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace CadenzaLite {
+export namespace CadenzaClient {
   export import RequestOptions = Core.RequestOptions;
 
   export import Health = API.Health;
@@ -228,4 +228,4 @@ export namespace CadenzaLite {
   export import PortfolioListPositionsParams = API.PortfolioListPositionsParams;
 }
 
-export default CadenzaLite;
+export default CadenzaClient;

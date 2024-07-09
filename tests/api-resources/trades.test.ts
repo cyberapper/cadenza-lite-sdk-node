@@ -1,13 +1,15 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 import { Response } from 'node-fetch';
 
-const cadenzaLite = new CadenzaLite({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const cadenzaClient = new CadenzaClient({
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource trades', () => {
   test('cancelOrder: only required params', async () => {
-    const responsePromise = cadenzaLite.trades.cancelOrder({ orderId: 'string' });
+    const responsePromise = cadenzaClient.trades.cancelOrder({ orderId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,11 +20,11 @@ describe('resource trades', () => {
   });
 
   test('cancelOrder: required and optional params', async () => {
-    const response = await cadenzaLite.trades.cancelOrder({ orderId: 'string' });
+    const response = await cadenzaClient.trades.cancelOrder({ orderId: 'string' });
   });
 
   test('fetchQuotes: only required params', async () => {
-    const responsePromise = cadenzaLite.trades.fetchQuotes({
+    const responsePromise = cadenzaClient.trades.fetchQuotes({
       baseCurrency: 'string',
       orderSide: 'string',
       quoteCurrency: 'string',
@@ -37,7 +39,7 @@ describe('resource trades', () => {
   });
 
   test('fetchQuotes: required and optional params', async () => {
-    const response = await cadenzaLite.trades.fetchQuotes({
+    const response = await cadenzaClient.trades.fetchQuotes({
       baseCurrency: 'string',
       orderSide: 'string',
       quoteCurrency: 'string',
@@ -48,7 +50,7 @@ describe('resource trades', () => {
   });
 
   test('getQuoteExecutionReport: only required params', async () => {
-    const responsePromise = cadenzaLite.trades.getQuoteExecutionReport({ quoteRequestId: 'string' });
+    const responsePromise = cadenzaClient.trades.getQuoteExecutionReport({ quoteRequestId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,11 +61,11 @@ describe('resource trades', () => {
   });
 
   test('getQuoteExecutionReport: required and optional params', async () => {
-    const response = await cadenzaLite.trades.getQuoteExecutionReport({ quoteRequestId: 'string' });
+    const response = await cadenzaClient.trades.getQuoteExecutionReport({ quoteRequestId: 'string' });
   });
 
   test('listOrders', async () => {
-    const responsePromise = cadenzaLite.trades.listOrders();
+    const responsePromise = cadenzaClient.trades.listOrders();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -75,15 +77,15 @@ describe('resource trades', () => {
 
   test('listOrders: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaLite.trades.listOrders({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaLite.NotFoundError,
+    await expect(cadenzaClient.trades.listOrders({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      CadenzaClient.NotFoundError,
     );
   });
 
   test('listOrders: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaLite.trades.listOrders(
+      cadenzaClient.trades.listOrders(
         {
           endTime: 1632933600000,
           exchangeAccountId: 'string',
@@ -97,11 +99,11 @@ describe('resource trades', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaLite.NotFoundError);
+    ).rejects.toThrow(CadenzaClient.NotFoundError);
   });
 
   test('placeOrder', async () => {
-    const responsePromise = cadenzaLite.trades.placeOrder();
+    const responsePromise = cadenzaClient.trades.placeOrder();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -113,15 +115,15 @@ describe('resource trades', () => {
 
   test('placeOrder: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaLite.trades.placeOrder({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaLite.NotFoundError,
+    await expect(cadenzaClient.trades.placeOrder({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      CadenzaClient.NotFoundError,
     );
   });
 
   test('placeOrder: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaLite.trades.placeOrder(
+      cadenzaClient.trades.placeOrder(
         {
           exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
           leverage: 0,
@@ -143,11 +145,11 @@ describe('resource trades', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaLite.NotFoundError);
+    ).rejects.toThrow(CadenzaClient.NotFoundError);
   });
 
   test('setExchangePriority: only required params', async () => {
-    const responsePromise = cadenzaLite.trades.setExchangePriority({
+    const responsePromise = cadenzaClient.trades.setExchangePriority({
       priority: ['my_exchange_1', 'my_exchange_2', 'my_exchange_3'],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -160,7 +162,7 @@ describe('resource trades', () => {
   });
 
   test('setExchangePriority: required and optional params', async () => {
-    const response = await cadenzaLite.trades.setExchangePriority({
+    const response = await cadenzaClient.trades.setExchangePriority({
       priority: ['my_exchange_1', 'my_exchange_2', 'my_exchange_3'],
     });
   });

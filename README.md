@@ -1,10 +1,10 @@
-# Cadenza Lite Node API Library
+# Cadenza Client Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/cadenza-lite.svg)](https://npmjs.org/package/cadenza-lite) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/cadenza-lite)
 
-This library provides convenient access to the Cadenza Lite REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Cadenza Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.cadenza-lite.com](https://docs.cadenza-lite.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on docs.cadenza-client-sdk.com](https://docs.cadenza-client-sdk.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -23,14 +23,14 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 
-const cadenzaLite = new CadenzaLite({
+const cadenzaClient = new CadenzaClient({
   environment: 'environment_1', // defaults to 'production'
 });
 
 async function main() {
-  const clientRetrieveInfoResponse = await cadenzaLite.account.client.retrieveInfo();
+  const clientRetrieveInfoResponse = await cadenzaClient.account.client.retrieveInfo();
 
   console.log(clientRetrieveInfoResponse.exchangeTypes);
 }
@@ -44,15 +44,15 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 
-const cadenzaLite = new CadenzaLite({
+const cadenzaClient = new CadenzaClient({
   environment: 'environment_1', // defaults to 'production'
 });
 
 async function main() {
-  const clientRetrieveInfoResponse: CadenzaLite.Account.ClientRetrieveInfoResponse =
-    await cadenzaLite.account.client.retrieveInfo();
+  const clientRetrieveInfoResponse: CadenzaClient.Account.ClientRetrieveInfoResponse =
+    await cadenzaClient.account.client.retrieveInfo();
 }
 
 main();
@@ -69,8 +69,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const clientRetrieveInfoResponse = await cadenzaLite.account.client.retrieveInfo().catch(async (err) => {
-    if (err instanceof CadenzaLite.APIError) {
+  const clientRetrieveInfoResponse = await cadenzaClient.account.client.retrieveInfo().catch(async (err) => {
+    if (err instanceof CadenzaClient.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -107,12 +107,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const cadenzaLite = new CadenzaLite({
+const cadenzaClient = new CadenzaClient({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await cadenzaLite.account.client.retrieveInfo({
+await cadenzaClient.account.client.retrieveInfo({
   maxRetries: 5,
 });
 ```
@@ -124,12 +124,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const cadenzaLite = new CadenzaLite({
+const cadenzaClient = new CadenzaClient({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await cadenzaLite.account.client.retrieveInfo({
+await cadenzaClient.account.client.retrieveInfo({
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +148,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const cadenzaLite = new CadenzaLite();
+const cadenzaClient = new CadenzaClient();
 
-const response = await cadenzaLite.account.client.retrieveInfo().asResponse();
+const response = await cadenzaClient.account.client.retrieveInfo().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: clientRetrieveInfoResponse, response: raw } = await cadenzaLite.account.client
+const { data: clientRetrieveInfoResponse, response: raw } = await cadenzaClient.account.client
   .retrieveInfo()
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -211,13 +211,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "CadenzaLite"`:
+add the following import before your first import `from "CadenzaClient"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'cadenza-lite/shims/web';
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 ```
 
 To do the inverse, add `import "cadenza-lite/shims/node"` (which does import polyfills).
@@ -230,9 +230,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 
-const client = new CadenzaLite({
+const client = new CadenzaClient({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -257,12 +257,12 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const cadenzaLite = new CadenzaLite({
+const cadenzaClient = new CadenzaClient({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await cadenzaLite.account.client.retrieveInfo({
+await cadenzaClient.account.client.retrieveInfo({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
@@ -286,7 +286,7 @@ TypeScript >= 4.5 is supported.
 The following runtimes are supported:
 
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import CadenzaLite from "npm:cadenza-lite"`.
+- Deno v1.28.0 or higher, using `import CadenzaClient from "npm:cadenza-lite"`.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.
