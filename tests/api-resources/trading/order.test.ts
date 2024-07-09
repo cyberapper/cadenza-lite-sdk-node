@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 import { Response } from 'node-fetch';
 
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource order', () => {
   test('create', async () => {
-    const responsePromise = cadenzaClient.trading.order.create();
+    const responsePromise = cadenza.trading.order.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,15 +22,15 @@ describe('resource order', () => {
 
   test('create: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.trading.order.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.trading.order.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('create: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.trading.order.create(
+      cadenza.trading.order.create(
         {
           exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
           leverage: 0,
@@ -52,11 +52,11 @@ describe('resource order', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = cadenzaClient.trading.order.list();
+    const responsePromise = cadenza.trading.order.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -68,15 +68,15 @@ describe('resource order', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.trading.order.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.trading.order.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.trading.order.list(
+      cadenza.trading.order.list(
         {
           endTime: 1632933600000,
           exchangeAccountId: 'string',
@@ -90,11 +90,11 @@ describe('resource order', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 
   test('cancel: only required params', async () => {
-    const responsePromise = cadenzaClient.trading.order.cancel({ orderId: 'string' });
+    const responsePromise = cadenza.trading.order.cancel({ orderId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -105,6 +105,6 @@ describe('resource order', () => {
   });
 
   test('cancel: required and optional params', async () => {
-    const response = await cadenzaClient.trading.order.cancel({ orderId: 'string' });
+    const response = await cadenza.trading.order.cancel({ orderId: 'string' });
   });
 });

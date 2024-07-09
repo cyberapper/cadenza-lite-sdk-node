@@ -1,8 +1,8 @@
-# Cadenza Client Node API Library
+# Cadenza Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/cadenza-lite.svg)](https://npmjs.org/package/cadenza-lite) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/cadenza-lite)
 
-This library provides convenient access to the Cadenza Client REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Cadenza REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found [on docs.cadenza-client-sdk.com](https://docs.cadenza-client-sdk.com). The full API of this library can be found in [api.md](api.md).
 
@@ -23,15 +23,15 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
 
 async function main() {
-  const infoGetResponse = await cadenzaClient.clients.info.get();
+  const infoGetResponse = await cadenza.clients.info.get();
 
   console.log(infoGetResponse.exchangeTypes);
 }
@@ -45,15 +45,15 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
 
 async function main() {
-  const infoGetResponse: CadenzaClient.Clients.InfoGetResponse = await cadenzaClient.clients.info.get();
+  const infoGetResponse: Cadenza.Clients.InfoGetResponse = await cadenza.clients.info.get();
 }
 
 main();
@@ -70,8 +70,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const infoGetResponse = await cadenzaClient.clients.info.get().catch(async (err) => {
-    if (err instanceof CadenzaClient.APIError) {
+  const infoGetResponse = await cadenza.clients.info.get().catch(async (err) => {
+    if (err instanceof Cadenza.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -108,12 +108,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await cadenzaClient.clients.info.get({
+await cadenza.clients.info.get({
   maxRetries: 5,
 });
 ```
@@ -125,12 +125,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await cadenzaClient.clients.info.get({
+await cadenza.clients.info.get({
   timeout: 5 * 1000,
 });
 ```
@@ -149,13 +149,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const cadenzaClient = new CadenzaClient();
+const cadenza = new Cadenza();
 
-const response = await cadenzaClient.clients.info.get().asResponse();
+const response = await cadenza.clients.info.get().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: infoGetResponse, response: raw } = await cadenzaClient.clients.info.get().withResponse();
+const { data: infoGetResponse, response: raw } = await cadenza.clients.info.get().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(infoGetResponse.exchangeTypes);
 ```
@@ -210,13 +210,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "CadenzaClient"`:
+add the following import before your first import `from "Cadenza"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'cadenza-lite/shims/web';
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 ```
 
 To do the inverse, add `import "cadenza-lite/shims/node"` (which does import polyfills).
@@ -229,9 +229,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 
-const client = new CadenzaClient({
+const client = new Cadenza({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -256,12 +256,12 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await cadenzaClient.clients.info.get({
+await cadenza.clients.info.get({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
@@ -285,7 +285,7 @@ TypeScript >= 4.5 is supported.
 The following runtimes are supported:
 
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import CadenzaClient from "npm:cadenza-lite"`.
+- Deno v1.28.0 or higher, using `import Cadenza from "npm:cadenza-lite"`.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.

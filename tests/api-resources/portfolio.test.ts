@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import CadenzaClient from 'cadenza-lite';
+import Cadenza from 'cadenza-lite';
 import { Response } from 'node-fetch';
 
-const cadenzaClient = new CadenzaClient({
+const cadenza = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource portfolio', () => {
   test('listBalances', async () => {
-    const responsePromise = cadenzaClient.portfolio.listBalances();
+    const responsePromise = cadenza.portfolio.listBalances();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,23 +22,23 @@ describe('resource portfolio', () => {
 
   test('listBalances: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.portfolio.listBalances({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.portfolio.listBalances({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('listBalances: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.portfolio.listBalances(
+      cadenza.portfolio.listBalances(
         { exchangeAccountId: 'string', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 
   test('listCredit', async () => {
-    const responsePromise = cadenzaClient.portfolio.listCredit();
+    const responsePromise = cadenza.portfolio.listCredit();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -50,23 +50,23 @@ describe('resource portfolio', () => {
 
   test('listCredit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.portfolio.listCredit({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.portfolio.listCredit({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('listCredit: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.portfolio.listCredit(
+      cadenza.portfolio.listCredit(
         { exchangeAccountId: 'string', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 
   test('listPositions', async () => {
-    const responsePromise = cadenzaClient.portfolio.listPositions();
+    const responsePromise = cadenza.portfolio.listPositions();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,18 +78,18 @@ describe('resource portfolio', () => {
 
   test('listPositions: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.portfolio.listPositions({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      CadenzaClient.NotFoundError,
+    await expect(cadenza.portfolio.listPositions({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
     );
   });
 
   test('listPositions: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.portfolio.listPositions(
+      cadenza.portfolio.listPositions(
         { exchangeAccountId: 'string', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 });
