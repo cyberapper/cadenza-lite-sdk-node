@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^cadenza-lite$': '<rootDir>/src/index.ts',
-    '^cadenza-lite/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^cadenza-lite/(.*)$': '<rootDir>/src/$1',
+    '^cadenza_lite$': '<rootDir>/src/index.ts',
+    '^cadenza_lite/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^cadenza_lite/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

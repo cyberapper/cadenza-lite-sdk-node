@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'cadenza-lite/shims/${shims.kind}'\` before importing anything else from cadenza-lite`,
+      `you must \`import 'cadenza_lite/shims/${shims.kind}'\` before importing anything else from cadenza_lite`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'cadenza-lite/shims/${shims.kind}'\` after \`import 'cadenza-lite/shims/${kind}'\``,
+      `can't \`import 'cadenza_lite/shims/${shims.kind}'\` after \`import 'cadenza_lite/shims/${kind}'\``,
     );
   }
   auto = options.auto;
