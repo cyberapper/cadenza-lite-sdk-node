@@ -7,8 +7,8 @@ import * as Core from './core';
 import * as API from './resources/index';
 
 const environments = {
-  production: 'https://cadenza-lite.algo724.com',
-  environment_1: 'https://cadenza-lite.uat.algo724.com',
+  prod: 'https://cadenza-lite.algo724.com',
+  uat: 'https://cadenza-lite.uat.algo724.com',
 };
 type Environment = keyof typeof environments;
 
@@ -17,8 +17,8 @@ export interface ClientOptions {
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://cadenza-lite.algo724.com`
-   * - `environment_1` corresponds to `https://cadenza-lite.uat.algo724.com`
+   * - `prod` corresponds to `https://cadenza-lite.algo724.com`
+   * - `uat` corresponds to `https://cadenza-lite.uat.algo724.com`
    */
   environment?: Environment;
 
@@ -88,7 +88,7 @@ export class CadenzaClient extends Core.APIClient {
   /**
    * API Client for interfacing with the Cadenza Client API.
    *
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
+   * @param {Environment} [opts.environment=prod] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['CADENZA_CLIENT_BASE_URL'] ?? https://cadenza-lite.algo724.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -101,7 +101,7 @@ export class CadenzaClient extends Core.APIClient {
     const options: ClientOptions = {
       ...opts,
       baseURL,
-      environment: opts.environment ?? 'production',
+      environment: opts.environment ?? 'prod',
     };
 
     if (baseURL && opts.environment) {
@@ -111,7 +111,7 @@ export class CadenzaClient extends Core.APIClient {
     }
 
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL || environments[options.environment || 'prod'],
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
