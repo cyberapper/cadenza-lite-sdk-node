@@ -123,11 +123,11 @@ export class CadenzaClient extends Core.APIClient {
   }
 
   health: API.Health = new API.Health(this);
-  account: API.Account = new API.Account(this);
+  clients: API.Clients = new API.Clients(this);
   exchangeAccounts: API.ExchangeAccounts = new API.ExchangeAccounts(this);
-  marketSymbols: API.MarketSymbols = new API.MarketSymbols(this);
-  trades: API.Trades = new API.Trades(this);
-  portfolios: API.Portfolios = new API.Portfolios(this);
+  market: API.Market = new API.Market(this);
+  trading: API.Trading = new API.Trading(this);
+  portfolio: API.Portfolio = new API.Portfolio(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -187,45 +187,30 @@ export namespace CadenzaClient {
   export import OffsetResponse = Pagination.OffsetResponse;
 
   export import Health = API.Health;
-  export import HealthCheckResponse = API.HealthCheckResponse;
+  export import HealthGetResponse = API.HealthGetResponse;
 
-  export import Account = API.Account;
+  export import Clients = API.Clients;
 
   export import ExchangeAccounts = API.ExchangeAccounts;
+  export import ExchangeAccount = API.ExchangeAccount;
   export import ExchangeAccountCreateResponse = API.ExchangeAccountCreateResponse;
   export import ExchangeAccountUpdateResponse = API.ExchangeAccountUpdateResponse;
   export import ExchangeAccountListResponse = API.ExchangeAccountListResponse;
   export import ExchangeAccountRemoveResponse = API.ExchangeAccountRemoveResponse;
+  export import ExchangeAccountSetExchangePriorityResponse = API.ExchangeAccountSetExchangePriorityResponse;
   export import ExchangeAccountCreateParams = API.ExchangeAccountCreateParams;
   export import ExchangeAccountUpdateParams = API.ExchangeAccountUpdateParams;
   export import ExchangeAccountRemoveParams = API.ExchangeAccountRemoveParams;
+  export import ExchangeAccountSetExchangePriorityParams = API.ExchangeAccountSetExchangePriorityParams;
 
-  export import MarketSymbols = API.MarketSymbols;
-  export import MarketSymbolListResponse = API.MarketSymbolListResponse;
-  export import MarketSymbolKlineResponse = API.MarketSymbolKlineResponse;
-  export import MarketSymbolOrderbookResponse = API.MarketSymbolOrderbookResponse;
-  export import MarketSymbolTickerResponse = API.MarketSymbolTickerResponse;
-  export import MarketSymbolListParams = API.MarketSymbolListParams;
-  export import MarketSymbolKlineParams = API.MarketSymbolKlineParams;
-  export import MarketSymbolOrderbookParams = API.MarketSymbolOrderbookParams;
-  export import MarketSymbolTickerParams = API.MarketSymbolTickerParams;
+  export import Market = API.Market;
 
-  export import Trades = API.Trades;
-  export import TradeCancelOrderResponse = API.TradeCancelOrderResponse;
-  export import TradeFetchQuotesResponse = API.TradeFetchQuotesResponse;
-  export import TradeGetQuoteExecutionReportResponse = API.TradeGetQuoteExecutionReportResponse;
-  export import TradeListOrdersResponse = API.TradeListOrdersResponse;
-  export import TradePlaceOrderResponse = API.TradePlaceOrderResponse;
-  export import TradeSetExchangePriorityResponse = API.TradeSetExchangePriorityResponse;
-  export import TradeListOrdersResponsesOffset = API.TradeListOrdersResponsesOffset;
-  export import TradeCancelOrderParams = API.TradeCancelOrderParams;
-  export import TradeFetchQuotesParams = API.TradeFetchQuotesParams;
-  export import TradeGetQuoteExecutionReportParams = API.TradeGetQuoteExecutionReportParams;
-  export import TradeListOrdersParams = API.TradeListOrdersParams;
-  export import TradePlaceOrderParams = API.TradePlaceOrderParams;
-  export import TradeSetExchangePriorityParams = API.TradeSetExchangePriorityParams;
+  export import Trading = API.Trading;
 
-  export import Portfolios = API.Portfolios;
+  export import Portfolio = API.Portfolio;
+  export import ExchangeAccountBalance = API.ExchangeAccountBalance;
+  export import ExchangeAccountCredit = API.ExchangeAccountCredit;
+  export import ExchangeAccountPosition = API.ExchangeAccountPosition;
   export import PortfolioListBalancesResponse = API.PortfolioListBalancesResponse;
   export import PortfolioListCreditResponse = API.PortfolioListCreditResponse;
   export import PortfolioListPositionsResponse = API.PortfolioListPositionsResponse;

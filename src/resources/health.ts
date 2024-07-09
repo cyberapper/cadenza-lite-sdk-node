@@ -8,7 +8,7 @@ export class Health extends APIResource {
   /**
    * Health check
    */
-  check(options?: Core.RequestOptions): Core.APIPromise<string> {
+  get(options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get('/api/v2/health', {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -16,8 +16,8 @@ export class Health extends APIResource {
   }
 }
 
-export type HealthCheckResponse = string;
+export type HealthGetResponse = string;
 
 export namespace Health {
-  export import HealthCheckResponse = HealthAPI.HealthCheckResponse;
+  export import HealthGetResponse = HealthAPI.HealthGetResponse;
 }

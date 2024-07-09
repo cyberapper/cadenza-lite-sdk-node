@@ -30,9 +30,9 @@ const cadenzaClient = new CadenzaClient({
 });
 
 async function main() {
-  const clientRetrieveInfoResponse = await cadenzaClient.account.client.retrieveInfo();
+  const infoGetResponse = await cadenzaClient.clients.info.get();
 
-  console.log(clientRetrieveInfoResponse.exchangeTypes);
+  console.log(infoGetResponse.exchangeTypes);
 }
 
 main();
@@ -51,8 +51,7 @@ const cadenzaClient = new CadenzaClient({
 });
 
 async function main() {
-  const clientRetrieveInfoResponse: CadenzaClient.Account.ClientRetrieveInfoResponse =
-    await cadenzaClient.account.client.retrieveInfo();
+  const infoGetResponse: CadenzaClient.Clients.InfoGetResponse = await cadenzaClient.clients.info.get();
 }
 
 main();
@@ -69,7 +68,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const clientRetrieveInfoResponse = await cadenzaClient.account.client.retrieveInfo().catch(async (err) => {
+  const infoGetResponse = await cadenzaClient.clients.info.get().catch(async (err) => {
     if (err instanceof CadenzaClient.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -112,7 +111,7 @@ const cadenzaClient = new CadenzaClient({
 });
 
 // Or, configure per-request:
-await cadenzaClient.account.client.retrieveInfo({
+await cadenzaClient.clients.info.get({
   maxRetries: 5,
 });
 ```
@@ -129,7 +128,7 @@ const cadenzaClient = new CadenzaClient({
 });
 
 // Override per-request:
-await cadenzaClient.account.client.retrieveInfo({
+await cadenzaClient.clients.info.get({
   timeout: 5 * 1000,
 });
 ```
@@ -150,15 +149,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const cadenzaClient = new CadenzaClient();
 
-const response = await cadenzaClient.account.client.retrieveInfo().asResponse();
+const response = await cadenzaClient.clients.info.get().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: clientRetrieveInfoResponse, response: raw } = await cadenzaClient.account.client
-  .retrieveInfo()
-  .withResponse();
+const { data: infoGetResponse, response: raw } = await cadenzaClient.clients.info.get().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(clientRetrieveInfoResponse.exchangeTypes);
+console.log(infoGetResponse.exchangeTypes);
 ```
 
 ### Making custom/undocumented requests
@@ -262,7 +259,7 @@ const cadenzaClient = new CadenzaClient({
 });
 
 // Override per-request:
-await cadenzaClient.account.client.retrieveInfo({
+await cadenzaClient.clients.info.get({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
