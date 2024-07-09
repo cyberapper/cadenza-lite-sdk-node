@@ -125,6 +125,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/portfolio.ts">ExchangeAccountBalance</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountCredit</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPosition</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListBalancesResponse</a></code>

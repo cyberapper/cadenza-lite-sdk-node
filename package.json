@@ -1,8 +1,8 @@
 {
   "name": "cadenza-sdk",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "The official TypeScript library for the Cadenza API",
-  "author": "Cadenza <dev-feedback@cadenza-client-sdk.com>",
+  "author": "Cadenza <info@algo724.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
