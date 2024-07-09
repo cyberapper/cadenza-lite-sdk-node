@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { CadenzaLite } from './index';
+import type { CadenzaClient } from './index';
 
 export class APIResource {
-  protected _client: CadenzaLite;
+  protected _client: CadenzaClient;
 
-  constructor(client: CadenzaLite) {
+  constructor(client: CadenzaClient) {
     this._client = client;
   }
 }

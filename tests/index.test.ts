@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import CadenzaLite from 'cadenza-lite';
+import CadenzaClient from 'cadenza-lite';
 import { APIUserAbortError } from 'cadenza-lite';
 import { Headers } from 'cadenza-lite/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
@@ -20,7 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new CadenzaLite({
+    const client = new CadenzaClient({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
     });
@@ -51,7 +51,7 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new CadenzaLite({
+      const client = new CadenzaClient({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
       });
@@ -59,7 +59,7 @@ describe('instantiate client', () => {
     });
 
     test('multiple default query params', () => {
-      const client = new CadenzaLite({
+      const client = new CadenzaClient({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
       });
@@ -67,13 +67,16 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new CadenzaLite({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } });
+      const client = new CadenzaClient({
+        baseURL: 'http://localhost:5000/',
+        defaultQuery: { hello: 'world' },
+      });
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
   });
 
   test('custom fetch', async () => {
-    const client = new CadenzaLite({
+    const client = new CadenzaClient({
       baseURL: 'http://localhost:5000/',
       fetch: (url) => {
         return Promise.resolve(
@@ -89,7 +92,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new CadenzaLite({
+    const client = new CadenzaClient({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       fetch: (...args) => {
         return new Promise((resolve, reject) =>
@@ -115,66 +118,66 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new CadenzaLite({ baseURL: 'http://localhost:5000/custom/path/' });
+      const client = new CadenzaClient({ baseURL: 'http://localhost:5000/custom/path/' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new CadenzaLite({ baseURL: 'http://localhost:5000/custom/path' });
+      const client = new CadenzaClient({ baseURL: 'http://localhost:5000/custom/path' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     afterEach(() => {
-      process.env['CADENZA_LITE_BASE_URL'] = undefined;
+      process.env['CADENZA_CLIENT_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new CadenzaLite({ baseURL: 'https://example.com' });
+      const client = new CadenzaClient({ baseURL: 'https://example.com' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['CADENZA_LITE_BASE_URL'] = 'https://example.com/from_env';
-      const client = new CadenzaLite({});
+      process.env['CADENZA_CLIENT_BASE_URL'] = 'https://example.com/from_env';
+      const client = new CadenzaClient({});
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['CADENZA_LITE_BASE_URL'] = ''; // empty
-      const client = new CadenzaLite({});
+      process.env['CADENZA_CLIENT_BASE_URL'] = ''; // empty
+      const client = new CadenzaClient({});
       expect(client.baseURL).toEqual('https://cadenza-lite.algo724.com');
     });
 
     test('blank env variable', () => {
-      process.env['CADENZA_LITE_BASE_URL'] = '  '; // blank
-      const client = new CadenzaLite({});
+      process.env['CADENZA_CLIENT_BASE_URL'] = '  '; // blank
+      const client = new CadenzaClient({});
       expect(client.baseURL).toEqual('https://cadenza-lite.algo724.com');
     });
 
     test('env variable with environment', () => {
-      process.env['CADENZA_LITE_BASE_URL'] = 'https://example.com/from_env';
+      process.env['CADENZA_CLIENT_BASE_URL'] = 'https://example.com/from_env';
 
-      expect(() => new CadenzaLite({ environment: 'production' })).toThrowErrorMatchingInlineSnapshot(
-        `"Ambiguous URL; The \`baseURL\` option (or CADENZA_LITE_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      expect(() => new CadenzaClient({ environment: 'production' })).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or CADENZA_CLIENT_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
       );
 
-      const client = new CadenzaLite({ baseURL: null, environment: 'production' });
+      const client = new CadenzaClient({ baseURL: null, environment: 'production' });
       expect(client.baseURL).toEqual('https://cadenza-lite.algo724.com');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new CadenzaLite({ maxRetries: 4 });
+    const client = new CadenzaClient({ maxRetries: 4 });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new CadenzaLite({});
+    const client2 = new CadenzaClient({});
     expect(client2.maxRetries).toEqual(2);
   });
 });
 
 describe('request building', () => {
-  const client = new CadenzaLite({});
+  const client = new CadenzaClient({});
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -216,7 +219,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new CadenzaLite({ timeout: 10, fetch: testFetch });
+    const client = new CadenzaClient({ timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -243,7 +246,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new CadenzaLite({ fetch: testFetch });
+    const client = new CadenzaClient({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -270,7 +273,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new CadenzaLite({ fetch: testFetch });
+    const client = new CadenzaClient({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
