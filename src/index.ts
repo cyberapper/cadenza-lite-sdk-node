@@ -15,6 +15,11 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
+   * Defaults to process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'].
+   */
+  bearerToken?: string | undefined;
+
+  /**
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
@@ -84,11 +89,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Cadenza Client API.
  */
 export class CadenzaClient extends Core.APIClient {
+  bearerToken: string;
+
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Cadenza Client API.
    *
+   * @param {string | undefined} [opts.bearerToken=process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'] ?? undefined]
    * @param {Environment} [opts.environment=prod] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['CADENZA_CLIENT_BASE_URL'] ?? https://cadenza-lite.algo724.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -98,8 +106,19 @@ export class CadenzaClient extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('CADENZA_CLIENT_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('CADENZA_CLIENT_BASE_URL'),
+    bearerToken = Core.readEnv('CADENZA_CLIENT_SDK_BEARER_TOKEN'),
+    ...opts
+  }: ClientOptions = {}) {
+    if (bearerToken === undefined) {
+      throw new Errors.CadenzaClientError(
+        "The CADENZA_CLIENT_SDK_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the CadenzaClient client with an bearerToken option, like new CadenzaClient({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
+
     const options: ClientOptions = {
+      bearerToken,
       ...opts,
       baseURL,
       environment: opts.environment ?? 'prod',
@@ -120,6 +139,8 @@ export class CadenzaClient extends Core.APIClient {
     });
 
     this._options = options;
+
+    this.bearerToken = bearerToken;
   }
 
   health: API.Health = new API.Health(this);
@@ -138,6 +159,10 @@ export class CadenzaClient extends Core.APIClient {
       ...super.defaultHeaders(opts),
       ...this._options.defaultHeaders,
     };
+  }
+
+  protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
+    return { Authorization: `Bearer ${this.bearerToken}` };
   }
 
   static CadenzaClient = this;

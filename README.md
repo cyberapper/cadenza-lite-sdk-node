@@ -26,6 +26,7 @@ The full API of this library can be found in [api.md](api.md).
 import CadenzaClient from 'cadenza-lite';
 
 const cadenzaClient = new CadenzaClient({
+  bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
 
@@ -47,6 +48,7 @@ This library includes TypeScript definitions for all request params and response
 import CadenzaClient from 'cadenza-lite';
 
 const cadenzaClient = new CadenzaClient({
+  bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
 
