@@ -7,9 +7,13 @@ const cadenzaClient = new CadenzaClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource client', () => {
-  test('retrieveInfo', async () => {
-    const responsePromise = cadenzaClient.account.client.retrieveInfo();
+describe('resource quote', () => {
+  test('requestForQuote: only required params', async () => {
+    const responsePromise = cadenzaClient.trading.quote.requestForQuote({
+      baseCurrency: 'string',
+      orderSide: 'string',
+      quoteCurrency: 'string',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,10 +23,14 @@ describe('resource client', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieveInfo: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      cadenzaClient.account.client.retrieveInfo({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+  test('requestForQuote: required and optional params', async () => {
+    const response = await cadenzaClient.trading.quote.requestForQuote({
+      baseCurrency: 'string',
+      orderSide: 'string',
+      quoteCurrency: 'string',
+      exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+      quantity: 0,
+      quoteQuantity: 0,
+    });
   });
 });

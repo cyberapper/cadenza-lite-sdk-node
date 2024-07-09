@@ -2,24 +2,24 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as ClientAPI from './client';
+import * as InfoAPI from './info';
 
-export class Client extends APIResource {
+export class Info extends APIResource {
   /**
    * Check available exchange types in user information
    */
-  retrieveInfo(options?: Core.RequestOptions): Core.APIPromise<ClientRetrieveInfoResponse> {
+  get(options?: Core.RequestOptions): Core.APIPromise<InfoGetResponse> {
     return this._client.get('/api/v2/client/getInfo', options);
   }
 }
 
-export interface ClientRetrieveInfoResponse {
+export interface InfoGetResponse {
   /**
    * Available exchange types
    */
   exchangeTypes?: Array<'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX'>;
 }
 
-export namespace Client {
-  export import ClientRetrieveInfoResponse = ClientAPI.ClientRetrieveInfoResponse;
+export namespace Info {
+  export import InfoGetResponse = InfoAPI.InfoGetResponse;
 }

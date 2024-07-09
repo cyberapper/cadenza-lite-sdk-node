@@ -7,9 +7,9 @@ const cadenzaClient = new CadenzaClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource portfolios', () => {
-  test('listBalances', async () => {
-    const responsePromise = cadenzaClient.portfolios.listBalances();
+describe('resource order', () => {
+  test('create', async () => {
+    const responsePromise = cadenzaClient.trading.order.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,25 +19,43 @@ describe('resource portfolios', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('listBalances: request options instead of params are passed correctly', async () => {
+  test('create: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.portfolios.listBalances({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(cadenzaClient.trading.order.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       CadenzaClient.NotFoundError,
     );
   });
 
-  test('listBalances: request options and params are passed correctly', async () => {
+  test('create: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.portfolios.listBalances(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
+      cadenzaClient.trading.order.create(
+        {
+          exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          leverage: 0,
+          orderSide: 'BUY',
+          orderType: 'MARKET',
+          positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          price: 0,
+          priceSlippageTolerance: 0,
+          priority: ['exchange_account_id_1', 'exchange_account_id_2', 'exchange_account_id_3'],
+          quantity: 0,
+          quoteId: 'string',
+          quoteQuantity: 0,
+          quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          routePolicy: 'PRIORITY',
+          symbol: 'BTC/USDT',
+          tenantId: 'tenantId',
+          timeInForce: 'DAY',
+          'Idempotency-Key': 'my_idempotency_key',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(CadenzaClient.NotFoundError);
   });
 
-  test('listCredit', async () => {
-    const responsePromise = cadenzaClient.portfolios.listCredit();
+  test('list', async () => {
+    const responsePromise = cadenzaClient.trading.order.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -47,25 +65,35 @@ describe('resource portfolios', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('listCredit: request options instead of params are passed correctly', async () => {
+  test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenzaClient.portfolios.listCredit({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(cadenzaClient.trading.order.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       CadenzaClient.NotFoundError,
     );
   });
 
-  test('listCredit: request options and params are passed correctly', async () => {
+  test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenzaClient.portfolios.listCredit(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
+      cadenzaClient.trading.order.list(
+        {
+          endTime: 1632933600000,
+          exchangeAccountId: 'string',
+          limit: 100,
+          offset: 0,
+          orderId: 'string',
+          orderStatus: 'SUBMITTED',
+          startTime: 1622505600000,
+          symbol: 'string',
+          tenantId: 'string',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(CadenzaClient.NotFoundError);
   });
 
-  test('listPositions', async () => {
-    const responsePromise = cadenzaClient.portfolios.listPositions();
+  test('cancel: only required params', async () => {
+    const responsePromise = cadenzaClient.trading.order.cancel({ orderId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -75,20 +103,7 @@ describe('resource portfolios', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('listPositions: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      cadenzaClient.portfolios.listPositions({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
-  });
-
-  test('listPositions: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      cadenzaClient.portfolios.listPositions(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(CadenzaClient.NotFoundError);
+  test('cancel: required and optional params', async () => {
+    const response = await cadenzaClient.trading.order.cancel({ orderId: 'string' });
   });
 });
