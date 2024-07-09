@@ -4,6 +4,7 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as TradesAPI from './trades';
+import { Offset, type OffsetParams } from '../pagination';
 
 export class Trades extends APIResource {
   /**
@@ -42,16 +43,21 @@ export class Trades extends APIResource {
   listOrders(
     query?: TradeListOrdersParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<TradeListOrdersResponse>;
-  listOrders(options?: Core.RequestOptions): Core.APIPromise<TradeListOrdersResponse>;
+  ): Core.PagePromise<TradeListOrdersResponsesOffset, TradeListOrdersResponse>;
+  listOrders(
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<TradeListOrdersResponsesOffset, TradeListOrdersResponse>;
   listOrders(
     query: TradeListOrdersParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<TradeListOrdersResponse> {
+  ): Core.PagePromise<TradeListOrdersResponsesOffset, TradeListOrdersResponse> {
     if (isRequestOptions(query)) {
       return this.listOrders({}, query);
     }
-    return this._client.get('/api/v2/trading/listOrders', { query, ...options });
+    return this._client.getAPIList('/api/v2/trading/listOrders', TradeListOrdersResponsesOffset, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -90,6 +96,8 @@ export class Trades extends APIResource {
     return this._client.post('/api/v2/exchange/setExchangePriority', { body, ...options });
   }
 }
+
+export class TradeListOrdersResponsesOffset extends Offset<TradeListOrdersResponse> {}
 
 export interface TradeCancelOrderResponse {
   /**
@@ -688,154 +696,133 @@ export namespace TradeGetQuoteExecutionReportResponse {
 }
 
 export interface TradeListOrdersResponse {
-  data?: Array<TradeListOrdersResponse.Data>;
+  /**
+   * The total cost of this order.
+   */
+  cost: number;
 
   /**
-   * Limit of the returned results
+   * Created timestamp
    */
-  limit?: number;
+  createdAt: number;
 
   /**
-   * Offset of the returned results
+   * Exchange account ID
    */
-  offset?: number;
+  exchangeAccountId: string;
 
   /**
-   * Total number of orders
+   * Exchange type
    */
-  total?: number;
-}
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 
-export namespace TradeListOrdersResponse {
-  export interface Data {
-    /**
-     * The total cost of this order.
-     */
-    cost: number;
+  /**
+   * The quantity of this order that has been filled.
+   */
+  filled: number;
 
-    /**
-     * Created timestamp
-     */
-    createdAt: number;
+  /**
+   * Order side
+   */
+  orderSide: 'BUY' | 'SELL';
 
-    /**
-     * Exchange account ID
-     */
-    exchangeAccountId: string;
+  /**
+   * Order type
+   */
+  orderType:
+    | 'MARKET'
+    | 'LIMIT'
+    | 'STOP_LOSS'
+    | 'STOP_LOSS_LIMIT'
+    | 'TAKE_PROFIT'
+    | 'TAKE_PROFIT_LIMIT'
+    | 'QUOTED';
 
-    /**
-     * Exchange type
-     */
-    exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  /**
+   * Quantity
+   */
+  quantity: number;
 
-    /**
-     * The quantity of this order that has been filled.
-     */
-    filled: number;
+  /**
+   * Order status
+   */
+  status:
+    | 'SUBMITTED'
+    | 'ACCEPTED'
+    | 'OPEN'
+    | 'PARTIALLY_FILLED'
+    | 'FILLED'
+    | 'CANCELED'
+    | 'PENDING_CANCEL'
+    | 'REJECTED'
+    | 'EXPIRED'
+    | 'REVOKED';
 
-    /**
-     * Order side
-     */
-    orderSide: 'BUY' | 'SELL';
+  /**
+   * Symbol
+   */
+  symbol: string;
 
-    /**
-     * Order type
-     */
-    orderType:
-      | 'MARKET'
-      | 'LIMIT'
-      | 'STOP_LOSS'
-      | 'STOP_LOSS_LIMIT'
-      | 'TAKE_PROFIT'
-      | 'TAKE_PROFIT_LIMIT'
-      | 'QUOTED';
+  /**
+   * Time in force
+   */
+  timeInForce:
+    | 'DAY'
+    | 'GTC'
+    | 'GTX'
+    | 'GTD'
+    | 'OPG'
+    | 'CLS'
+    | 'IOC'
+    | 'FOK'
+    | 'GFA'
+    | 'GFS'
+    | 'GTM'
+    | 'MOO'
+    | 'MOC'
+    | 'EXT';
 
-    /**
-     * Quantity
-     */
-    quantity: number;
+  /**
+   * Last updated timestamp
+   */
+  updatedAt: number;
 
-    /**
-     * Order status
-     */
-    status:
-      | 'SUBMITTED'
-      | 'ACCEPTED'
-      | 'OPEN'
-      | 'PARTIALLY_FILLED'
-      | 'FILLED'
-      | 'CANCELED'
-      | 'PENDING_CANCEL'
-      | 'REJECTED'
-      | 'EXPIRED'
-      | 'REVOKED';
+  /**
+   * Fee
+   */
+  fee?: number;
 
-    /**
-     * Symbol
-     */
-    symbol: string;
+  /**
+   * Fee currency
+   */
+  feeCurrency?: string;
 
-    /**
-     * Time in force
-     */
-    timeInForce:
-      | 'DAY'
-      | 'GTC'
-      | 'GTX'
-      | 'GTD'
-      | 'OPG'
-      | 'CLS'
-      | 'IOC'
-      | 'FOK'
-      | 'GFA'
-      | 'GFS'
-      | 'GTM'
-      | 'MOO'
-      | 'MOC'
-      | 'EXT';
+  orderId?: string;
 
-    /**
-     * Last updated timestamp
-     */
-    updatedAt: number;
+  /**
+   * Position ID
+   */
+  positionId?: string;
 
-    /**
-     * Fee
-     */
-    fee?: number;
+  /**
+   * Price
+   */
+  price?: number;
 
-    /**
-     * Fee currency
-     */
-    feeCurrency?: string;
+  /**
+   * Quote Quantity
+   */
+  quoteQuantity?: number;
 
-    orderId?: string;
+  /**
+   * Tenant ID
+   */
+  tenantId?: string;
 
-    /**
-     * Position ID
-     */
-    positionId?: string;
-
-    /**
-     * Price
-     */
-    price?: number;
-
-    /**
-     * Quote Quantity
-     */
-    quoteQuantity?: number;
-
-    /**
-     * Tenant ID
-     */
-    tenantId?: string;
-
-    /**
-     * User ID
-     */
-    userId?: string;
-  }
+  /**
+   * User ID
+   */
+  userId?: string;
 }
 
 export type TradePlaceOrderResponse = Array<TradePlaceOrderResponse.TradePlaceOrderResponseItem>;
@@ -1023,7 +1010,7 @@ export interface TradeGetQuoteExecutionReportParams {
   quoteRequestId: string;
 }
 
-export interface TradeListOrdersParams {
+export interface TradeListOrdersParams extends OffsetParams {
   /**
    * End time (in unix milliseconds)
    */
@@ -1033,16 +1020,6 @@ export interface TradeListOrdersParams {
    * Exchange account ID
    */
   exchangeAccountId?: string;
-
-  /**
-   * Limit the number of returned results.
-   */
-  limit?: number;
-
-  /**
-   * Offset of the returned results. Default: 0
-   */
-  offset?: number;
 
   /**
    * Order ID
@@ -1209,6 +1186,7 @@ export namespace Trades {
   export import TradeListOrdersResponse = TradesAPI.TradeListOrdersResponse;
   export import TradePlaceOrderResponse = TradesAPI.TradePlaceOrderResponse;
   export import TradeSetExchangePriorityResponse = TradesAPI.TradeSetExchangePriorityResponse;
+  export import TradeListOrdersResponsesOffset = TradesAPI.TradeListOrdersResponsesOffset;
   export import TradeCancelOrderParams = TradesAPI.TradeCancelOrderParams;
   export import TradeFetchQuotesParams = TradesAPI.TradeFetchQuotesParams;
   export import TradeGetQuoteExecutionReportParams = TradesAPI.TradeGetQuoteExecutionReportParams;

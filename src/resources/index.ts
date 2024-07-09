@@ -45,5 +45,6 @@ export {
   TradeListOrdersParams,
   TradePlaceOrderParams,
   TradeSetExchangePriorityParams,
+  TradeListOrdersResponsesOffset,
   Trades,
 } from './trades';
