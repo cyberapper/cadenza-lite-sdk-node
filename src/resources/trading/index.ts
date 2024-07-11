@@ -11,6 +11,7 @@ export {
 } from './order';
 export {
   QuoteExecutionReport,
+  ExecutionReportListParams,
   ExecutionReportGetQuoteExecutionReportParams,
   ExecutionReport,
 } from './execution-report';

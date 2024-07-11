@@ -9,10 +9,8 @@ const cadenza = new Cadenza({
 });
 
 describe('resource executionReport', () => {
-  test('getQuoteExecutionReport: only required params', async () => {
-    const responsePromise = cadenza.trading.executionReport.getQuoteExecutionReport({
-      quoteRequestId: 'string',
-    });
+  test('list', async () => {
+    const responsePromise = cadenza.trading.executionReport.list({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,9 +20,14 @@ describe('resource executionReport', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('getQuoteExecutionReport: required and optional params', async () => {
-    const response = await cadenza.trading.executionReport.getQuoteExecutionReport({
-      quoteRequestId: 'string',
-    });
+  test('getQuoteExecutionReport', async () => {
+    const responsePromise = cadenza.trading.executionReport.getQuoteExecutionReport({});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 });

@@ -25,5 +25,6 @@ export namespace Trading {
   export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
+  export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
 }
