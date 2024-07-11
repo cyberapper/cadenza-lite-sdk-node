@@ -119,7 +119,7 @@ Types:
 
 Methods:
 
-- <code title="get /api/v2/trading/getQuoteExecutionReport">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">list</a>() -> QuoteExecutionReport</code>
+- <code title="get /api/v2/trading/listExecutionReports">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">list</a>() -> QuoteExecutionReport</code>
 - <code title="get /api/v2/trading/getQuoteExecutionReport">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">getQuoteExecutionReport</a>() -> QuoteExecutionReport</code>
 
 # Portfolio
