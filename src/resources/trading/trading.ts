@@ -15,7 +15,7 @@ export namespace Trading {
   export import OrderResource = OrderAPI.OrderResource;
   export import Order = OrderAPI.Order;
   export import OrderCreateResponse = OrderAPI.OrderCreateResponse;
-  export import OrderListResponse = OrderAPI.OrderListResponse;
+  export import OrdersOffset = OrderAPI.OrdersOffset;
   export import OrderCreateParams = OrderAPI.OrderCreateParams;
   export import OrderListParams = OrderAPI.OrderListParams;
   export import OrderCancelParams = OrderAPI.OrderCancelParams;

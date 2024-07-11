@@ -4,6 +4,7 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Pagination from './pagination';
 import * as API from './resources/index';
 
 const environments = {
@@ -205,6 +206,10 @@ export import fileFromPath = Uploads.fileFromPath;
 
 export namespace Cadenza {
   export import RequestOptions = Core.RequestOptions;
+
+  export import Offset = Pagination.Offset;
+  export import OffsetParams = Pagination.OffsetParams;
+  export import OffsetResponse = Pagination.OffsetResponse;
 
   export import Health = API.Health;
   export import HealthGetResponse = API.HealthGetResponse;

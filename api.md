@@ -93,12 +93,11 @@ Types:
 
 - <code><a href="./src/resources/trading/order.ts">Order</a></code>
 - <code><a href="./src/resources/trading/order.ts">OrderCreateResponse</a></code>
-- <code><a href="./src/resources/trading/order.ts">OrderListResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v2/trading/placeOrder">client.trading.order.<a href="./src/resources/trading/order.ts">create</a>({ ...params }) -> OrderCreateResponse</code>
-- <code title="get /api/v2/trading/listOrders">client.trading.order.<a href="./src/resources/trading/order.ts">list</a>({ ...params }) -> OrderListResponse</code>
+- <code title="get /api/v2/trading/listOrders">client.trading.order.<a href="./src/resources/trading/order.ts">list</a>({ ...params }) -> OrdersOffset</code>
 - <code title="post /api/v2/trading/cancelOrder">client.trading.order.<a href="./src/resources/trading/order.ts">cancel</a>({ ...params }) -> Order</code>
 
 ## Quote
