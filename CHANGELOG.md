@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-07-11)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#14](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/14)) ([d179d6c](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/d179d6c640c497822dd9fd7d0c9c580ccd5b3184))
+* **api:** update via SDK Studio ([#16](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/16)) ([3e96bef](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/3e96bef2cb3fa6289488a48e6a718a8d8040691b))
+* **api:** update via SDK Studio ([#17](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/17)) ([acff82d](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/acff82d027d1bcd1ad2554a0e4aa716491395f33))
+* **api:** update via SDK Studio ([#18](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/18)) ([421f06c](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/421f06cd1f006c4db6bb45efc5b1b846cafab4c7))
+* **api:** update via SDK Studio ([#19](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/19)) ([f8c0bc3](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/f8c0bc36a242170413dc87284cc222c0a56b0e50))
+
 ## 0.1.0-alpha.3 (2024-07-09)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
