@@ -9,10 +9,7 @@ export class ExecutionReport extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  list(
-    query: ExecutionReportListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<QuoteExecutionReport> {
+  list(query: ExecutionReportListParams, options?: Core.RequestOptions): Core.APIPromise<ExecutionReport> {
     return this._client.get('/api/v2/trading/listExecutionReports', options);
   }
 
@@ -27,11 +24,16 @@ export class ExecutionReport extends APIResource {
   }
 }
 
-export interface QuoteExecutionReport {
+export interface ExecutionReport {
   /**
    * Base currency
    */
   baseCurrency: string;
+
+  /**
+   * Cost, the total cost of the quote
+   */
+  cost: number;
 
   /**
    * Create time of the quote
@@ -39,14 +41,22 @@ export interface QuoteExecutionReport {
   createdAt: number;
 
   /**
+   * Filled quantity, the quantity of the base currency executed
+   */
+  filled: number;
+
+  /**
    * Quote currency
    */
   quoteCurrency: string;
 
   /**
-   * Quote request ID
+   * Route policy. For PRIORITY, the order request will be routed to the exchange
+   * account with the highest priority. For QUOTE, the system will execute the
+   * execution plan based on the quote. Order request with route policy QUOTE will
+   * only accept two parameters, quoteRequestId and priceSlippageTolerance
    */
-  quoteRequestId: string;
+  routePolicy: 'PRIORITY' | 'QUOTE';
 
   /**
    * Status of the quote execution, should only have SUBMITTED, ACCEPTED,
@@ -71,19 +81,9 @@ export interface QuoteExecutionReport {
   updatedAt: number;
 
   /**
-   * Expiration time of the quote
-   */
-  validUntil: number;
-
-  /**
    * Order request ID, Client Order ID
    */
   clOrdId?: string;
-
-  /**
-   * Cost, the total cost of the quote
-   */
-  cost?: number;
 
   /**
    * List of executions to fulfill the order, the order status should only have
@@ -94,25 +94,12 @@ export interface QuoteExecutionReport {
   /**
    * Fees
    */
-  fees?: Array<QuoteExecutionReport.Fee>;
-
-  /**
-   * Filled quantity, the quantity of the base currency executed
-   */
-  filled?: number;
+  fees?: Array<ExecutionReport.Fee>;
 
   order?: OrderAPI.Order;
-
-  /**
-   * Route policy. For PRIORITY, the order request will be routed to the exchange
-   * account with the highest priority. For QUOTE, the system will execute the
-   * execution plan based on the quote. Order request with route policy QUOTE will
-   * only accept two parameters, quoteRequestId and priceSlippageTolerance
-   */
-  routePolicy?: 'PRIORITY' | 'QUOTE';
 }
 
-export namespace QuoteExecutionReport {
+export namespace ExecutionReport {
   export interface Fee {
     /**
      * Asset
@@ -126,11 +113,24 @@ export namespace QuoteExecutionReport {
   }
 }
 
+export interface QuoteExecutionReport extends ExecutionReport {
+  /**
+   * Quote request ID
+   */
+  quoteRequestId: string;
+
+  /**
+   * Expiration time of the quote
+   */
+  validUntil: number;
+}
+
 export interface ExecutionReportListParams {}
 
 export interface ExecutionReportGetQuoteExecutionReportParams {}
 
 export namespace ExecutionReport {
+  export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
   export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
