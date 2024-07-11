@@ -3,10 +3,10 @@
 export {
   Order,
   OrderCreateResponse,
+  OrderListResponse,
   OrderCreateParams,
   OrderListParams,
   OrderCancelParams,
-  OrdersOffset,
   OrderResource,
 } from './order';
 export {
