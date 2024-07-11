@@ -41,7 +41,7 @@ describe('resource order', () => {
           priceSlippageTolerance: 0,
           priority: ['exchange_account_id_1', 'exchange_account_id_2', 'exchange_account_id_3'],
           quantity: 0,
-          quoteId: 'string',
+          quoteId: 'quoteId',
           quoteQuantity: 0,
           quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
           routePolicy: 'PRIORITY',
@@ -79,14 +79,14 @@ describe('resource order', () => {
       cadenza.trading.order.list(
         {
           endTime: 1632933600000,
-          exchangeAccountId: 'string',
+          exchangeAccountId: 'exchangeAccountId',
           limit: 100,
           offset: 0,
-          orderId: 'string',
+          orderId: 'orderId',
           orderStatus: 'SUBMITTED',
           startTime: 1622505600000,
-          symbol: 'string',
-          tenantId: 'string',
+          symbol: 'symbol',
+          tenantId: 'tenantId',
         },
         { path: '/_stainless_unknown_path' },
       ),
@@ -94,7 +94,7 @@ describe('resource order', () => {
   });
 
   test('cancel: only required params', async () => {
-    const responsePromise = cadenza.trading.order.cancel({ orderId: 'string' });
+    const responsePromise = cadenza.trading.order.cancel({ orderId: 'orderId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -105,6 +105,6 @@ describe('resource order', () => {
   });
 
   test('cancel: required and optional params', async () => {
-    const response = await cadenza.trading.order.cancel({ orderId: 'string' });
+    const response = await cadenza.trading.order.cancel({ orderId: 'orderId' });
   });
 });
