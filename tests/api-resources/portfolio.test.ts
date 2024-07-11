@@ -31,7 +31,7 @@ describe('resource portfolio', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       cadenza.portfolio.listBalances(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
+        { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Cadenza.NotFoundError);
@@ -59,7 +59,7 @@ describe('resource portfolio', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       cadenza.portfolio.listCredit(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
+        { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Cadenza.NotFoundError);
@@ -87,7 +87,7 @@ describe('resource portfolio', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       cadenza.portfolio.listPositions(
-        { exchangeAccountId: 'string', hideEmptyValue: true },
+        { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Cadenza.NotFoundError);
