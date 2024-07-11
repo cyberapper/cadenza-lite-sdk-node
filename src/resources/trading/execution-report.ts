@@ -9,11 +9,21 @@ export class ExecutionReport extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  getQuoteExecutionReport(
-    body: ExecutionReportGetQuoteExecutionReportParams,
+  list(
+    query: ExecutionReportListParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<QuoteExecutionReport> {
-    return this._client.post('/api/v2/trading/getQuoteExecutionReport', { body, ...options });
+    return this._client.get('/api/v2/trading/listExecutionReports', options);
+  }
+
+  /**
+   * Quote will give the best quote from all available exchange accounts
+   */
+  getQuoteExecutionReport(
+    query: ExecutionReportGetQuoteExecutionReportParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<QuoteExecutionReport> {
+    return this._client.get('/api/v2/trading/getQuoteExecutionReport', options);
   }
 }
 
@@ -116,14 +126,12 @@ export namespace QuoteExecutionReport {
   }
 }
 
-export interface ExecutionReportGetQuoteExecutionReportParams {
-  /**
-   * Quote request ID
-   */
-  quoteRequestId: string;
-}
+export interface ExecutionReportListParams {}
+
+export interface ExecutionReportGetQuoteExecutionReportParams {}
 
 export namespace ExecutionReport {
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
+  export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
 }
