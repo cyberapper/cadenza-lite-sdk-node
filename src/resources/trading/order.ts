@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as OrderAPI from './order';
-import { Offset, type OffsetParams } from '../../pagination';
 
 export class OrderResource extends APIResource {
   /**
@@ -33,16 +32,16 @@ export class OrderResource extends APIResource {
   /**
    * List orders
    */
-  list(query?: OrderListParams, options?: Core.RequestOptions): Core.PagePromise<OrdersOffset, Order>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OrdersOffset, Order>;
+  list(query?: OrderListParams, options?: Core.RequestOptions): Core.APIPromise<OrderListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<OrderListResponse>;
   list(
     query: OrderListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OrdersOffset, Order> {
+  ): Core.APIPromise<OrderListResponse> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.getAPIList('/api/v2/trading/listOrders', OrdersOffset, { query, ...options });
+    return this._client.get('/api/v2/trading/listOrders', { query, ...options });
   }
 
   /**
@@ -52,8 +51,6 @@ export class OrderResource extends APIResource {
     return this._client.post('/api/v2/trading/cancelOrder', { body, ...options });
   }
 }
-
-export class OrdersOffset extends Offset<Order> {}
 
 export interface Order {
   /**
@@ -187,6 +184,25 @@ export interface Order {
 
 export type OrderCreateResponse = Array<Order>;
 
+export interface OrderListResponse {
+  data?: Array<Order>;
+
+  /**
+   * Limit of the returned results
+   */
+  limit?: number;
+
+  /**
+   * Offset of the returned results
+   */
+  offset?: number;
+
+  /**
+   * Total number of orders
+   */
+  total?: number;
+}
+
 export interface OrderCreateParams {
   /**
    * Body param: Exchange account ID
@@ -302,7 +318,7 @@ export interface OrderCreateParams {
   'Idempotency-Key'?: string;
 }
 
-export interface OrderListParams extends OffsetParams {
+export interface OrderListParams {
   /**
    * End time (in unix milliseconds)
    */
@@ -312,6 +328,16 @@ export interface OrderListParams extends OffsetParams {
    * Exchange account ID
    */
   exchangeAccountId?: string;
+
+  /**
+   * Limit the number of returned results.
+   */
+  limit?: number;
+
+  /**
+   * Offset of the returned results. Default: 0
+   */
+  offset?: number;
 
   /**
    * Order ID
@@ -359,7 +385,7 @@ export interface OrderCancelParams {
 export namespace OrderResource {
   export import Order = OrderAPI.Order;
   export import OrderCreateResponse = OrderAPI.OrderCreateResponse;
-  export import OrdersOffset = OrderAPI.OrdersOffset;
+  export import OrderListResponse = OrderAPI.OrderListResponse;
   export import OrderCreateParams = OrderAPI.OrderCreateParams;
   export import OrderListParams = OrderAPI.OrderListParams;
   export import OrderCancelParams = OrderAPI.OrderCancelParams;
