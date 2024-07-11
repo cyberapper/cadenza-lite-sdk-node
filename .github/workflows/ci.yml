@@ -2,10 +2,10 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - chore-go-live
   pull_request:
     branches:
-      - main
+      - chore-go-live
 
 jobs:
   lint:
