@@ -13,7 +13,7 @@ export class ExecutionReport extends APIResource {
     query: ExecutionReportListParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<QuoteExecutionReport> {
-    return this._client.get('/api/v2/trading/getQuoteExecutionReport', options);
+    return this._client.get('/api/v2/trading/listExecutionReports', options);
   }
 
   /**
