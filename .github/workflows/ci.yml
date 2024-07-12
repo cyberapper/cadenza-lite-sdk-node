@@ -5,6 +5,8 @@ on:
       - chore-go-live
   pull_request:
     branches:
+      - main
+      - next
       - chore-go-live
 
 jobs:

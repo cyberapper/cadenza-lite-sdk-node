@@ -11,9 +11,9 @@ const cadenza = new Cadenza({
 describe('resource quote', () => {
   test('requestForQuote: only required params', async () => {
     const responsePromise = cadenza.trading.quote.requestForQuote({
-      baseCurrency: 'string',
-      orderSide: 'string',
-      quoteCurrency: 'string',
+      baseCurrency: 'baseCurrency',
+      orderSide: 'orderSide',
+      quoteCurrency: 'quoteCurrency',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,9 +26,9 @@ describe('resource quote', () => {
 
   test('requestForQuote: required and optional params', async () => {
     const response = await cadenza.trading.quote.requestForQuote({
-      baseCurrency: 'string',
-      orderSide: 'string',
-      quoteCurrency: 'string',
+      baseCurrency: 'baseCurrency',
+      orderSide: 'orderSide',
+      quoteCurrency: 'quoteCurrency',
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       quantity: 0,
       quoteQuantity: 0,
