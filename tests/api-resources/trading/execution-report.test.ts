@@ -10,7 +10,7 @@ const cadenza = new Cadenza({
 
 describe('resource executionReport', () => {
   test('list', async () => {
-    const responsePromise = cadenza.trading.executionReport.list({});
+    const responsePromise = cadenza.trading.executionReport.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,8 +20,31 @@ describe('resource executionReport', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
+  test('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(cadenza.trading.executionReport.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
+    );
+  });
+
+  test('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      cadenza.trading.executionReport.list(
+        {
+          endTime: 1632933600000,
+          limit: 100,
+          offset: 0,
+          quoteRequestId: 'quoteRequestId',
+          startTime: 1622505600000,
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Cadenza.NotFoundError);
+  });
+
   test('getQuoteExecutionReport', async () => {
-    const responsePromise = cadenza.trading.executionReport.getQuoteExecutionReport({});
+    const responsePromise = cadenza.trading.executionReport.getQuoteExecutionReport();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -29,5 +52,22 @@ describe('resource executionReport', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('getQuoteExecutionReport: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      cadenza.trading.executionReport.getQuoteExecutionReport({ path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Cadenza.NotFoundError);
+  });
+
+  test('getQuoteExecutionReport: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      cadenza.trading.executionReport.getQuoteExecutionReport(
+        { quoteRequestId: 'quoteRequestId' },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Cadenza.NotFoundError);
   });
 });

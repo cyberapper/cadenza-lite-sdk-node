@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as ExecutionReportAPI from './execution-report';
 import * as OrderAPI from './order';
@@ -9,18 +10,34 @@ export class ExecutionReport extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  list(query: ExecutionReportListParams, options?: Core.RequestOptions): Core.APIPromise<ExecutionReport> {
-    return this._client.get('/api/v2/trading/listExecutionReports', options);
+  list(query?: ExecutionReportListParams, options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
+  list(options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
+  list(
+    query: ExecutionReportListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ExecutionReport> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v2/trading/listExecutionReports', { query, ...options });
   }
 
   /**
    * Quote will give the best quote from all available exchange accounts
    */
   getQuoteExecutionReport(
-    query: ExecutionReportGetQuoteExecutionReportParams,
+    query?: ExecutionReportGetQuoteExecutionReportParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<QuoteExecutionReport>;
+  getQuoteExecutionReport(options?: Core.RequestOptions): Core.APIPromise<QuoteExecutionReport>;
+  getQuoteExecutionReport(
+    query: ExecutionReportGetQuoteExecutionReportParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<QuoteExecutionReport> {
-    return this._client.get('/api/v2/trading/getQuoteExecutionReport', options);
+    if (isRequestOptions(query)) {
+      return this.getQuoteExecutionReport({}, query);
+    }
+    return this._client.get('/api/v2/trading/getQuoteExecutionReport', { query, ...options });
   }
 }
 
@@ -125,9 +142,39 @@ export interface QuoteExecutionReport extends ExecutionReport {
   validUntil: number;
 }
 
-export interface ExecutionReportListParams {}
+export interface ExecutionReportListParams {
+  /**
+   * End time (in unix milliseconds)
+   */
+  endTime?: number;
 
-export interface ExecutionReportGetQuoteExecutionReportParams {}
+  /**
+   * Limit the number of returned results.
+   */
+  limit?: number;
+
+  /**
+   * Offset of the returned results. Default: 0
+   */
+  offset?: number;
+
+  /**
+   * Quote Request ID
+   */
+  quoteRequestId?: string;
+
+  /**
+   * Start time (in unix milliseconds)
+   */
+  startTime?: number;
+}
+
+export interface ExecutionReportGetQuoteExecutionReportParams {
+  /**
+   * Quote Request ID
+   */
+  quoteRequestId?: string;
+}
 
 export namespace ExecutionReport {
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
