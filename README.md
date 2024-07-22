@@ -22,7 +22,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Cadenza from 'cadenza-sdk';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
@@ -44,7 +44,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Cadenza from 'cadenza-sdk';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'], // This is the default and can be omitted
   environment: 'uat', // defaults to 'prod'
 });
@@ -105,7 +105,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const cadenza = new Cadenza({
+const client = new Cadenza({
   maxRetries: 0, // default is 2
 });
 
@@ -122,7 +122,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const cadenza = new Cadenza({
+const client = new Cadenza({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -146,7 +146,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const cadenza = new Cadenza();
+const client = new Cadenza();
 
 const response = await cadenza.clients.info.get().asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -253,7 +253,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const cadenza = new Cadenza({
+const client = new Cadenza({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
@@ -280,14 +280,6 @@ We are keen for your feedback; please open an [issue](https://www.github.com/cyb
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
-
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import Cadenza from "npm:cadenza-sdk"`.
-- Bun 1.0 or later.
-- Cloudflare Workers.
-- Vercel Edge Runtime.
-- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
-- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 

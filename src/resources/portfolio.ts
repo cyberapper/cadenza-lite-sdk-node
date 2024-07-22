@@ -111,11 +111,6 @@ export interface ExchangeAccountCredit {
    */
   credit?: number;
 
-  /**
-   * The percentage of the available credit that has been used
-   */
-  creditUtilizationPercentage?: number;
-
   currency?: string;
 
   exchangeAccountId?: string;
@@ -126,10 +121,20 @@ export interface ExchangeAccountCredit {
   exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 
   /**
+   * The maximum leverage the account have
+   */
+  leverage?: number;
+
+  /**
    * The amount of collateral that the investor has deposited in the account to cover
    * potential losses
    */
   margin?: number;
+
+  /**
+   * The rate between equity and margin requirement
+   */
+  marginLevel?: number;
 
   /**
    * The amount of money borrowed from the broker to purchase securities
@@ -142,14 +147,9 @@ export interface ExchangeAccountCredit {
   marginRequirement?: number;
 
   /**
-   * The extent to which the available margin is being utilized
+   * The rate to which the available margin is being utilized
    */
   marginUsage?: number;
-
-  /**
-   * The percentage of the total buying power that is being utilized
-   */
-  marginUtilizationPercentage?: number;
 
   /**
    * The maximum value of risk exposure that the account can handle, set to manage
@@ -162,6 +162,11 @@ export interface ExchangeAccountCredit {
    * exposure
    */
   riskExposure?: number;
+
+  /**
+   * The rate between risk exposure and max risk exposure
+   */
+  riskExposureRate?: number;
 }
 
 export interface ExchangeAccountPosition {
