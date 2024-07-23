@@ -139,3 +139,19 @@ Methods:
 - <code title="get /api/v2/portfolio/listBalances">client.portfolio.<a href="./src/resources/portfolio.ts">listBalances</a>({ ...params }) -> PortfolioListBalancesResponse</code>
 - <code title="get /api/v2/portfolio/listCredit">client.portfolio.<a href="./src/resources/portfolio.ts">listCredit</a>({ ...params }) -> PortfolioListCreditResponse</code>
 - <code title="get /api/v2/portfolio/listPositions">client.portfolio.<a href="./src/resources/portfolio.ts">listPositions</a>({ ...params }) -> PortfolioListPositionsResponse</code>
+
+# Webhook
+
+Types:
+
+- <code><a href="./src/resources/webhook.ts">DropCopyExecutionReport</a></code>
+- <code><a href="./src/resources/webhook.ts">DropCopyOrder</a></code>
+- <code><a href="./src/resources/webhook.ts">DropCopyPortfolio</a></code>
+- <code><a href="./src/resources/webhook.ts">Event</a></code>
+- <code><a href="./src/resources/webhook.ts">MarketDataKlines</a></code>
+- <code><a href="./src/resources/webhook.ts">MarketDataOrderBook</a></code>
+- <code><a href="./src/resources/webhook.ts">WebhookPubsubResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v2/webhook/pubsub">client.webhook.<a href="./src/resources/webhook.ts">pubsub</a>({ ...params }) -> unknown</code>

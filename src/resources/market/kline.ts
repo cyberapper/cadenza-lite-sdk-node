@@ -45,7 +45,23 @@ export interface Ohlcv {
   v?: number;
 }
 
-export type KlineGetResponse = Array<Ohlcv>;
+export interface KlineGetResponse {
+  candles?: Array<Ohlcv>;
+
+  /**
+   * The unique identifier for the account.
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Exchange type
+   */
+  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+  interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
+
+  symbol?: string;
+}
 
 export interface KlineGetParams {
   /**
