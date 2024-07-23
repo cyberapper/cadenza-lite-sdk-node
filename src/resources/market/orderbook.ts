@@ -18,6 +18,11 @@ export interface Orderbook {
 
   bids?: Array<Array<number>>;
 
+  /**
+   * UUID string
+   */
+  exchangeAccountId?: string;
+
   exchangeType?: string;
 
   /**

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-07-23)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#21](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/21)) ([62f34e9](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/62f34e930d37b15425695c1d03d5fc9fdef31b97))
+* **api:** OpenAPI spec update via Stainless API ([#25](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/25)) ([a64639a](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/a64639af36ef1c57b687e57ce3f326099ddea416))
+* **api:** OpenAPI spec update via Stainless API ([#28](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/28)) ([f67c373](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/f67c373958e5a55f77406c48023f626b989a94b7))
+* **api:** OpenAPI spec update via Stainless API ([#29](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/29)) ([5809a03](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/5809a0374e8a2c899f064ba58cbdd3cd39041013))
+* **api:** update via SDK Studio ([#23](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/23)) ([3563d92](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/3563d9296310963dbc0b81eac1235621c8faa407))
+* **api:** update via SDK Studio ([#27](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/27)) ([d14c52f](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/d14c52f7e30fe0bbdbe7fdd228f796d1234829db))
+
+
+### Chores
+
+* **internal:** refactor release doctor script ([#30](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/30)) ([e104bee](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/e104bee29f887a42c7fed49381d69476cac77ff1))
+
 ## 0.1.0-alpha.4 (2024-07-11)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)

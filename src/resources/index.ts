@@ -2,6 +2,17 @@
 
 export { Clients } from './clients/clients';
 export {
+  DropCopyExecutionReport,
+  DropCopyOrder,
+  DropCopyPortfolio,
+  Event,
+  MarketDataKlines,
+  MarketDataOrderBook,
+  WebhookPubsubResponse,
+  WebhookPubsubParams,
+  Webhook,
+} from './webhook';
+export {
   ExchangeAccount,
   ExchangeAccountCreateResponse,
   ExchangeAccountUpdateResponse,

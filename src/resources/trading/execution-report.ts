@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as ExecutionReportAPI from './execution-report';
 import * as OrderAPI from './order';
@@ -9,29 +10,47 @@ export class ExecutionReport extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
+  list(query?: ExecutionReportListParams, options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
+  list(options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
   list(
-    query: ExecutionReportListParams,
+    query: ExecutionReportListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<QuoteExecutionReport> {
-    return this._client.get('/api/v2/trading/listExecutionReports', options);
+  ): Core.APIPromise<ExecutionReport> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v2/trading/listExecutionReports', { query, ...options });
   }
 
   /**
    * Quote will give the best quote from all available exchange accounts
    */
   getQuoteExecutionReport(
-    query: ExecutionReportGetQuoteExecutionReportParams,
+    query?: ExecutionReportGetQuoteExecutionReportParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<QuoteExecutionReport>;
+  getQuoteExecutionReport(options?: Core.RequestOptions): Core.APIPromise<QuoteExecutionReport>;
+  getQuoteExecutionReport(
+    query: ExecutionReportGetQuoteExecutionReportParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<QuoteExecutionReport> {
-    return this._client.get('/api/v2/trading/getQuoteExecutionReport', options);
+    if (isRequestOptions(query)) {
+      return this.getQuoteExecutionReport({}, query);
+    }
+    return this._client.get('/api/v2/trading/getQuoteExecutionReport', { query, ...options });
   }
 }
 
-export interface QuoteExecutionReport {
+export interface ExecutionReport {
   /**
    * Base currency
    */
   baseCurrency: string;
+
+  /**
+   * Cost, the total cost of the quote
+   */
+  cost: number;
 
   /**
    * Create time of the quote
@@ -39,14 +58,22 @@ export interface QuoteExecutionReport {
   createdAt: number;
 
   /**
+   * Filled quantity, the quantity of the base currency executed
+   */
+  filled: number;
+
+  /**
    * Quote currency
    */
   quoteCurrency: string;
 
   /**
-   * Quote request ID
+   * Route policy. For PRIORITY, the order request will be routed to the exchange
+   * account with the highest priority. For QUOTE, the system will execute the
+   * execution plan based on the quote. Order request with route policy QUOTE will
+   * only accept two parameters, quoteRequestId and priceSlippageTolerance
    */
-  quoteRequestId: string;
+  routePolicy: 'PRIORITY' | 'QUOTE';
 
   /**
    * Status of the quote execution, should only have SUBMITTED, ACCEPTED,
@@ -71,19 +98,9 @@ export interface QuoteExecutionReport {
   updatedAt: number;
 
   /**
-   * Expiration time of the quote
-   */
-  validUntil: number;
-
-  /**
    * Order request ID, Client Order ID
    */
   clOrdId?: string;
-
-  /**
-   * Cost, the total cost of the quote
-   */
-  cost?: number;
 
   /**
    * List of executions to fulfill the order, the order status should only have
@@ -94,25 +111,12 @@ export interface QuoteExecutionReport {
   /**
    * Fees
    */
-  fees?: Array<QuoteExecutionReport.Fee>;
-
-  /**
-   * Filled quantity, the quantity of the base currency executed
-   */
-  filled?: number;
+  fees?: Array<ExecutionReport.Fee>;
 
   order?: OrderAPI.Order;
-
-  /**
-   * Route policy. For PRIORITY, the order request will be routed to the exchange
-   * account with the highest priority. For QUOTE, the system will execute the
-   * execution plan based on the quote. Order request with route policy QUOTE will
-   * only accept two parameters, quoteRequestId and priceSlippageTolerance
-   */
-  routePolicy?: 'PRIORITY' | 'QUOTE';
 }
 
-export namespace QuoteExecutionReport {
+export namespace ExecutionReport {
   export interface Fee {
     /**
      * Asset
@@ -126,11 +130,54 @@ export namespace QuoteExecutionReport {
   }
 }
 
-export interface ExecutionReportListParams {}
+export interface QuoteExecutionReport extends ExecutionReport {
+  /**
+   * Quote request ID
+   */
+  quoteRequestId: string;
 
-export interface ExecutionReportGetQuoteExecutionReportParams {}
+  /**
+   * Expiration time of the quote
+   */
+  validUntil: number;
+}
+
+export interface ExecutionReportListParams {
+  /**
+   * End time (in unix milliseconds)
+   */
+  endTime?: number;
+
+  /**
+   * Limit the number of returned results.
+   */
+  limit?: number;
+
+  /**
+   * Offset of the returned results. Default: 0
+   */
+  offset?: number;
+
+  /**
+   * Quote Request ID
+   */
+  quoteRequestId?: string;
+
+  /**
+   * Start time (in unix milliseconds)
+   */
+  startTime?: number;
+}
+
+export interface ExecutionReportGetQuoteExecutionReportParams {
+  /**
+   * Quote Request ID
+   */
+  quoteRequestId?: string;
+}
 
 export namespace ExecutionReport {
+  export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
   export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;

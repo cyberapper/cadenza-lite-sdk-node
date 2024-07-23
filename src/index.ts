@@ -149,6 +149,7 @@ export class Cadenza extends Core.APIClient {
   market: API.Market = new API.Market(this);
   trading: API.Trading = new API.Trading(this);
   portfolio: API.Portfolio = new API.Portfolio(this);
+  webhook: API.Webhook = new API.Webhook(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -242,6 +243,16 @@ export namespace Cadenza {
   export import PortfolioListBalancesParams = API.PortfolioListBalancesParams;
   export import PortfolioListCreditParams = API.PortfolioListCreditParams;
   export import PortfolioListPositionsParams = API.PortfolioListPositionsParams;
+
+  export import Webhook = API.Webhook;
+  export import DropCopyExecutionReport = API.DropCopyExecutionReport;
+  export import DropCopyOrder = API.DropCopyOrder;
+  export import DropCopyPortfolio = API.DropCopyPortfolio;
+  export import Event = API.Event;
+  export import MarketDataKlines = API.MarketDataKlines;
+  export import MarketDataOrderBook = API.MarketDataOrderBook;
+  export import WebhookPubsubResponse = API.WebhookPubsubResponse;
+  export import WebhookPubsubParams = API.WebhookPubsubParams;
 }
 
 export default Cadenza;
