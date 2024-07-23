@@ -121,6 +121,10 @@ export namespace DropCopyPortfolio {
   }
 }
 
+export interface DropCopyQuote extends Event {
+  payload?: QuoteAPI.QuoteWithOrderCandidates;
+}
+
 export interface Event {
   /**
    * A unique identifier for the event.
@@ -413,11 +417,11 @@ export namespace Event {
   }
 }
 
-export interface MarketDataKlines extends Event {
-  payload?: MarketDataKlines.Payload;
+export interface MarketDataKline extends Event {
+  payload?: MarketDataKline.Payload;
 }
 
-export namespace MarketDataKlines {
+export namespace MarketDataKline {
   export interface Payload {
     candles?: Array<KlineAPI.Ohlcv>;
 
@@ -439,6 +443,172 @@ export namespace MarketDataKlines {
 
 export interface MarketDataOrderBook extends Event {
   payload?: OrderbookAPI.Orderbook;
+}
+
+export interface TaskCancelOrderRequestAck extends Event {
+  payload?: TaskCancelOrderRequestAck.Payload;
+}
+
+export namespace TaskCancelOrderRequestAck {
+  export interface Payload {
+    /**
+     * Order ID
+     */
+    orderId: string;
+  }
+}
+
+export interface TaskPlaceOrderRequestAck extends Event {
+  payload?: TaskPlaceOrderRequestAck.Payload;
+}
+
+export namespace TaskPlaceOrderRequestAck {
+  export interface Payload {
+    /**
+     * Exchange account ID
+     */
+    exchangeAccountId?: string;
+
+    /**
+     * Levarage
+     */
+    leverage?: number;
+
+    /**
+     * Order side
+     */
+    orderSide?: 'BUY' | 'SELL';
+
+    /**
+     * Order type
+     */
+    orderType?:
+      | 'MARKET'
+      | 'LIMIT'
+      | 'STOP_LOSS'
+      | 'STOP_LOSS_LIMIT'
+      | 'TAKE_PROFIT'
+      | 'TAKE_PROFIT_LIMIT'
+      | 'QUOTED';
+
+    /**
+     * Position ID for closing position in margin trading
+     */
+    positionId?: string;
+
+    /**
+     * Price
+     */
+    price?: number;
+
+    /**
+     * Price slippage tolerance, range: [0, 0.1] with 2 decimal places
+     */
+    priceSlippageTolerance?: number;
+
+    /**
+     * Priority list of exchange account ID in descending order
+     */
+    priority?: Array<string>;
+
+    /**
+     * Quantity. One of quantity or quoteQuantity must be provided. If both is
+     * provided, only quantity will be used.
+     */
+    quantity?: number;
+
+    /**
+     * Quote ID used by exchange for RFQ, e.g. WINTERMUTE need this field to execute
+     * QUOTED order
+     */
+    quoteId?: string;
+
+    /**
+     * Quote Quantity
+     */
+    quoteQuantity?: number;
+
+    /**
+     * Quote request ID
+     */
+    quoteRequestId?: string;
+
+    /**
+     * Route policy. For PRIORITY, the order request will be routed to the exchange
+     * account with the highest priority. For QUOTE, the system will execute the
+     * execution plan based on the quote. Order request with route policy QUOTE will
+     * only accept two parameters, quoteRequestId and priceSlippageTolerance
+     */
+    routePolicy?: 'PRIORITY' | 'QUOTE';
+
+    /**
+     * Symbol
+     */
+    symbol?: string;
+
+    /**
+     * Tenant ID
+     */
+    tenantId?: string;
+
+    /**
+     * Time in force
+     */
+    timeInForce?:
+      | 'DAY'
+      | 'GTC'
+      | 'GTX'
+      | 'GTD'
+      | 'OPG'
+      | 'CLS'
+      | 'IOC'
+      | 'FOK'
+      | 'GFA'
+      | 'GFS'
+      | 'GTM'
+      | 'MOO'
+      | 'MOC'
+      | 'EXT';
+  }
+}
+
+export interface TaskQuoteRequestAck extends Event {
+  payload?: TaskQuoteRequestAck.Payload;
+}
+
+export namespace TaskQuoteRequestAck {
+  export interface Payload {
+    /**
+     * Base currency is the currency you want to buy or sell
+     */
+    baseCurrency: string;
+
+    /**
+     * Order side, BUY or SELL
+     */
+    orderSide: string;
+
+    /**
+     * Quote currency is the currency you want to pay or receive, and the price of the
+     * base currency is quoted in the quote currency
+     */
+    quoteCurrency: string;
+
+    /**
+     * The identifier for the exchange account
+     */
+    exchangeAccountId?: string;
+
+    /**
+     * Amount of the base currency
+     */
+    quantity?: number;
+
+    /**
+     * Amount of the quote currency
+     */
+    quoteQuantity?: number;
+  }
 }
 
 export type WebhookPubsubResponse = unknown;
@@ -739,9 +909,13 @@ export namespace Webhook {
   export import DropCopyExecutionReport = WebhookAPI.DropCopyExecutionReport;
   export import DropCopyOrder = WebhookAPI.DropCopyOrder;
   export import DropCopyPortfolio = WebhookAPI.DropCopyPortfolio;
+  export import DropCopyQuote = WebhookAPI.DropCopyQuote;
   export import Event = WebhookAPI.Event;
-  export import MarketDataKlines = WebhookAPI.MarketDataKlines;
+  export import MarketDataKline = WebhookAPI.MarketDataKline;
   export import MarketDataOrderBook = WebhookAPI.MarketDataOrderBook;
+  export import TaskCancelOrderRequestAck = WebhookAPI.TaskCancelOrderRequestAck;
+  export import TaskPlaceOrderRequestAck = WebhookAPI.TaskPlaceOrderRequestAck;
+  export import TaskQuoteRequestAck = WebhookAPI.TaskQuoteRequestAck;
   export import WebhookPubsubResponse = WebhookAPI.WebhookPubsubResponse;
   export import WebhookPubsubParams = WebhookAPI.WebhookPubsubParams;
 }
