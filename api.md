@@ -147,9 +147,13 @@ Types:
 - <code><a href="./src/resources/webhook.ts">DropCopyExecutionReport</a></code>
 - <code><a href="./src/resources/webhook.ts">DropCopyOrder</a></code>
 - <code><a href="./src/resources/webhook.ts">DropCopyPortfolio</a></code>
+- <code><a href="./src/resources/webhook.ts">DropCopyQuote</a></code>
 - <code><a href="./src/resources/webhook.ts">Event</a></code>
-- <code><a href="./src/resources/webhook.ts">MarketDataKlines</a></code>
+- <code><a href="./src/resources/webhook.ts">MarketDataKline</a></code>
 - <code><a href="./src/resources/webhook.ts">MarketDataOrderBook</a></code>
+- <code><a href="./src/resources/webhook.ts">TaskCancelOrderRequestAck</a></code>
+- <code><a href="./src/resources/webhook.ts">TaskPlaceOrderRequestAck</a></code>
+- <code><a href="./src/resources/webhook.ts">TaskQuoteRequestAck</a></code>
 - <code><a href="./src/resources/webhook.ts">WebhookPubsubResponse</a></code>
 
 Methods:
