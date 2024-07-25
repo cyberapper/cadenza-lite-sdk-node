@@ -13,7 +13,9 @@ export class Trading extends APIResource {
 
 export namespace Trading {
   export import OrderResource = OrderAPI.OrderResource;
+  export import CancelOrderRequest = OrderAPI.CancelOrderRequest;
   export import Order = OrderAPI.Order;
+  export import PlaceOrderRequest = OrderAPI.PlaceOrderRequest;
   export import OrderCreateResponse = OrderAPI.OrderCreateResponse;
   export import OrdersOffset = OrderAPI.OrdersOffset;
   export import OrderCreateParams = OrderAPI.OrderCreateParams;
@@ -21,6 +23,7 @@ export namespace Trading {
   export import OrderCancelParams = OrderAPI.OrderCancelParams;
   export import QuoteResource = QuoteAPI.QuoteResource;
   export import Quote = QuoteAPI.Quote;
+  export import QuoteRequest = QuoteAPI.QuoteRequest;
   export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
   export import QuoteGetParams = QuoteAPI.QuoteGetParams;
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;

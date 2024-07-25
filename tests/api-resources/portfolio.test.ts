@@ -9,6 +9,34 @@ const cadenza = new Cadenza({
 });
 
 describe('resource portfolio', () => {
+  test('list', async () => {
+    const responsePromise = cadenza.portfolio.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(cadenza.portfolio.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Cadenza.NotFoundError,
+    );
+  });
+
+  test('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      cadenza.portfolio.list(
+        { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Cadenza.NotFoundError);
+  });
+
   test('listBalances', async () => {
     const responsePromise = cadenza.portfolio.listBalances();
     const rawResponse = await responsePromise.asResponse();

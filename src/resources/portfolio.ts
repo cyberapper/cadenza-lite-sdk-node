@@ -7,6 +7,21 @@ import * as PortfolioAPI from './portfolio';
 
 export class Portfolio extends APIResource {
   /**
+   * List Portfolio Summary
+   */
+  list(query?: PortfolioListParams, options?: Core.RequestOptions): Core.APIPromise<PortfolioListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<PortfolioListResponse>;
+  list(
+    query: PortfolioListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PortfolioListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v2/portfolio/listSummaries', { query, ...options });
+  }
+
+  /**
    * List balances
    */
   listBalances(
@@ -169,6 +184,94 @@ export interface ExchangeAccountCredit {
   riskExposureRate?: number;
 }
 
+export interface ExchangeAccountPortfolio {
+  payload?: ExchangeAccountPortfolio.Payload;
+}
+
+export namespace ExchangeAccountPortfolio {
+  export interface Payload {
+    balances: Array<Payload.Balance>;
+
+    /**
+     * Exchange Account Credit Info
+     */
+    credit: PortfolioAPI.ExchangeAccountCredit;
+
+    /**
+     * The unique identifier for the account.
+     */
+    exchangeAccountId: string;
+
+    /**
+     * Exchange type
+     */
+    exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+    positions: Array<Payload.Position>;
+
+    /**
+     * The timestamp when the portfolio information was updated.
+     */
+    updatedAt: number;
+  }
+
+  export namespace Payload {
+    export interface Balance {
+      /**
+       * Asset
+       */
+      asset: string;
+
+      /**
+       * Free balance
+       */
+      free: number;
+
+      /**
+       * Locked balance
+       */
+      locked: number;
+
+      /**
+       * Total balance
+       */
+      total: number;
+    }
+
+    export interface Position {
+      /**
+       * Amount
+       */
+      amount: number;
+
+      /**
+       * Position side
+       */
+      positionSide: 'LONG' | 'SHORT';
+
+      /**
+       * Status
+       */
+      status: 'OPEN';
+
+      /**
+       * Symbol
+       */
+      symbol: string;
+
+      /**
+       * Cost
+       */
+      cost?: number;
+
+      /**
+       * Entry price
+       */
+      entryPrice?: number;
+    }
+  }
+}
+
 export interface ExchangeAccountPosition {
   /**
    * Exchange account ID
@@ -218,6 +321,11 @@ export namespace ExchangeAccountPosition {
   }
 }
 
+/**
+ * List of account portfolio summaries
+ */
+export type PortfolioListResponse = Array<ExchangeAccountPortfolio>;
+
 export type PortfolioListBalancesResponse = Array<ExchangeAccountBalance>;
 
 /**
@@ -226,6 +334,18 @@ export type PortfolioListBalancesResponse = Array<ExchangeAccountBalance>;
 export type PortfolioListCreditResponse = Array<ExchangeAccountCredit>;
 
 export type PortfolioListPositionsResponse = Array<ExchangeAccountPosition>;
+
+export interface PortfolioListParams {
+  /**
+   * Exchange account ID
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Hide small account
+   */
+  hideEmptyValue?: boolean;
+}
 
 export interface PortfolioListBalancesParams {
   /**
@@ -266,10 +386,13 @@ export interface PortfolioListPositionsParams {
 export namespace Portfolio {
   export import ExchangeAccountBalance = PortfolioAPI.ExchangeAccountBalance;
   export import ExchangeAccountCredit = PortfolioAPI.ExchangeAccountCredit;
+  export import ExchangeAccountPortfolio = PortfolioAPI.ExchangeAccountPortfolio;
   export import ExchangeAccountPosition = PortfolioAPI.ExchangeAccountPosition;
+  export import PortfolioListResponse = PortfolioAPI.PortfolioListResponse;
   export import PortfolioListBalancesResponse = PortfolioAPI.PortfolioListBalancesResponse;
   export import PortfolioListCreditResponse = PortfolioAPI.PortfolioListCreditResponse;
   export import PortfolioListPositionsResponse = PortfolioAPI.PortfolioListPositionsResponse;
+  export import PortfolioListParams = PortfolioAPI.PortfolioListParams;
   export import PortfolioListBalancesParams = PortfolioAPI.PortfolioListBalancesParams;
   export import PortfolioListCreditParams = PortfolioAPI.PortfolioListCreditParams;
   export import PortfolioListPositionsParams = PortfolioAPI.PortfolioListPositionsParams;
