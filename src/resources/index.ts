@@ -5,7 +5,6 @@ export {
   DropCopyExecutionReport,
   DropCopyOrder,
   DropCopyPortfolio,
-  DropCopyQuote,
   Event,
   MarketDataKline,
   MarketDataOrderBook,

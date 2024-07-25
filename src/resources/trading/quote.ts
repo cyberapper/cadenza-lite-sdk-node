@@ -8,10 +8,7 @@ export class QuoteResource extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  requestForQuote(
-    body: QuoteRequestForQuoteParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<QuoteRequestForQuoteResponse> {
+  get(body: QuoteGetParams, options?: Core.RequestOptions): Core.APIPromise<QuoteGetResponse> {
     return this._client.post('/api/v2/trading/fetchQuotes', { body, ...options });
   }
 }
@@ -73,9 +70,9 @@ export interface Quote {
   exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 }
 
-export type QuoteRequestForQuoteResponse = Array<Quote>;
+export type QuoteGetResponse = Array<Quote>;
 
-export interface QuoteRequestForQuoteParams {
+export interface QuoteGetParams {
   /**
    * Base currency is the currency you want to buy or sell
    */
@@ -110,6 +107,6 @@ export interface QuoteRequestForQuoteParams {
 
 export namespace QuoteResource {
   export import Quote = QuoteAPI.Quote;
-  export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
-  export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
+  export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
+  export import QuoteGetParams = QuoteAPI.QuoteGetParams;
 }

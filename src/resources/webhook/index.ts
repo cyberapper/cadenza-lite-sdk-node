@@ -5,7 +5,6 @@ export {
   DropCopyExecutionReport,
   DropCopyOrder,
   DropCopyPortfolio,
-  DropCopyQuote,
   Event,
   MarketDataKline,
   MarketDataOrderBook,
@@ -16,3 +15,4 @@ export {
   WebhookPubsubParams,
   Webhook,
 } from './webhook';
+export { DropCopyQuote, EventDropCopyQuoteParams, Event } from './event';
