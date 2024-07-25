@@ -15,7 +15,7 @@ export {
   WebhookPubsubResponse,
   WebhookPubsubParams,
   Webhook,
-} from './webhook';
+} from './webhook/webhook';
 export {
   ExchangeAccount,
   ExchangeAccountCreateResponse,
