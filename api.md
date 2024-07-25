@@ -158,7 +158,7 @@ Types:
 
 Methods:
 
-- <code title="post /api/v2/webhook/pubsub">client.webhook.<a href="./src/resources/webhook/webhook.ts">pubsub</a>({ ...params }) -> unknown</code>
+- <code title="post /api/v2/webhook/pubsub">client.webhook.<a href="./src/resources/webhook/webhook.ts">pubsub</a>({ ...params }) -> WebhookPubsubResponse</code>
 
 ## CloudScheduler
 
@@ -168,4 +168,4 @@ Types:
 
 Methods:
 
-- <code title="post /api/v2/webhook/cloudScheduler/updatePortfolioRoutine">client.webhook.cloudScheduler.<a href="./src/resources/webhook/cloud-scheduler.ts">updatePortfolioRoutine</a>() -> unknown</code>
+- <code title="post /api/v2/webhook/cloudScheduler/updatePortfolioRoutine">client.webhook.cloudScheduler.<a href="./src/resources/webhook/cloud-scheduler.ts">updatePortfolioRoutine</a>() -> CloudSchedulerUpdatePortfolioRoutineResponse</code>
