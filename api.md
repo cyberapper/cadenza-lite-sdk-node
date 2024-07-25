@@ -171,26 +171,50 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/event.ts">DropCopyExecutionReport</a></code>
-- <code><a href="./src/resources/event.ts">DropCopyOrder</a></code>
-- <code><a href="./src/resources/event.ts">DropCopyPortfolio</a></code>
-- <code><a href="./src/resources/event.ts">DropCopyQuote</a></code>
-- <code><a href="./src/resources/event.ts">GenericEvent</a></code>
-- <code><a href="./src/resources/event.ts">MarketDataKline</a></code>
-- <code><a href="./src/resources/event.ts">MarketDataOrderBook</a></code>
-- <code><a href="./src/resources/event.ts">TaskCancelOrderRequestAck</a></code>
-- <code><a href="./src/resources/event.ts">TaskPlaceOrderRequestAck</a></code>
-- <code><a href="./src/resources/event.ts">TaskQuoteRequestAck</a></code>
+- <code><a href="./src/resources/event/event.ts">Event</a></code>
 
 Methods:
 
-- <code title="post /api/v2/webhook/pubsub/dropCopy/executionReport">client.event.<a href="./src/resources/event.ts">dropCopyExecutionReport</a>({ ...params }) -> DropCopyExecutionReport</code>
-- <code title="post /api/v2/webhook/pubsub/dropCopy/order">client.event.<a href="./src/resources/event.ts">dropCopyOrder</a>({ ...params }) -> DropCopyOrder</code>
-- <code title="post /api/v2/webhook/pubsub/dropCopy/portfolio">client.event.<a href="./src/resources/event.ts">dropCopyPortfolio</a>({ ...params }) -> DropCopyPortfolio</code>
-- <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.event.<a href="./src/resources/event.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
-- <code title="post /api/v2/webhook/pubsub/marketData/kline">client.event.<a href="./src/resources/event.ts">marketDataKline</a>({ ...params }) -> MarketDataKline</code>
-- <code title="post /api/v2/webhook/pubsub/marketData/orderBook">client.event.<a href="./src/resources/event.ts">marketDataOrderBook</a>({ ...params }) -> MarketDataOrderBook</code>
-- <code title="post /api/v2/webhook/pubsub/event">client.event.<a href="./src/resources/event.ts">new</a>({ ...params }) -> GenericEvent</code>
-- <code title="post /api/v2/webhook/pubsub/task/cancelOrderRequestAck">client.event.<a href="./src/resources/event.ts">taskCancelOrderRequestAck</a>({ ...params }) -> TaskCancelOrderRequestAck</code>
-- <code title="post /api/v2/webhook/pubsub/task/placeOrderRequestAck">client.event.<a href="./src/resources/event.ts">taskPlaceOrderRequestAck</a>({ ...params }) -> TaskPlaceOrderRequestAck</code>
-- <code title="post /api/v2/webhook/pubsub/task/quoteRequestAck">client.event.<a href="./src/resources/event.ts">taskQuoteRequestAck</a>({ ...params }) -> TaskQuoteRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/event">client.event.<a href="./src/resources/event/event.ts">new</a>({ ...params }) -> Event</code>
+
+## Task
+
+Types:
+
+- <code><a href="./src/resources/event/task.ts">TaskCancelOrderRequestAck</a></code>
+- <code><a href="./src/resources/event/task.ts">TaskPlaceOrderRequestAck</a></code>
+- <code><a href="./src/resources/event/task.ts">TaskQuoteRequestAck</a></code>
+
+Methods:
+
+- <code title="post /api/v2/webhook/pubsub/task/cancelOrderRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskCancelOrderRequestAck</a>({ ...params }) -> TaskCancelOrderRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/task/placeOrderRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskPlaceOrderRequestAck</a>({ ...params }) -> TaskPlaceOrderRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/task/quoteRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskQuoteRequestAck</a>({ ...params }) -> TaskQuoteRequestAck</code>
+
+## DropCopy
+
+Types:
+
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyExecutionReport</a></code>
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyOrder</a></code>
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyPortfolio</a></code>
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyQuote</a></code>
+
+Methods:
+
+- <code title="post /api/v2/webhook/pubsub/dropCopy/executionReport">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyExecutionReport</a>({ ...params }) -> DropCopyExecutionReport</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/order">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyOrder</a>({ ...params }) -> DropCopyOrder</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/portfolio">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyPortfolio</a>({ ...params }) -> DropCopyPortfolio</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
+
+## MarketData
+
+Types:
+
+- <code><a href="./src/resources/event/market-data.ts">MarketDataKline</a></code>
+- <code><a href="./src/resources/event/market-data.ts">MarketDataOrderBook</a></code>
+
+Methods:
+
+- <code title="post /api/v2/webhook/pubsub/marketData/kline">client.event.marketData.<a href="./src/resources/event/market-data.ts">marketDataKline</a>({ ...params }) -> MarketDataKline</code>
+- <code title="post /api/v2/webhook/pubsub/marketData/orderBook">client.event.marketData.<a href="./src/resources/event/market-data.ts">marketDataOrderBook</a>({ ...params }) -> MarketDataOrderBook</code>
