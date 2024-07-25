@@ -144,7 +144,6 @@ export class Cadenza extends Core.APIClient {
   }
 
   health: API.Health = new API.Health(this);
-  clients: API.Clients = new API.Clients(this);
   exchangeAccounts: API.ExchangeAccounts = new API.ExchangeAccounts(this);
   market: API.Market = new API.Market(this);
   trading: API.Trading = new API.Trading(this);
@@ -215,8 +214,6 @@ export namespace Cadenza {
 
   export import Health = API.Health;
   export import HealthGetResponse = API.HealthGetResponse;
-
-  export import Clients = API.Clients;
 
   export import ExchangeAccounts = API.ExchangeAccounts;
   export import ExchangeAccount = API.ExchangeAccount;

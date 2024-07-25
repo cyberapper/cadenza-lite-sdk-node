@@ -8,18 +8,6 @@ Methods:
 
 - <code title="get /api/v2/health">client.health.<a href="./src/resources/health.ts">get</a>() -> string</code>
 
-# Clients
-
-## Info
-
-Types:
-
-- <code><a href="./src/resources/clients/info.ts">InfoGetResponse</a></code>
-
-Methods:
-
-- <code title="get /api/v2/client/getInfo">client.clients.info.<a href="./src/resources/clients/info.ts">get</a>() -> InfoGetResponse</code>
-
 # ExchangeAccounts
 
 Types:
