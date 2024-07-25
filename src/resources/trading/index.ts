@@ -1,13 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
-  ExecutionReport,
-  QuoteExecutionReport,
-  ExecutionReportListParams,
-  ExecutionReportGetQuoteExecutionReportParams,
-} from './execution-report';
-export {
+  CancelOrderRequest,
   Order,
+  PlaceOrderRequest,
   OrderCreateResponse,
   OrderCreateParams,
   OrderListParams,
@@ -15,5 +11,11 @@ export {
   OrdersOffset,
   OrderResource,
 } from './order';
-export { Quote, QuoteGetResponse, QuoteGetParams, QuoteResource } from './quote';
+export {
+  ExecutionReport,
+  QuoteExecutionReport,
+  ExecutionReportListParams,
+  ExecutionReportGetQuoteExecutionReportParams,
+} from './execution-report';
+export { Quote, QuoteRequest, QuoteGetResponse, QuoteGetParams, QuoteResource } from './quote';
 export { Trading } from './trading';

@@ -70,6 +70,39 @@ export interface Quote {
   exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 }
 
+export interface QuoteRequest {
+  /**
+   * Base currency is the currency you want to buy or sell
+   */
+  baseCurrency: string;
+
+  /**
+   * Order side, BUY or SELL
+   */
+  orderSide: string;
+
+  /**
+   * Quote currency is the currency you want to pay or receive, and the price of the
+   * base currency is quoted in the quote currency
+   */
+  quoteCurrency: string;
+
+  /**
+   * The identifier for the exchange account
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Amount of the base currency
+   */
+  quantity?: number;
+
+  /**
+   * Amount of the quote currency
+   */
+  quoteQuantity?: number;
+}
+
 export type QuoteGetResponse = Array<Quote>;
 
 export interface QuoteGetParams {
@@ -107,6 +140,7 @@ export interface QuoteGetParams {
 
 export namespace QuoteResource {
   export import Quote = QuoteAPI.Quote;
+  export import QuoteRequest = QuoteAPI.QuoteRequest;
   export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
   export import QuoteGetParams = QuoteAPI.QuoteGetParams;
 }

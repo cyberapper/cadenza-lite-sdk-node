@@ -91,7 +91,9 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/trading/order.ts">CancelOrderRequest</a></code>
 - <code><a href="./src/resources/trading/order.ts">Order</a></code>
+- <code><a href="./src/resources/trading/order.ts">PlaceOrderRequest</a></code>
 - <code><a href="./src/resources/trading/order.ts">OrderCreateResponse</a></code>
 
 Methods:
@@ -105,6 +107,7 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/trading/quote.ts">Quote</a></code>
+- <code><a href="./src/resources/trading/quote.ts">QuoteRequest</a></code>
 - <code><a href="./src/resources/trading/quote.ts">QuoteGetResponse</a></code>
 
 Methods:
@@ -129,13 +132,16 @@ Types:
 
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountBalance</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountCredit</a></code>
+- <code><a href="./src/resources/portfolio.ts">ExchangeAccountPortfolio</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPosition</a></code>
+- <code><a href="./src/resources/portfolio.ts">PortfolioListResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListBalancesResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListCreditResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListPositionsResponse</a></code>
 
 Methods:
 
+- <code title="get /api/v2/portfolio/listSummaries">client.portfolio.<a href="./src/resources/portfolio.ts">list</a>({ ...params }) -> PortfolioListResponse</code>
 - <code title="get /api/v2/portfolio/listBalances">client.portfolio.<a href="./src/resources/portfolio.ts">listBalances</a>({ ...params }) -> PortfolioListBalancesResponse</code>
 - <code title="get /api/v2/portfolio/listCredit">client.portfolio.<a href="./src/resources/portfolio.ts">listCredit</a>({ ...params }) -> PortfolioListCreditResponse</code>
 - <code title="get /api/v2/portfolio/listPositions">client.portfolio.<a href="./src/resources/portfolio.ts">listPositions</a>({ ...params }) -> PortfolioListPositionsResponse</code>
@@ -144,15 +150,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/webhook/webhook.ts">DropCopyExecutionReport</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">DropCopyOrder</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">DropCopyPortfolio</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">Event</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">MarketDataKline</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">MarketDataOrderBook</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">TaskCancelOrderRequestAck</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">TaskPlaceOrderRequestAck</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">TaskQuoteRequestAck</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">WebhookPubsubResponse</a></code>
 
 Methods:
@@ -169,12 +167,24 @@ Methods:
 
 - <code title="post /api/v2/webhook/cloudScheduler/updatePortfolioRoutine">client.webhook.cloudScheduler.<a href="./src/resources/webhook/cloud-scheduler.ts">updatePortfolioRoutine</a>() -> CloudSchedulerUpdatePortfolioRoutineResponse</code>
 
-## Event
+# Event
 
 Types:
 
-- <code><a href="./src/resources/webhook/event.ts">DropCopyQuote</a></code>
+- <code><a href="./src/resources/event.ts">DropCopyExecutionReport</a></code>
+- <code><a href="./src/resources/event.ts">DropCopyOrder</a></code>
+- <code><a href="./src/resources/event.ts">DropCopyPortfolio</a></code>
+- <code><a href="./src/resources/event.ts">DropCopyQuote</a></code>
+- <code><a href="./src/resources/event.ts">MarketDataKline</a></code>
+- <code><a href="./src/resources/event.ts">MarketDataOrderBook</a></code>
+- <code><a href="./src/resources/event.ts">TaskCancelOrderRequestAck</a></code>
+- <code><a href="./src/resources/event.ts">TaskPlaceOrderRequestAck</a></code>
+- <code><a href="./src/resources/event.ts">TaskQuoteRequestAck</a></code>
 
 Methods:
 
-- <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.webhook.event.<a href="./src/resources/webhook/event.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/order">client.event.<a href="./src/resources/event.ts">dropCopyOrder</a>({ ...params }) -> DropCopyOrder</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/portfolio">client.event.<a href="./src/resources/event.ts">dropCopyPortfolio</a>({ ...params }) -> DropCopyPortfolio</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.event.<a href="./src/resources/event.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
+- <code title="post /api/v2/webhook/pubsub/marketData/kline">client.event.<a href="./src/resources/event.ts">marketDataKline</a>({ ...params }) -> MarketDataKline</code>
+- <code title="post /api/v2/webhook/pubsub/marketData/orderBook">client.event.<a href="./src/resources/event.ts">marketDataOrderBook</a>({ ...params }) -> MarketDataOrderBook</code>
