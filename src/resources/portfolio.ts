@@ -185,90 +185,84 @@ export interface ExchangeAccountCredit {
 }
 
 export interface ExchangeAccountPortfolio {
-  payload?: ExchangeAccountPortfolio.Payload;
+  balances: Array<ExchangeAccountPortfolio.Balance>;
+
+  /**
+   * Exchange Account Credit Info
+   */
+  credit: ExchangeAccountCredit;
+
+  /**
+   * The unique identifier for the account.
+   */
+  exchangeAccountId: string;
+
+  /**
+   * Exchange type
+   */
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+  positions: Array<ExchangeAccountPortfolio.Position>;
+
+  /**
+   * The timestamp when the portfolio information was updated.
+   */
+  updatedAt: number;
 }
 
 export namespace ExchangeAccountPortfolio {
-  export interface Payload {
-    balances: Array<Payload.Balance>;
+  export interface Balance {
+    /**
+     * Asset
+     */
+    asset: string;
 
     /**
-     * Exchange Account Credit Info
+     * Free balance
      */
-    credit: PortfolioAPI.ExchangeAccountCredit;
+    free: number;
 
     /**
-     * The unique identifier for the account.
+     * Locked balance
      */
-    exchangeAccountId: string;
+    locked: number;
 
     /**
-     * Exchange type
+     * Total balance
      */
-    exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    positions: Array<Payload.Position>;
-
-    /**
-     * The timestamp when the portfolio information was updated.
-     */
-    updatedAt: number;
+    total: number;
   }
 
-  export namespace Payload {
-    export interface Balance {
-      /**
-       * Asset
-       */
-      asset: string;
+  export interface Position {
+    /**
+     * Amount
+     */
+    amount: number;
 
-      /**
-       * Free balance
-       */
-      free: number;
+    /**
+     * Position side
+     */
+    positionSide: 'LONG' | 'SHORT';
 
-      /**
-       * Locked balance
-       */
-      locked: number;
+    /**
+     * Status
+     */
+    status: 'OPEN';
 
-      /**
-       * Total balance
-       */
-      total: number;
-    }
+    /**
+     * Symbol
+     */
+    symbol: string;
 
-    export interface Position {
-      /**
-       * Amount
-       */
-      amount: number;
+    /**
+     * Cost
+     */
+    cost?: number;
 
-      /**
-       * Position side
-       */
-      positionSide: 'LONG' | 'SHORT';
-
-      /**
-       * Status
-       */
-      status: 'OPEN';
-
-      /**
-       * Symbol
-       */
-      symbol: string;
-
-      /**
-       * Cost
-       */
-      cost?: number;
-
-      /**
-       * Entry price
-       */
-      entryPrice?: number;
-    }
+    /**
+     * Entry price
+     */
+    entryPrice?: number;
   }
 }
 

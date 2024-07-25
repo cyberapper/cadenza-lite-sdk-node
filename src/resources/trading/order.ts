@@ -10,15 +10,7 @@ export class OrderResource extends APIResource {
   /**
    * Place order
    */
-  create(params?: OrderCreateParams, options?: Core.RequestOptions): Core.APIPromise<OrderCreateResponse>;
-  create(options?: Core.RequestOptions): Core.APIPromise<OrderCreateResponse>;
-  create(
-    params: OrderCreateParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<OrderCreateResponse> {
-    if (isRequestOptions(params)) {
-      return this.create({}, params);
-    }
+  create(params: OrderCreateParams, options?: Core.RequestOptions): Core.APIPromise<OrderCreateResponse> {
     const { 'Idempotency-Key': idempotencyKey, ...body } = params;
     return this._client.post('/api/v2/trading/placeOrder', {
       body,
@@ -194,6 +186,14 @@ export interface Order {
 
 export interface PlaceOrderRequest {
   /**
+   * Route policy. For PRIORITY, the order request will be routed to the exchange
+   * account with the highest priority. For QUOTE, the system will execute the
+   * execution plan based on the quote. Order request with route policy QUOTE will
+   * only accept two parameters, quoteRequestId and priceSlippageTolerance
+   */
+  routePolicy: 'PRIORITY' | 'QUOTE';
+
+  /**
    * Exchange account ID
    */
   exchangeAccountId?: string;
@@ -263,14 +263,6 @@ export interface PlaceOrderRequest {
   quoteRequestId?: string;
 
   /**
-   * Route policy. For PRIORITY, the order request will be routed to the exchange
-   * account with the highest priority. For QUOTE, the system will execute the
-   * execution plan based on the quote. Order request with route policy QUOTE will
-   * only accept two parameters, quoteRequestId and priceSlippageTolerance
-   */
-  routePolicy?: 'PRIORITY' | 'QUOTE';
-
-  /**
    * Symbol
    */
   symbol?: string;
@@ -303,6 +295,14 @@ export interface PlaceOrderRequest {
 export type OrderCreateResponse = Array<Order>;
 
 export interface OrderCreateParams {
+  /**
+   * Body param: Route policy. For PRIORITY, the order request will be routed to the
+   * exchange account with the highest priority. For QUOTE, the system will execute
+   * the execution plan based on the quote. Order request with route policy QUOTE
+   * will only accept two parameters, quoteRequestId and priceSlippageTolerance
+   */
+  routePolicy: 'PRIORITY' | 'QUOTE';
+
   /**
    * Body param: Exchange account ID
    */
@@ -371,14 +371,6 @@ export interface OrderCreateParams {
    * Body param: Quote request ID
    */
   quoteRequestId?: string;
-
-  /**
-   * Body param: Route policy. For PRIORITY, the order request will be routed to the
-   * exchange account with the highest priority. For QUOTE, the system will execute
-   * the execution plan based on the quote. Order request with route policy QUOTE
-   * will only accept two parameters, quoteRequestId and priceSlippageTolerance
-   */
-  routePolicy?: 'PRIORITY' | 'QUOTE';
 
   /**
    * Body param: Symbol
