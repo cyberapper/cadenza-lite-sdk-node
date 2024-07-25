@@ -125,7 +125,7 @@ export namespace DropCopyPortfolio {
 }
 
 export interface DropCopyQuote extends Event {
-  payload?: QuoteAPI.QuoteWithOrderCandidates;
+  payload?: QuoteAPI.Quote;
 }
 
 export interface Event {
@@ -151,7 +151,7 @@ export interface Event {
     | Event.QuoteRequest
     | Event.PlaceOrderRequest
     | Event.CancelOrderRequest
-    | QuoteAPI.QuoteWithOrderCandidates
+    | QuoteAPI.Quote
     | OrderAPI.Order
     | ExecutionReportAPI.ExecutionReport
     | Event.ExchangeAccountPortfolio
