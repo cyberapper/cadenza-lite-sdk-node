@@ -17,7 +17,7 @@ export class Webhook extends APIResource {
   /**
    * PubSub Event Handler
    */
-  pubsub(body: WebhookPubsubParams, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  pubsub(body: WebhookPubsubParams, options?: Core.RequestOptions): Core.APIPromise<WebhookPubsubResponse> {
     return this._client.post('/api/v2/webhook/pubsub', { body, ...options });
   }
 }
@@ -614,7 +614,9 @@ export namespace TaskQuoteRequestAck {
   }
 }
 
-export type WebhookPubsubResponse = unknown;
+export interface WebhookPubsubResponse {
+  data?: string;
+}
 
 export interface WebhookPubsubParams {
   /**
