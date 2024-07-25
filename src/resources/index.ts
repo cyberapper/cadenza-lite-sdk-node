@@ -1,6 +1,5 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Clients } from './clients/clients';
 export { Event, EventNewParams, EventResource } from './event/event';
 export { Event, WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
 export {
