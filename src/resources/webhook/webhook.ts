@@ -1,16 +1,19 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
 import * as WebhookAPI from './webhook';
-import * as PortfolioAPI from './portfolio';
-import * as KlineAPI from './market/kline';
-import * as OrderbookAPI from './market/orderbook';
-import * as ExecutionReportAPI from './trading/execution-report';
-import * as OrderAPI from './trading/order';
-import * as QuoteAPI from './trading/quote';
+import * as PortfolioAPI from '../portfolio';
+import * as KlineAPI from '../market/kline';
+import * as OrderbookAPI from '../market/orderbook';
+import * as ExecutionReportAPI from '../trading/execution-report';
+import * as OrderAPI from '../trading/order';
+import * as QuoteAPI from '../trading/quote';
+import * as CloudSchedulerAPI from './cloud-scheduler';
 
 export class Webhook extends APIResource {
+  cloudScheduler: CloudSchedulerAPI.CloudScheduler = new CloudSchedulerAPI.CloudScheduler(this._client);
+
   /**
    * PubSub Event Handler
    */
@@ -918,4 +921,6 @@ export namespace Webhook {
   export import TaskQuoteRequestAck = WebhookAPI.TaskQuoteRequestAck;
   export import WebhookPubsubResponse = WebhookAPI.WebhookPubsubResponse;
   export import WebhookPubsubParams = WebhookAPI.WebhookPubsubParams;
+  export import CloudScheduler = CloudSchedulerAPI.CloudScheduler;
+  export import CloudSchedulerUpdatePortfolioRoutineResponse = CloudSchedulerAPI.CloudSchedulerUpdatePortfolioRoutineResponse;
 }
