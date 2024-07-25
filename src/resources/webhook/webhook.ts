@@ -3,12 +3,6 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as WebhookAPI from './webhook';
-import * as PortfolioAPI from '../portfolio';
-import * as KlineAPI from '../market/kline';
-import * as OrderbookAPI from '../market/orderbook';
-import * as ExecutionReportAPI from '../trading/execution-report';
-import * as OrderAPI from '../trading/order';
-import * as QuoteAPI from '../trading/quote';
 import * as CloudSchedulerAPI from './cloud-scheduler';
 
 export class Webhook extends APIResource {
@@ -32,6 +26,7 @@ export interface Event {
    * Event Type
    */
   eventType:
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
@@ -46,43 +41,9 @@ export interface Event {
   timestamp: number;
 
   /**
-   * The actual data of the event, which varies based on the event type.
-   */
-  payload?:
-    | QuoteAPI.QuoteRequest
-    | OrderAPI.PlaceOrderRequest
-    | OrderAPI.CancelOrderRequest
-    | QuoteAPI.Quote
-    | OrderAPI.Order
-    | ExecutionReportAPI.ExecutionReport
-    | PortfolioAPI.ExchangeAccountPortfolio
-    | OrderbookAPI.Orderbook
-    | Event.Kline;
-
-  /**
    * The source system or module that generated the event.
    */
   source?: string;
-}
-
-export namespace Event {
-  export interface Kline {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
 }
 
 export interface WebhookPubsubResponse {
