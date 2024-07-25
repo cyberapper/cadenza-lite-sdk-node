@@ -18,7 +18,7 @@ export class Event extends APIResource {
   dropCopyOrder(
     body: EventDropCopyOrderParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DropCopyOrder> {
+  ): Core.APIPromise<EventDropCopyOrderResponse> {
     return this._client.post('/api/v2/webhook/pubsub/dropCopy/order', { body, ...options });
   }
 
@@ -28,7 +28,7 @@ export class Event extends APIResource {
   dropCopyPortfolio(
     body: EventDropCopyPortfolioParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DropCopyPortfolio> {
+  ): Core.APIPromise<EventDropCopyPortfolioResponse> {
     return this._client.post('/api/v2/webhook/pubsub/dropCopy/portfolio', { body, ...options });
   }
 
@@ -38,7 +38,7 @@ export class Event extends APIResource {
   dropCopyQuote(
     body: EventDropCopyQuoteParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DropCopyQuote> {
+  ): Core.APIPromise<EventDropCopyQuoteResponse> {
     return this._client.post('/api/v2/webhook/pubsub/dropCopy/quote', { body, ...options });
   }
 
@@ -48,7 +48,7 @@ export class Event extends APIResource {
   marketDataKline(
     body: EventMarketDataKlineParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<MarketDataKline> {
+  ): Core.APIPromise<EventMarketDataKlineResponse> {
     return this._client.post('/api/v2/webhook/pubsub/marketData/kline', { body, ...options });
   }
 
@@ -58,32 +58,36 @@ export class Event extends APIResource {
   marketDataOrderBook(
     body: EventMarketDataOrderBookParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<MarketDataOrderBook> {
+  ): Core.APIPromise<EventMarketDataOrderBookResponse> {
     return this._client.post('/api/v2/webhook/pubsub/marketData/orderBook', { body, ...options });
   }
 }
 
-export interface DropCopyExecutionReport extends WebhookAPI.Event {
-  payload?: ExecutionReportAPI.ExecutionReport;
-}
+export interface EventDropCopyOrderResponse extends WebhookAPI.Event {
+  eventType?: 'cadenza.dropCopy.order';
 
-export interface DropCopyOrder extends WebhookAPI.Event {
   payload?: OrderAPI.Order;
 }
 
-export interface DropCopyPortfolio extends WebhookAPI.Event {
+export interface EventDropCopyPortfolioResponse extends WebhookAPI.Event {
+  eventType?: 'cadenza.dropCopy.portfolio';
+
   payload?: PortfolioAPI.ExchangeAccountPortfolio;
 }
 
-export interface DropCopyQuote extends WebhookAPI.Event {
+export interface EventDropCopyQuoteResponse extends WebhookAPI.Event {
+  eventType?: 'cadenza.dropCopy.quote';
+
   payload?: QuoteAPI.Quote;
 }
 
-export interface MarketDataKline extends WebhookAPI.Event {
-  payload?: MarketDataKline.Payload;
+export interface EventMarketDataKlineResponse extends WebhookAPI.Event {
+  eventType?: 'cadenza.marketData.kline';
+
+  payload?: EventMarketDataKlineResponse.Payload;
 }
 
-export namespace MarketDataKline {
+export namespace EventMarketDataKlineResponse {
   export interface Payload {
     candles?: Array<KlineAPI.Ohlcv>;
 
@@ -103,22 +107,10 @@ export namespace MarketDataKline {
   }
 }
 
-export interface MarketDataOrderBook extends WebhookAPI.Event {
+export interface EventMarketDataOrderBookResponse extends WebhookAPI.Event {
+  eventType?: 'cadenza.marketData.orderBook';
+
   payload?: OrderbookAPI.Orderbook;
-}
-
-export interface TaskCancelOrderRequestAck extends WebhookAPI.Event {
-  payload?: OrderAPI.CancelOrderRequest;
-}
-
-export interface TaskPlaceOrderRequestAck extends WebhookAPI.Event {
-  payload?: OrderAPI.PlaceOrderRequest;
-}
-
-export interface TaskQuoteRequestAck extends WebhookAPI.Event {
-  eventType?: 'cadenza.task.placeOrderRequestAck';
-
-  payload?: QuoteAPI.QuoteRequest;
 }
 
 export interface EventDropCopyOrderParams {
@@ -127,14 +119,11 @@ export interface EventDropCopyOrderParams {
    */
   eventId: string;
 
-  /**
-   * Event Type
-   */
   eventType:
+    | 'cadenza.dropCopy.order'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
-    | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -158,15 +147,12 @@ export interface EventDropCopyPortfolioParams {
    */
   eventId: string;
 
-  /**
-   * Event Type
-   */
   eventType:
+    | 'cadenza.dropCopy.portfolio'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
-    | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
 
@@ -189,13 +175,10 @@ export interface EventDropCopyQuoteParams {
    */
   eventId: string;
 
-  /**
-   * Event Type
-   */
   eventType:
+    | 'cadenza.dropCopy.quote'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
-    | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
@@ -220,17 +203,14 @@ export interface EventMarketDataKlineParams {
    */
   eventId: string;
 
-  /**
-   * Event Type
-   */
   eventType:
+    | 'cadenza.marketData.kline'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
-    | 'cadenza.marketData.orderBook'
-    | 'cadenza.marketData.kline';
+    | 'cadenza.marketData.orderBook';
 
   /**
    * Unix timestamp in milliseconds when the event was generated.
@@ -299,16 +279,13 @@ export interface EventMarketDataOrderBookParams {
    */
   eventId: string;
 
-  /**
-   * Event Type
-   */
   eventType:
+    | 'cadenza.marketData.orderBook'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
-    | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
 
   /**
@@ -325,15 +302,11 @@ export interface EventMarketDataOrderBookParams {
 }
 
 export namespace Event {
-  export import DropCopyExecutionReport = EventAPI.DropCopyExecutionReport;
-  export import DropCopyOrder = EventAPI.DropCopyOrder;
-  export import DropCopyPortfolio = EventAPI.DropCopyPortfolio;
-  export import DropCopyQuote = EventAPI.DropCopyQuote;
-  export import MarketDataKline = EventAPI.MarketDataKline;
-  export import MarketDataOrderBook = EventAPI.MarketDataOrderBook;
-  export import TaskCancelOrderRequestAck = EventAPI.TaskCancelOrderRequestAck;
-  export import TaskPlaceOrderRequestAck = EventAPI.TaskPlaceOrderRequestAck;
-  export import TaskQuoteRequestAck = EventAPI.TaskQuoteRequestAck;
+  export import EventDropCopyOrderResponse = EventAPI.EventDropCopyOrderResponse;
+  export import EventDropCopyPortfolioResponse = EventAPI.EventDropCopyPortfolioResponse;
+  export import EventDropCopyQuoteResponse = EventAPI.EventDropCopyQuoteResponse;
+  export import EventMarketDataKlineResponse = EventAPI.EventMarketDataKlineResponse;
+  export import EventMarketDataOrderBookResponse = EventAPI.EventMarketDataOrderBookResponse;
   export import EventDropCopyOrderParams = EventAPI.EventDropCopyOrderParams;
   export import EventDropCopyPortfolioParams = EventAPI.EventDropCopyPortfolioParams;
   export import EventDropCopyQuoteParams = EventAPI.EventDropCopyQuoteParams;
