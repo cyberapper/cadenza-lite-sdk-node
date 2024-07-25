@@ -9,8 +9,8 @@ const cadenza = new Cadenza({
 });
 
 describe('resource quote', () => {
-  test('requestForQuote: only required params', async () => {
-    const responsePromise = cadenza.trading.quote.requestForQuote({
+  test('get: only required params', async () => {
+    const responsePromise = cadenza.trading.quote.get({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
@@ -24,8 +24,8 @@ describe('resource quote', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('requestForQuote: required and optional params', async () => {
-    const response = await cadenza.trading.quote.requestForQuote({
+  test('get: required and optional params', async () => {
+    const response = await cadenza.trading.quote.get({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',

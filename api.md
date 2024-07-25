@@ -105,11 +105,11 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/trading/quote.ts">Quote</a></code>
-- <code><a href="./src/resources/trading/quote.ts">QuoteRequestForQuoteResponse</a></code>
+- <code><a href="./src/resources/trading/quote.ts">QuoteGetResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v2/trading/fetchQuotes">client.trading.quote.<a href="./src/resources/trading/quote.ts">requestForQuote</a>({ ...params }) -> QuoteRequestForQuoteResponse</code>
+- <code title="post /api/v2/trading/fetchQuotes">client.trading.quote.<a href="./src/resources/trading/quote.ts">get</a>({ ...params }) -> QuoteGetResponse</code>
 
 ## ExecutionReport
 
@@ -147,7 +147,6 @@ Types:
 - <code><a href="./src/resources/webhook/webhook.ts">DropCopyExecutionReport</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">DropCopyOrder</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">DropCopyPortfolio</a></code>
-- <code><a href="./src/resources/webhook/webhook.ts">DropCopyQuote</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">Event</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">MarketDataKline</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">MarketDataOrderBook</a></code>
@@ -169,3 +168,13 @@ Types:
 Methods:
 
 - <code title="post /api/v2/webhook/cloudScheduler/updatePortfolioRoutine">client.webhook.cloudScheduler.<a href="./src/resources/webhook/cloud-scheduler.ts">updatePortfolioRoutine</a>() -> CloudSchedulerUpdatePortfolioRoutineResponse</code>
+
+## Event
+
+Types:
+
+- <code><a href="./src/resources/webhook/event.ts">DropCopyQuote</a></code>
+
+Methods:
+
+- <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.webhook.event.<a href="./src/resources/webhook/event.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>

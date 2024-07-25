@@ -21,8 +21,8 @@ export namespace Trading {
   export import OrderCancelParams = OrderAPI.OrderCancelParams;
   export import QuoteResource = QuoteAPI.QuoteResource;
   export import Quote = QuoteAPI.Quote;
-  export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
-  export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
+  export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
+  export import QuoteGetParams = QuoteAPI.QuoteGetParams;
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
   export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;

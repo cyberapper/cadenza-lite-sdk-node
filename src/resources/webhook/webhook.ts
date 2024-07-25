@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import { Event } from './event';
 import * as WebhookAPI from './webhook';
 import * as PortfolioAPI from '../portfolio';
 import * as KlineAPI from '../market/kline';
@@ -10,9 +11,11 @@ import * as ExecutionReportAPI from '../trading/execution-report';
 import * as OrderAPI from '../trading/order';
 import * as QuoteAPI from '../trading/quote';
 import * as CloudSchedulerAPI from './cloud-scheduler';
+import * as EventAPI from './event';
 
 export class Webhook extends APIResource {
   cloudScheduler: CloudSchedulerAPI.CloudScheduler = new CloudSchedulerAPI.CloudScheduler(this._client);
+  event: EventAPI.Event = new EventAPI.Event(this._client);
 
   /**
    * PubSub Event Handler
@@ -122,10 +125,6 @@ export namespace DropCopyPortfolio {
       }
     }
   }
-}
-
-export interface DropCopyQuote extends Event {
-  payload?: QuoteAPI.Quote;
 }
 
 export interface Event {
@@ -645,7 +644,6 @@ export namespace Webhook {
   export import DropCopyExecutionReport = WebhookAPI.DropCopyExecutionReport;
   export import DropCopyOrder = WebhookAPI.DropCopyOrder;
   export import DropCopyPortfolio = WebhookAPI.DropCopyPortfolio;
-  export import DropCopyQuote = WebhookAPI.DropCopyQuote;
   export import Event = WebhookAPI.Event;
   export import MarketDataKline = WebhookAPI.MarketDataKline;
   export import MarketDataOrderBook = WebhookAPI.MarketDataOrderBook;
@@ -656,4 +654,6 @@ export namespace Webhook {
   export import WebhookPubsubParams = WebhookAPI.WebhookPubsubParams;
   export import CloudScheduler = CloudSchedulerAPI.CloudScheduler;
   export import CloudSchedulerUpdatePortfolioRoutineResponse = CloudSchedulerAPI.CloudSchedulerUpdatePortfolioRoutineResponse;
+  export import DropCopyQuote = EventAPI.DropCopyQuote;
+  export import EventDropCopyQuoteParams = EventAPI.EventDropCopyQuoteParams;
 }
