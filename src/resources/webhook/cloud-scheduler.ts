@@ -8,12 +8,16 @@ export class CloudScheduler extends APIResource {
   /**
    * Cloud scheduler update portfolio routine task
    */
-  updatePortfolioRoutine(options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  updatePortfolioRoutine(
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CloudSchedulerUpdatePortfolioRoutineResponse> {
     return this._client.post('/api/v2/webhook/cloudScheduler/updatePortfolioRoutine', options);
   }
 }
 
-export type CloudSchedulerUpdatePortfolioRoutineResponse = unknown;
+export interface CloudSchedulerUpdatePortfolioRoutineResponse {
+  data?: string;
+}
 
 export namespace CloudScheduler {
   export import CloudSchedulerUpdatePortfolioRoutineResponse = CloudSchedulerAPI.CloudSchedulerUpdatePortfolioRoutineResponse;
