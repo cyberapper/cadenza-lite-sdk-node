@@ -7,7 +7,7 @@ import * as QuoteAPI from './quote';
 
 export class Trading extends APIResource {
   order: OrderAPI.OrderResource = new OrderAPI.OrderResource(this._client);
-  quote: QuoteAPI.Quote = new QuoteAPI.Quote(this._client);
+  quote: QuoteAPI.QuoteResource = new QuoteAPI.QuoteResource(this._client);
   executionReport: ExecutionReportAPI.ExecutionReport = new ExecutionReportAPI.ExecutionReport(this._client);
 }
 
@@ -19,8 +19,8 @@ export namespace Trading {
   export import OrderCreateParams = OrderAPI.OrderCreateParams;
   export import OrderListParams = OrderAPI.OrderListParams;
   export import OrderCancelParams = OrderAPI.OrderCancelParams;
+  export import QuoteResource = QuoteAPI.QuoteResource;
   export import Quote = QuoteAPI.Quote;
-  export import QuoteWithOrderCandidates = QuoteAPI.QuoteWithOrderCandidates;
   export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
   export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;

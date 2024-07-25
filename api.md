@@ -104,7 +104,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/trading/quote.ts">QuoteWithOrderCandidates</a></code>
+- <code><a href="./src/resources/trading/quote.ts">Quote</a></code>
 - <code><a href="./src/resources/trading/quote.ts">QuoteRequestForQuoteResponse</a></code>
 
 Methods:
