@@ -248,7 +248,6 @@ export namespace Cadenza {
   export import DropCopyExecutionReport = API.DropCopyExecutionReport;
   export import DropCopyOrder = API.DropCopyOrder;
   export import DropCopyPortfolio = API.DropCopyPortfolio;
-  export import DropCopyQuote = API.DropCopyQuote;
   export import Event = API.Event;
   export import MarketDataKline = API.MarketDataKline;
   export import MarketDataOrderBook = API.MarketDataOrderBook;

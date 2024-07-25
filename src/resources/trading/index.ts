@@ -15,5 +15,5 @@ export {
   OrdersOffset,
   OrderResource,
 } from './order';
-export { Quote, QuoteRequestForQuoteResponse, QuoteRequestForQuoteParams, QuoteResource } from './quote';
+export { Quote, QuoteGetResponse, QuoteGetParams, QuoteResource } from './quote';
 export { Trading } from './trading';
