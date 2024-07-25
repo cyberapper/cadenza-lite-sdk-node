@@ -28,9 +28,7 @@ const client = new Cadenza({
 });
 
 async function main() {
-  const infoGetResponse = await cadenza.clients.info.get();
-
-  console.log(infoGetResponse.exchangeTypes);
+  const healthGetResponse = await cadenza.health.get();
 }
 
 main();
@@ -50,7 +48,7 @@ const client = new Cadenza({
 });
 
 async function main() {
-  const infoGetResponse: Cadenza.Clients.InfoGetResponse = await cadenza.clients.info.get();
+  const healthGetResponse: string = await cadenza.health.get();
 }
 
 main();
@@ -67,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const infoGetResponse = await cadenza.clients.info.get().catch(async (err) => {
+  const healthGetResponse = await cadenza.health.get().catch(async (err) => {
     if (err instanceof Cadenza.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -110,7 +108,7 @@ const client = new Cadenza({
 });
 
 // Or, configure per-request:
-await cadenza.clients.info.get({
+await cadenza.health.get({
   maxRetries: 5,
 });
 ```
@@ -127,7 +125,7 @@ const client = new Cadenza({
 });
 
 // Override per-request:
-await cadenza.clients.info.get({
+await cadenza.health.get({
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +146,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Cadenza();
 
-const response = await cadenza.clients.info.get().asResponse();
+const response = await cadenza.health.get().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: infoGetResponse, response: raw } = await cadenza.clients.info.get().withResponse();
+const { data: healthGetResponse, response: raw } = await cadenza.health.get().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(infoGetResponse.exchangeTypes);
+console.log(healthGetResponse);
 ```
 
 ### Making custom/undocumented requests
@@ -258,7 +256,7 @@ const client = new Cadenza({
 });
 
 // Override per-request:
-await cadenza.clients.info.get({
+await cadenza.health.get({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

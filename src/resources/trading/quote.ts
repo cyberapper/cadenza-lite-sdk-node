@@ -30,12 +30,12 @@ export interface Quote {
   quoteRequestId: string;
 
   /**
-   * Create time of the quote
+   * deprecated, alias of createdAt, Create time of the quote
    */
   timestamp: number;
 
   /**
-   * Expiration time of the quote
+   * deprecated, alias of expiredAtExpiration time of the quote
    */
   validUntil: number;
 
@@ -60,6 +60,11 @@ export interface Quote {
   bidQuantity?: number;
 
   /**
+   * Create time of the quote
+   */
+  createdAt?: number;
+
+  /**
    * Exchange Account ID
    */
   exchangeAccountId?: string;
@@ -68,6 +73,11 @@ export interface Quote {
    * Exchange type
    */
   exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+  /**
+   * Expiration time of the quote
+   */
+  expiredAt?: number;
 }
 
 export interface QuoteRequest {
