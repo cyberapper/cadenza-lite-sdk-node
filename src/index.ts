@@ -150,6 +150,7 @@ export class Cadenza extends Core.APIClient {
   trading: API.Trading = new API.Trading(this);
   portfolio: API.Portfolio = new API.Portfolio(this);
   webhook: API.Webhook = new API.Webhook(this);
+  event: API.Event = new API.Event(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -236,26 +237,37 @@ export namespace Cadenza {
   export import Portfolio = API.Portfolio;
   export import ExchangeAccountBalance = API.ExchangeAccountBalance;
   export import ExchangeAccountCredit = API.ExchangeAccountCredit;
+  export import ExchangeAccountPortfolio = API.ExchangeAccountPortfolio;
   export import ExchangeAccountPosition = API.ExchangeAccountPosition;
+  export import PortfolioListResponse = API.PortfolioListResponse;
   export import PortfolioListBalancesResponse = API.PortfolioListBalancesResponse;
   export import PortfolioListCreditResponse = API.PortfolioListCreditResponse;
   export import PortfolioListPositionsResponse = API.PortfolioListPositionsResponse;
+  export import PortfolioListParams = API.PortfolioListParams;
   export import PortfolioListBalancesParams = API.PortfolioListBalancesParams;
   export import PortfolioListCreditParams = API.PortfolioListCreditParams;
   export import PortfolioListPositionsParams = API.PortfolioListPositionsParams;
 
   export import Webhook = API.Webhook;
+  export import Event = API.Event;
+  export import WebhookPubsubResponse = API.WebhookPubsubResponse;
+  export import WebhookPubsubParams = API.WebhookPubsubParams;
+
+  export import Event = API.Event;
   export import DropCopyExecutionReport = API.DropCopyExecutionReport;
   export import DropCopyOrder = API.DropCopyOrder;
   export import DropCopyPortfolio = API.DropCopyPortfolio;
-  export import Event = API.Event;
+  export import DropCopyQuote = API.DropCopyQuote;
   export import MarketDataKline = API.MarketDataKline;
   export import MarketDataOrderBook = API.MarketDataOrderBook;
   export import TaskCancelOrderRequestAck = API.TaskCancelOrderRequestAck;
   export import TaskPlaceOrderRequestAck = API.TaskPlaceOrderRequestAck;
   export import TaskQuoteRequestAck = API.TaskQuoteRequestAck;
-  export import WebhookPubsubResponse = API.WebhookPubsubResponse;
-  export import WebhookPubsubParams = API.WebhookPubsubParams;
+  export import EventDropCopyOrderParams = API.EventDropCopyOrderParams;
+  export import EventDropCopyPortfolioParams = API.EventDropCopyPortfolioParams;
+  export import EventDropCopyQuoteParams = API.EventDropCopyQuoteParams;
+  export import EventMarketDataKlineParams = API.EventMarketDataKlineParams;
+  export import EventMarketDataOrderBookParams = API.EventMarketDataOrderBookParams;
 }
 
 export default Cadenza;

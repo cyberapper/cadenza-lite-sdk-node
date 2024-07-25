@@ -55,6 +55,13 @@ export class OrderResource extends APIResource {
 
 export class OrdersOffset extends Offset<Order> {}
 
+export interface CancelOrderRequest {
+  /**
+   * Order ID
+   */
+  orderId: string;
+}
+
 export interface Order {
   /**
    * The total cost of this order.
@@ -183,6 +190,114 @@ export interface Order {
    * User ID
    */
   userId?: string;
+}
+
+export interface PlaceOrderRequest {
+  /**
+   * Exchange account ID
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Levarage
+   */
+  leverage?: number;
+
+  /**
+   * Order side
+   */
+  orderSide?: 'BUY' | 'SELL';
+
+  /**
+   * Order type
+   */
+  orderType?:
+    | 'MARKET'
+    | 'LIMIT'
+    | 'STOP_LOSS'
+    | 'STOP_LOSS_LIMIT'
+    | 'TAKE_PROFIT'
+    | 'TAKE_PROFIT_LIMIT'
+    | 'QUOTED';
+
+  /**
+   * Position ID for closing position in margin trading
+   */
+  positionId?: string;
+
+  /**
+   * Price
+   */
+  price?: number;
+
+  /**
+   * Price slippage tolerance, range: [0, 0.1] with 2 decimal places
+   */
+  priceSlippageTolerance?: number;
+
+  /**
+   * Priority list of exchange account ID in descending order
+   */
+  priority?: Array<string>;
+
+  /**
+   * Quantity. One of quantity or quoteQuantity must be provided. If both is
+   * provided, only quantity will be used.
+   */
+  quantity?: number;
+
+  /**
+   * Quote ID used by exchange for RFQ, e.g. WINTERMUTE need this field to execute
+   * QUOTED order
+   */
+  quoteId?: string;
+
+  /**
+   * Quote Quantity
+   */
+  quoteQuantity?: number;
+
+  /**
+   * Quote request ID
+   */
+  quoteRequestId?: string;
+
+  /**
+   * Route policy. For PRIORITY, the order request will be routed to the exchange
+   * account with the highest priority. For QUOTE, the system will execute the
+   * execution plan based on the quote. Order request with route policy QUOTE will
+   * only accept two parameters, quoteRequestId and priceSlippageTolerance
+   */
+  routePolicy?: 'PRIORITY' | 'QUOTE';
+
+  /**
+   * Symbol
+   */
+  symbol?: string;
+
+  /**
+   * Tenant ID
+   */
+  tenantId?: string;
+
+  /**
+   * Time in force
+   */
+  timeInForce?:
+    | 'DAY'
+    | 'GTC'
+    | 'GTX'
+    | 'GTD'
+    | 'OPG'
+    | 'CLS'
+    | 'IOC'
+    | 'FOK'
+    | 'GFA'
+    | 'GFS'
+    | 'GTM'
+    | 'MOO'
+    | 'MOC'
+    | 'EXT';
 }
 
 export type OrderCreateResponse = Array<Order>;
@@ -357,7 +472,9 @@ export interface OrderCancelParams {
 }
 
 export namespace OrderResource {
+  export import CancelOrderRequest = OrderAPI.CancelOrderRequest;
   export import Order = OrderAPI.Order;
+  export import PlaceOrderRequest = OrderAPI.PlaceOrderRequest;
   export import OrderCreateResponse = OrderAPI.OrderCreateResponse;
   export import OrdersOffset = OrderAPI.OrdersOffset;
   export import OrderCreateParams = OrderAPI.OrderCreateParams;
