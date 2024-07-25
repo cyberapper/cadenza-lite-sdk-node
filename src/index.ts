@@ -254,11 +254,15 @@ export namespace Cadenza {
   export import WebhookPubsubParams = API.WebhookPubsubParams;
 
   export import Event = API.Event;
-  export import EventDropCopyOrderResponse = API.EventDropCopyOrderResponse;
-  export import EventDropCopyPortfolioResponse = API.EventDropCopyPortfolioResponse;
-  export import EventDropCopyQuoteResponse = API.EventDropCopyQuoteResponse;
-  export import EventMarketDataKlineResponse = API.EventMarketDataKlineResponse;
-  export import EventMarketDataOrderBookResponse = API.EventMarketDataOrderBookResponse;
+  export import DropCopyExecutionReport = API.DropCopyExecutionReport;
+  export import DropCopyOrder = API.DropCopyOrder;
+  export import DropCopyPortfolio = API.DropCopyPortfolio;
+  export import DropCopyQuote = API.DropCopyQuote;
+  export import MarketDataKline = API.MarketDataKline;
+  export import MarketDataOrderBook = API.MarketDataOrderBook;
+  export import TaskCancelOrderRequestAck = API.TaskCancelOrderRequestAck;
+  export import TaskPlaceOrderRequestAck = API.TaskPlaceOrderRequestAck;
+  export import TaskQuoteRequestAck = API.TaskQuoteRequestAck;
   export import EventDropCopyOrderParams = API.EventDropCopyOrderParams;
   export import EventDropCopyPortfolioParams = API.EventDropCopyPortfolioParams;
   export import EventDropCopyQuoteParams = API.EventDropCopyQuoteParams;
