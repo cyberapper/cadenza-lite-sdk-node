@@ -4,7 +4,7 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as QuoteAPI from './quote';
 
-export class Quote extends APIResource {
+export class QuoteResource extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
@@ -16,7 +16,7 @@ export class Quote extends APIResource {
   }
 }
 
-export interface QuoteWithOrderCandidates {
+export interface Quote {
   /**
    * Base currency
    */
@@ -62,64 +62,18 @@ export interface QuoteWithOrderCandidates {
    */
   bidQuantity?: number;
 
-  orderCandidates?: Array<QuoteWithOrderCandidates.OrderCandidate>;
+  /**
+   * Exchange Account ID
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Exchange type
+   */
+  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 }
 
-export namespace QuoteWithOrderCandidates {
-  export interface OrderCandidate {
-    /**
-     * Exchange account ID
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Order side
-     */
-    orderSide?: 'BUY' | 'SELL';
-
-    /**
-     * Order type
-     */
-    orderType?:
-      | 'MARKET'
-      | 'LIMIT'
-      | 'STOP_LOSS'
-      | 'STOP_LOSS_LIMIT'
-      | 'TAKE_PROFIT'
-      | 'TAKE_PROFIT_LIMIT'
-      | 'QUOTED';
-
-    /**
-     * Quantity
-     */
-    quantity?: number;
-
-    /**
-     * Quote Quantity
-     */
-    quoteQuantity?: number;
-
-    /**
-     * Quote request ID
-     */
-    quoteRequestId?: string;
-
-    /**
-     * Route policy. For PRIORITY, the order request will be routed to the exchange
-     * account with the highest priority. For QUOTE, the system will execute the
-     * execution plan based on the quote. Order request with route policy QUOTE will
-     * only accept two parameters, quoteRequestId and priceSlippageTolerance
-     */
-    routePolicy?: 'PRIORITY' | 'QUOTE';
-
-    /**
-     * Symbol
-     */
-    symbol?: string;
-  }
-}
-
-export type QuoteRequestForQuoteResponse = Array<QuoteWithOrderCandidates>;
+export type QuoteRequestForQuoteResponse = Array<Quote>;
 
 export interface QuoteRequestForQuoteParams {
   /**
@@ -154,8 +108,8 @@ export interface QuoteRequestForQuoteParams {
   quoteQuantity?: number;
 }
 
-export namespace Quote {
-  export import QuoteWithOrderCandidates = QuoteAPI.QuoteWithOrderCandidates;
+export namespace QuoteResource {
+  export import Quote = QuoteAPI.Quote;
   export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
   export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
 }
