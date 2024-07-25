@@ -175,6 +175,7 @@ Types:
 - <code><a href="./src/resources/event.ts">DropCopyOrder</a></code>
 - <code><a href="./src/resources/event.ts">DropCopyPortfolio</a></code>
 - <code><a href="./src/resources/event.ts">DropCopyQuote</a></code>
+- <code><a href="./src/resources/event.ts">GenericEvent</a></code>
 - <code><a href="./src/resources/event.ts">MarketDataKline</a></code>
 - <code><a href="./src/resources/event.ts">MarketDataOrderBook</a></code>
 - <code><a href="./src/resources/event.ts">TaskCancelOrderRequestAck</a></code>
@@ -183,8 +184,13 @@ Types:
 
 Methods:
 
+- <code title="post /api/v2/webhook/pubsub/dropCopy/executionReport">client.event.<a href="./src/resources/event.ts">dropCopyExecutionReport</a>({ ...params }) -> DropCopyExecutionReport</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/order">client.event.<a href="./src/resources/event.ts">dropCopyOrder</a>({ ...params }) -> DropCopyOrder</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/portfolio">client.event.<a href="./src/resources/event.ts">dropCopyPortfolio</a>({ ...params }) -> DropCopyPortfolio</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.event.<a href="./src/resources/event.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
 - <code title="post /api/v2/webhook/pubsub/marketData/kline">client.event.<a href="./src/resources/event.ts">marketDataKline</a>({ ...params }) -> MarketDataKline</code>
 - <code title="post /api/v2/webhook/pubsub/marketData/orderBook">client.event.<a href="./src/resources/event.ts">marketDataOrderBook</a>({ ...params }) -> MarketDataOrderBook</code>
+- <code title="post /api/v2/webhook/pubsub/event">client.event.<a href="./src/resources/event.ts">new</a>({ ...params }) -> GenericEvent</code>
+- <code title="post /api/v2/webhook/pubsub/task/cancelOrderRequestAck">client.event.<a href="./src/resources/event.ts">taskCancelOrderRequestAck</a>({ ...params }) -> TaskCancelOrderRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/task/placeOrderRequestAck">client.event.<a href="./src/resources/event.ts">taskPlaceOrderRequestAck</a>({ ...params }) -> TaskPlaceOrderRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/task/quoteRequestAck">client.event.<a href="./src/resources/event.ts">taskQuoteRequestAck</a>({ ...params }) -> TaskQuoteRequestAck</code>

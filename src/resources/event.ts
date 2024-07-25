@@ -13,6 +13,16 @@ import * as WebhookAPI from './webhook/webhook';
 
 export class Event extends APIResource {
   /**
+   * PubSub event handler for execution report drop copy event
+   */
+  dropCopyExecutionReport(
+    body: EventDropCopyExecutionReportParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DropCopyExecutionReport> {
+    return this._client.post('/api/v2/webhook/pubsub/dropCopy/executionReport', { body, ...options });
+  }
+
+  /**
    * PubSub event handler placeholder for order event
    */
   dropCopyOrder(
@@ -61,35 +71,98 @@ export class Event extends APIResource {
   ): Core.APIPromise<MarketDataOrderBook> {
     return this._client.post('/api/v2/webhook/pubsub/marketData/orderBook', { body, ...options });
   }
+
+  /**
+   * PubSub event handler placeholder
+   */
+  new(body: EventNewParams, options?: Core.RequestOptions): Core.APIPromise<GenericEvent> {
+    return this._client.post('/api/v2/webhook/pubsub/event', { body, ...options });
+  }
+
+  /**
+   * PubSub event handler placeholder for cancel order request acknowledgment event
+   */
+  taskCancelOrderRequestAck(
+    body: EventTaskCancelOrderRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TaskCancelOrderRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/task/cancelOrderRequestAck', { body, ...options });
+  }
+
+  /**
+   * PubSub event handler placeholder for place order request acknowledgment event
+   */
+  taskPlaceOrderRequestAck(
+    body: EventTaskPlaceOrderRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TaskPlaceOrderRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/task/placeOrderRequestAck', { body, ...options });
+  }
+
+  /**
+   * PubSub event handler placeholder for quote request acknowledgment event
+   */
+  taskQuoteRequestAck(
+    body: EventTaskQuoteRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TaskQuoteRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/task/quoteRequestAck', { body, ...options });
+  }
 }
 
 export interface DropCopyExecutionReport extends WebhookAPI.Event {
-  eventType?: 'cadenza.dropCopy.executionReport';
-
   payload?: ExecutionReportAPI.ExecutionReport;
 }
 
 export interface DropCopyOrder extends WebhookAPI.Event {
-  eventType?: 'cadenza.dropCopy.order';
-
   payload?: OrderAPI.Order;
 }
 
 export interface DropCopyPortfolio extends WebhookAPI.Event {
-  eventType?: 'cadenza.dropCopy.portfolio';
-
   payload?: PortfolioAPI.ExchangeAccountPortfolio;
 }
 
 export interface DropCopyQuote extends WebhookAPI.Event {
-  eventType?: 'cadenza.dropCopy.quote';
-
   payload?: QuoteAPI.Quote;
 }
 
-export interface MarketDataKline extends WebhookAPI.Event {
-  eventType?: 'cadenza.marketData.kline';
+export interface GenericEvent extends WebhookAPI.Event {
+  /**
+   * The actual data of the event, which varies based on the event type.
+   */
+  payload?:
+    | QuoteAPI.QuoteRequest
+    | OrderAPI.PlaceOrderRequest
+    | OrderAPI.CancelOrderRequest
+    | QuoteAPI.Quote
+    | OrderAPI.Order
+    | ExecutionReportAPI.ExecutionReport
+    | PortfolioAPI.ExchangeAccountPortfolio
+    | OrderbookAPI.Orderbook
+    | GenericEvent.Kline;
+}
 
+export namespace GenericEvent {
+  export interface Kline {
+    candles?: Array<KlineAPI.Ohlcv>;
+
+    /**
+     * The unique identifier for the account.
+     */
+    exchangeAccountId?: string;
+
+    /**
+     * Exchange type
+     */
+    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
+
+    symbol?: string;
+  }
+}
+
+export interface MarketDataKline extends WebhookAPI.Event {
   payload?: MarketDataKline.Payload;
 }
 
@@ -114,27 +187,51 @@ export namespace MarketDataKline {
 }
 
 export interface MarketDataOrderBook extends WebhookAPI.Event {
-  eventType?: 'cadenza.marketData.orderBook';
-
   payload?: OrderbookAPI.Orderbook;
 }
 
 export interface TaskCancelOrderRequestAck extends WebhookAPI.Event {
-  eventType?: 'cadenza.task.cancelOrderRequestAck';
-
   payload?: OrderAPI.CancelOrderRequest;
 }
 
 export interface TaskPlaceOrderRequestAck extends WebhookAPI.Event {
-  eventType?: 'cadenza.task.placeOrderRequestAck';
-
   payload?: OrderAPI.PlaceOrderRequest;
 }
 
 export interface TaskQuoteRequestAck extends WebhookAPI.Event {
-  eventType?: 'cadenza.task.placeOrderRequestAck';
-
   payload?: QuoteAPI.QuoteRequest;
+}
+
+export interface EventDropCopyExecutionReportParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quoteRequestAck'
+    | 'cadenza.task.placeOrderRequestAck'
+    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: ExecutionReportAPI.ExecutionReport;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
 }
 
 export interface EventDropCopyOrderParams {
@@ -143,11 +240,15 @@ export interface EventDropCopyOrderParams {
    */
   eventId: string;
 
+  /**
+   * Event Type
+   */
   eventType:
-    | 'cadenza.dropCopy.order'
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -171,12 +272,16 @@ export interface EventDropCopyPortfolioParams {
    */
   eventId: string;
 
+  /**
+   * Event Type
+   */
   eventType:
-    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
 
@@ -199,10 +304,14 @@ export interface EventDropCopyQuoteParams {
    */
   eventId: string;
 
+  /**
+   * Event Type
+   */
   eventType:
-    | 'cadenza.dropCopy.quote'
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
@@ -227,31 +336,25 @@ export interface EventMarketDataKlineParams {
    */
   eventId: string;
 
+  /**
+   * Event Type
+   */
   eventType:
-    | 'cadenza.marketData.kline'
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
-    | 'cadenza.marketData.orderBook';
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
 
   /**
    * Unix timestamp in milliseconds when the event was generated.
    */
   timestamp: number;
 
-  payload?:
-    | QuoteAPI.QuoteRequest
-    | OrderAPI.PlaceOrderRequest
-    | OrderAPI.CancelOrderRequest
-    | QuoteAPI.Quote
-    | OrderAPI.Order
-    | ExecutionReportAPI.ExecutionReport
-    | PortfolioAPI.ExchangeAccountPortfolio
-    | OrderbookAPI.Orderbook
-    | EventMarketDataKlineParams.Kline
-    | EventMarketDataKlineParams.Kline;
+  payload?: EventMarketDataKlineParams.Payload;
 
   /**
    * The source system or module that generated the event.
@@ -260,25 +363,7 @@ export interface EventMarketDataKlineParams {
 }
 
 export namespace EventMarketDataKlineParams {
-  export interface Kline {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
-
-  export interface Kline {
+  export interface Payload {
     candles?: Array<KlineAPI.Ohlcv>;
 
     /**
@@ -303,13 +388,17 @@ export interface EventMarketDataOrderBookParams {
    */
   eventId: string;
 
+  /**
+   * Event Type
+   */
   eventType:
-    | 'cadenza.marketData.orderBook'
+    | 'cadenza.task.quoteRequestAck'
     | 'cadenza.task.placeOrderRequestAck'
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
 
   /**
@@ -325,19 +414,185 @@ export interface EventMarketDataOrderBookParams {
   source?: string;
 }
 
+export interface EventNewParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quoteRequestAck'
+    | 'cadenza.task.placeOrderRequestAck'
+    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  /**
+   * The actual data of the event, which varies based on the event type.
+   */
+  payload?:
+    | QuoteAPI.QuoteRequest
+    | OrderAPI.PlaceOrderRequest
+    | OrderAPI.CancelOrderRequest
+    | QuoteAPI.Quote
+    | OrderAPI.Order
+    | ExecutionReportAPI.ExecutionReport
+    | PortfolioAPI.ExchangeAccountPortfolio
+    | OrderbookAPI.Orderbook
+    | EventNewParams.Kline;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
+export namespace EventNewParams {
+  export interface Kline {
+    candles?: Array<KlineAPI.Ohlcv>;
+
+    /**
+     * The unique identifier for the account.
+     */
+    exchangeAccountId?: string;
+
+    /**
+     * Exchange type
+     */
+    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+
+    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
+
+    symbol?: string;
+  }
+}
+
+export interface EventTaskCancelOrderRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quoteRequestAck'
+    | 'cadenza.task.placeOrderRequestAck'
+    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: OrderAPI.CancelOrderRequest;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
+export interface EventTaskPlaceOrderRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quoteRequestAck'
+    | 'cadenza.task.placeOrderRequestAck'
+    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: OrderAPI.PlaceOrderRequest;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
+export interface EventTaskQuoteRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quoteRequestAck'
+    | 'cadenza.task.placeOrderRequestAck'
+    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: QuoteAPI.QuoteRequest;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
 export namespace Event {
   export import DropCopyExecutionReport = EventAPI.DropCopyExecutionReport;
   export import DropCopyOrder = EventAPI.DropCopyOrder;
   export import DropCopyPortfolio = EventAPI.DropCopyPortfolio;
   export import DropCopyQuote = EventAPI.DropCopyQuote;
+  export import GenericEvent = EventAPI.GenericEvent;
   export import MarketDataKline = EventAPI.MarketDataKline;
   export import MarketDataOrderBook = EventAPI.MarketDataOrderBook;
   export import TaskCancelOrderRequestAck = EventAPI.TaskCancelOrderRequestAck;
   export import TaskPlaceOrderRequestAck = EventAPI.TaskPlaceOrderRequestAck;
   export import TaskQuoteRequestAck = EventAPI.TaskQuoteRequestAck;
+  export import EventDropCopyExecutionReportParams = EventAPI.EventDropCopyExecutionReportParams;
   export import EventDropCopyOrderParams = EventAPI.EventDropCopyOrderParams;
   export import EventDropCopyPortfolioParams = EventAPI.EventDropCopyPortfolioParams;
   export import EventDropCopyQuoteParams = EventAPI.EventDropCopyQuoteParams;
   export import EventMarketDataKlineParams = EventAPI.EventMarketDataKlineParams;
   export import EventMarketDataOrderBookParams = EventAPI.EventMarketDataOrderBookParams;
+  export import EventNewParams = EventAPI.EventNewParams;
+  export import EventTaskCancelOrderRequestAckParams = EventAPI.EventTaskCancelOrderRequestAckParams;
+  export import EventTaskPlaceOrderRequestAckParams = EventAPI.EventTaskPlaceOrderRequestAckParams;
+  export import EventTaskQuoteRequestAckParams = EventAPI.EventTaskQuoteRequestAckParams;
 }
