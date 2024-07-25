@@ -120,7 +120,7 @@ export interface ExchangeAccountCreateParams {
   environment: 0 | 1;
 
   /**
-   * Exchange account name, Available characters: a-z, A-Z, 0-9, \_, ' '(space)
+   * Exchange account name, Available characters: a-z, A-Z, 0-9, \_, (space)
    */
   exchangeAccountName: string;
 
@@ -147,7 +147,7 @@ export interface ExchangeAccountUpdateParams {
   apiSecret?: string;
 
   /**
-   * Exchange account name, Available characters: a-z, A-Z, 0-9, \_, ' '(space)
+   * Exchange account name, Available characters: a-z, A-Z, 0-9, \_, (space)
    */
   exchangeAccountName?: string;
 }

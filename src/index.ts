@@ -150,7 +150,7 @@ export class Cadenza extends Core.APIClient {
   trading: API.Trading = new API.Trading(this);
   portfolio: API.Portfolio = new API.Portfolio(this);
   webhook: API.Webhook = new API.Webhook(this);
-  event: API.Event = new API.Event(this);
+  event: API.EventResource = new API.EventResource(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -253,27 +253,9 @@ export namespace Cadenza {
   export import WebhookPubsubResponse = API.WebhookPubsubResponse;
   export import WebhookPubsubParams = API.WebhookPubsubParams;
 
+  export import EventResource = API.EventResource;
   export import Event = API.Event;
-  export import DropCopyExecutionReport = API.DropCopyExecutionReport;
-  export import DropCopyOrder = API.DropCopyOrder;
-  export import DropCopyPortfolio = API.DropCopyPortfolio;
-  export import DropCopyQuote = API.DropCopyQuote;
-  export import GenericEvent = API.GenericEvent;
-  export import MarketDataKline = API.MarketDataKline;
-  export import MarketDataOrderBook = API.MarketDataOrderBook;
-  export import TaskCancelOrderRequestAck = API.TaskCancelOrderRequestAck;
-  export import TaskPlaceOrderRequestAck = API.TaskPlaceOrderRequestAck;
-  export import TaskQuoteRequestAck = API.TaskQuoteRequestAck;
-  export import EventDropCopyExecutionReportParams = API.EventDropCopyExecutionReportParams;
-  export import EventDropCopyOrderParams = API.EventDropCopyOrderParams;
-  export import EventDropCopyPortfolioParams = API.EventDropCopyPortfolioParams;
-  export import EventDropCopyQuoteParams = API.EventDropCopyQuoteParams;
-  export import EventMarketDataKlineParams = API.EventMarketDataKlineParams;
-  export import EventMarketDataOrderBookParams = API.EventMarketDataOrderBookParams;
   export import EventNewParams = API.EventNewParams;
-  export import EventTaskCancelOrderRequestAckParams = API.EventTaskCancelOrderRequestAckParams;
-  export import EventTaskPlaceOrderRequestAckParams = API.EventTaskPlaceOrderRequestAckParams;
-  export import EventTaskQuoteRequestAckParams = API.EventTaskQuoteRequestAckParams;
 }
 
 export default Cadenza;
