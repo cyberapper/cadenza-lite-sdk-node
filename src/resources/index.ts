@@ -1,16 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export { Clients } from './clients/clients';
+export { Event, WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
 export {
-  DropCopyExecutionReport,
-  DropCopyOrder,
-  DropCopyPortfolio,
-  DropCopyQuote,
-  MarketDataKline,
-  MarketDataOrderBook,
-  TaskCancelOrderRequestAck,
-  TaskPlaceOrderRequestAck,
-  TaskQuoteRequestAck,
+  EventDropCopyOrderResponse,
+  EventDropCopyPortfolioResponse,
+  EventDropCopyQuoteResponse,
+  EventMarketDataKlineResponse,
+  EventMarketDataOrderBookResponse,
   EventDropCopyOrderParams,
   EventDropCopyPortfolioParams,
   EventDropCopyQuoteParams,
@@ -18,7 +15,6 @@ export {
   EventMarketDataOrderBookParams,
   Event,
 } from './event';
-export { Event, WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
 export {
   ExchangeAccount,
   ExchangeAccountCreateResponse,
