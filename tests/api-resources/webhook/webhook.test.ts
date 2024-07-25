@@ -10,12 +10,7 @@ const cadenza = new Cadenza({
 
 describe('resource webhook', () => {
   test('pubsub: only required params', async () => {
-    const responsePromise = cadenza.webhook.pubsub({
-      eventId: 'eventId',
-      eventType: 'eventType',
-      payload: { baseCurrency: 'baseCurrency', quoteCurrency: 'quoteCurrency', orderSide: 'orderSide' },
-      timestamp: 1632933600000,
-    });
+    const responsePromise = cadenza.webhook.pubsub({ message: { id: 'id' }, subscription: 'subscription' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -27,18 +22,8 @@ describe('resource webhook', () => {
 
   test('pubsub: required and optional params', async () => {
     const response = await cadenza.webhook.pubsub({
-      eventId: 'eventId',
-      eventType: 'eventType',
-      payload: {
-        baseCurrency: 'baseCurrency',
-        quoteCurrency: 'quoteCurrency',
-        orderSide: 'orderSide',
-        quantity: 0,
-        quoteQuantity: 0,
-        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      },
-      timestamp: 1632933600000,
-      source: 'source',
+      message: { data: 'U3RhaW5sZXNzIHJvY2tz', id: 'id' },
+      subscription: 'subscription',
     });
   });
 });
