@@ -2,13 +2,13 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as HealthAPI from './health';
+import * as UtilityAPI from './utility';
 
-export class Health extends APIResource {
+export class Utility extends APIResource {
   /**
    * Health check
    */
-  get(options?: Core.RequestOptions): Core.APIPromise<string> {
+  health(options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get('/api/v2/health', {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -16,8 +16,8 @@ export class Health extends APIResource {
   }
 }
 
-export type HealthGetResponse = string;
+export type UtilityHealthResponse = string;
 
-export namespace Health {
-  export import HealthGetResponse = HealthAPI.HealthGetResponse;
+export namespace Utility {
+  export import UtilityHealthResponse = UtilityAPI.UtilityHealthResponse;
 }

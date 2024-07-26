@@ -2,9 +2,9 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ExchangeAccountsAPI from './exchange-accounts';
+import * as ExchangeAccountAPI from './exchange-account';
 
-export class ExchangeAccounts extends APIResource {
+export class ExchangeAccount extends APIResource {
   /**
    * Add exchange account
    */
@@ -166,15 +166,15 @@ export interface ExchangeAccountSetExchangePriorityParams {
   priority: Array<string>;
 }
 
-export namespace ExchangeAccounts {
-  export import ExchangeAccount = ExchangeAccountsAPI.ExchangeAccount;
-  export import ExchangeAccountCreateResponse = ExchangeAccountsAPI.ExchangeAccountCreateResponse;
-  export import ExchangeAccountUpdateResponse = ExchangeAccountsAPI.ExchangeAccountUpdateResponse;
-  export import ExchangeAccountListResponse = ExchangeAccountsAPI.ExchangeAccountListResponse;
-  export import ExchangeAccountRemoveResponse = ExchangeAccountsAPI.ExchangeAccountRemoveResponse;
-  export import ExchangeAccountSetExchangePriorityResponse = ExchangeAccountsAPI.ExchangeAccountSetExchangePriorityResponse;
-  export import ExchangeAccountCreateParams = ExchangeAccountsAPI.ExchangeAccountCreateParams;
-  export import ExchangeAccountUpdateParams = ExchangeAccountsAPI.ExchangeAccountUpdateParams;
-  export import ExchangeAccountRemoveParams = ExchangeAccountsAPI.ExchangeAccountRemoveParams;
-  export import ExchangeAccountSetExchangePriorityParams = ExchangeAccountsAPI.ExchangeAccountSetExchangePriorityParams;
+export namespace ExchangeAccount {
+  export import ExchangeAccount = ExchangeAccountAPI.ExchangeAccount;
+  export import ExchangeAccountCreateResponse = ExchangeAccountAPI.ExchangeAccountCreateResponse;
+  export import ExchangeAccountUpdateResponse = ExchangeAccountAPI.ExchangeAccountUpdateResponse;
+  export import ExchangeAccountListResponse = ExchangeAccountAPI.ExchangeAccountListResponse;
+  export import ExchangeAccountRemoveResponse = ExchangeAccountAPI.ExchangeAccountRemoveResponse;
+  export import ExchangeAccountSetExchangePriorityResponse = ExchangeAccountAPI.ExchangeAccountSetExchangePriorityResponse;
+  export import ExchangeAccountCreateParams = ExchangeAccountAPI.ExchangeAccountCreateParams;
+  export import ExchangeAccountUpdateParams = ExchangeAccountAPI.ExchangeAccountUpdateParams;
+  export import ExchangeAccountRemoveParams = ExchangeAccountAPI.ExchangeAccountRemoveParams;
+  export import ExchangeAccountSetExchangePriorityParams = ExchangeAccountAPI.ExchangeAccountSetExchangePriorityParams;
 }
