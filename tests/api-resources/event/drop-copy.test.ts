@@ -12,7 +12,7 @@ describe('resource dropCopy', () => {
   test('dropCopyExecutionReport: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyExecutionReport({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,7 +27,7 @@ describe('resource dropCopy', () => {
   test('dropCopyExecutionReport: required and optional params', async () => {
     const response = await cadenza.event.dropCopy.dropCopyExecutionReport({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         clOrdId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -142,7 +142,7 @@ describe('resource dropCopy', () => {
   test('dropCopyOrder: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyOrder({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -157,7 +157,7 @@ describe('resource dropCopy', () => {
   test('dropCopyOrder: required and optional params', async () => {
     const response = await cadenza.event.dropCopy.dropCopyOrder({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         cost: 0,
@@ -188,7 +188,7 @@ describe('resource dropCopy', () => {
   test('dropCopyPortfolio: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyPortfolio({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -203,7 +203,7 @@ describe('resource dropCopy', () => {
   test('dropCopyPortfolio: required and optional params', async () => {
     const response = await cadenza.event.dropCopy.dropCopyPortfolio({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -243,7 +243,7 @@ describe('resource dropCopy', () => {
   test('dropCopyQuote: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyQuote({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -258,7 +258,7 @@ describe('resource dropCopy', () => {
   test('dropCopyQuote: required and optional params', async () => {
     const response = await cadenza.event.dropCopy.dropCopyQuote({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',

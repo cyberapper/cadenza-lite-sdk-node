@@ -38,9 +38,10 @@ export interface MarketDataKline {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'
@@ -71,9 +72,10 @@ export interface MarketDataOrderBook {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'
@@ -104,9 +106,10 @@ export interface MarketDataMarketDataKlineParams {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'
@@ -137,9 +140,10 @@ export interface MarketDataMarketDataOrderBookParams {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'

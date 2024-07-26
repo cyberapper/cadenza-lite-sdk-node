@@ -36,9 +36,10 @@ export interface Event {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'
@@ -81,9 +82,10 @@ export interface EventNewParams {
    * Event Type
    */
   eventType:
-    | 'cadenza.task.quoteRequestAck'
-    | 'cadenza.task.placeOrderRequestAck'
-    | 'cadenza.task.cancelOrderRequestAck'
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
     | 'cadenza.dropCopy.executionReport'
@@ -120,17 +122,16 @@ export namespace EventResource {
   export import Event = EventAPI.Event;
   export import EventNewParams = EventAPI.EventNewParams;
   export import Task = TaskAPI.Task;
-  export import TaskCancelOrderRequestAck = TaskAPI.TaskCancelOrderRequestAck;
-  export import TaskPlaceOrderRequestAck = TaskAPI.TaskPlaceOrderRequestAck;
-  export import TaskQuoteRequestAck = TaskAPI.TaskQuoteRequestAck;
-  export import TaskTaskCancelOrderRequestAckParams = TaskAPI.TaskTaskCancelOrderRequestAckParams;
-  export import TaskTaskPlaceOrderRequestAckParams = TaskAPI.TaskTaskPlaceOrderRequestAckParams;
-  export import TaskTaskQuoteRequestAckParams = TaskAPI.TaskTaskQuoteRequestAckParams;
+  export import TaskQuote = TaskAPI.TaskQuote;
+  export import TaskTaskQuoteParams = TaskAPI.TaskTaskQuoteParams;
   export import DropCopy = DropCopyAPI.DropCopy;
+  export import DropCopyCancelOrderRequestAck = DropCopyAPI.DropCopyCancelOrderRequestAck;
   export import DropCopyExecutionReport = DropCopyAPI.DropCopyExecutionReport;
   export import DropCopyOrder = DropCopyAPI.DropCopyOrder;
+  export import DropCopyPlaceOrderRequestAck = DropCopyAPI.DropCopyPlaceOrderRequestAck;
   export import DropCopyPortfolio = DropCopyAPI.DropCopyPortfolio;
   export import DropCopyQuote = DropCopyAPI.DropCopyQuote;
+  export import DropCopyRequestAck = DropCopyAPI.DropCopyRequestAck;
   export import DropCopyDropCopyExecutionReportParams = DropCopyAPI.DropCopyDropCopyExecutionReportParams;
   export import DropCopyDropCopyOrderParams = DropCopyAPI.DropCopyDropCopyOrderParams;
   export import DropCopyDropCopyPortfolioParams = DropCopyAPI.DropCopyDropCopyPortfolioParams;
