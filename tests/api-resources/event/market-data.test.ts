@@ -12,7 +12,7 @@ describe('resource marketData', () => {
   test('marketDataKline: only required params', async () => {
     const responsePromise = cadenza.event.marketData.marketDataKline({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,7 +27,7 @@ describe('resource marketData', () => {
   test('marketDataKline: required and optional params', async () => {
     const response = await cadenza.event.marketData.marketDataKline({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -47,7 +47,7 @@ describe('resource marketData', () => {
   test('marketDataOrderBook: only required params', async () => {
     const responsePromise = cadenza.event.marketData.marketDataOrderBook({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -62,7 +62,7 @@ describe('resource marketData', () => {
   test('marketDataOrderBook: required and optional params', async () => {
     const response = await cadenza.event.marketData.marketDataOrderBook({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         asks: [

@@ -12,7 +12,7 @@ describe('resource event', () => {
   test('new: only required params', async () => {
     const responsePromise = cadenza.event.new({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,7 +27,7 @@ describe('resource event', () => {
   test('new: required and optional params', async () => {
     const response = await cadenza.event.new({
       eventId: 'eventId',
-      eventType: 'cadenza.task.quoteRequestAck',
+      eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         baseCurrency: 'baseCurrency',

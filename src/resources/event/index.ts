@@ -1,10 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  DropCopyCancelOrderRequestAck,
   DropCopyExecutionReport,
   DropCopyOrder,
+  DropCopyPlaceOrderRequestAck,
   DropCopyPortfolio,
   DropCopyQuote,
+  DropCopyRequestAck,
   DropCopyDropCopyExecutionReportParams,
   DropCopyDropCopyOrderParams,
   DropCopyDropCopyPortfolioParams,
@@ -19,12 +22,4 @@ export {
   MarketDataMarketDataOrderBookParams,
   MarketData,
 } from './market-data';
-export {
-  TaskCancelOrderRequestAck,
-  TaskPlaceOrderRequestAck,
-  TaskQuoteRequestAck,
-  TaskTaskCancelOrderRequestAckParams,
-  TaskTaskPlaceOrderRequestAckParams,
-  TaskTaskQuoteRequestAckParams,
-  Task,
-} from './task';
+export { TaskQuote, TaskTaskQuoteParams, Task } from './task';

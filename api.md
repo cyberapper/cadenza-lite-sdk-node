@@ -170,24 +170,23 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/event/task.ts">TaskCancelOrderRequestAck</a></code>
-- <code><a href="./src/resources/event/task.ts">TaskPlaceOrderRequestAck</a></code>
-- <code><a href="./src/resources/event/task.ts">TaskQuoteRequestAck</a></code>
+- <code><a href="./src/resources/event/task.ts">TaskQuote</a></code>
 
 Methods:
 
-- <code title="post /api/v2/webhook/pubsub/task/cancelOrderRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskCancelOrderRequestAck</a>({ ...params }) -> TaskCancelOrderRequestAck</code>
-- <code title="post /api/v2/webhook/pubsub/task/placeOrderRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskPlaceOrderRequestAck</a>({ ...params }) -> TaskPlaceOrderRequestAck</code>
-- <code title="post /api/v2/webhook/pubsub/task/quoteRequestAck">client.event.task.<a href="./src/resources/event/task.ts">taskQuoteRequestAck</a>({ ...params }) -> TaskQuoteRequestAck</code>
+- <code title="post /api/v2/webhook/pubsub/task/quote">client.event.task.<a href="./src/resources/event/task.ts">taskQuote</a>({ ...params }) -> TaskQuote</code>
 
 ## DropCopy
 
 Types:
 
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyCancelOrderRequestAck</a></code>
 - <code><a href="./src/resources/event/drop-copy.ts">DropCopyExecutionReport</a></code>
 - <code><a href="./src/resources/event/drop-copy.ts">DropCopyOrder</a></code>
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyPlaceOrderRequestAck</a></code>
 - <code><a href="./src/resources/event/drop-copy.ts">DropCopyPortfolio</a></code>
 - <code><a href="./src/resources/event/drop-copy.ts">DropCopyQuote</a></code>
+- <code><a href="./src/resources/event/drop-copy.ts">DropCopyRequestAck</a></code>
 
 Methods:
 
