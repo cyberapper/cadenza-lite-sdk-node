@@ -3,15 +3,9 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as EventAPI from './event';
-import * as PortfolioAPI from '../portfolio';
 import * as DropCopyAPI from './drop-copy';
 import * as MarketDataAPI from './market-data';
 import * as TaskAPI from './task';
-import * as KlineAPI from '../market/kline';
-import * as OrderbookAPI from '../market/orderbook';
-import * as ExecutionReportAPI from '../trading/execution-report';
-import * as OrderAPI from '../trading/order';
-import * as QuoteAPI from '../trading/quote';
 
 export class EventResource extends APIResource {
   task: TaskAPI.Task = new TaskAPI.Task(this._client);
@@ -55,16 +49,7 @@ export interface Event {
   /**
    * The actual data of the event, which varies based on the event type.
    */
-  payload?:
-    | QuoteAPI.QuoteRequest
-    | OrderAPI.PlaceOrderRequest
-    | OrderAPI.CancelOrderRequest
-    | QuoteAPI.Quote
-    | OrderAPI.Order
-    | ExecutionReportAPI.ExecutionReport
-    | PortfolioAPI.ExchangeAccountPortfolio
-    | OrderbookAPI.Orderbook
-    | KlineAPI.Kline;
+  payload?: unknown;
 
   /**
    * The source system or module that generated the event.
@@ -101,16 +86,7 @@ export interface EventNewParams {
   /**
    * The actual data of the event, which varies based on the event type.
    */
-  payload?:
-    | QuoteAPI.QuoteRequest
-    | OrderAPI.PlaceOrderRequest
-    | OrderAPI.CancelOrderRequest
-    | QuoteAPI.Quote
-    | OrderAPI.Order
-    | ExecutionReportAPI.ExecutionReport
-    | PortfolioAPI.ExchangeAccountPortfolio
-    | OrderbookAPI.Orderbook
-    | KlineAPI.Kline;
+  payload?: unknown;
 
   /**
    * The source system or module that generated the event.
