@@ -29,14 +29,7 @@ describe('resource event', () => {
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
-      payload: {
-        baseCurrency: 'baseCurrency',
-        quoteCurrency: 'quoteCurrency',
-        orderSide: 'orderSide',
-        quantity: 0,
-        quoteQuantity: 0,
-        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      },
+      payload: {},
       source: 'source',
     });
   });
