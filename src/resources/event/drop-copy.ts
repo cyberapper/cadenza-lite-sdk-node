@@ -65,6 +65,7 @@ export interface DropCopyExecutionReport {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -97,6 +98,7 @@ export interface DropCopyOrder {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -129,6 +131,7 @@ export interface DropCopyPortfolio {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -161,6 +164,7 @@ export interface DropCopyQuote {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -193,6 +197,7 @@ export interface DropCopyDropCopyExecutionReportParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -225,6 +230,7 @@ export interface DropCopyDropCopyOrderParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -257,6 +263,7 @@ export interface DropCopyDropCopyPortfolioParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -289,6 +296,7 @@ export interface DropCopyDropCopyQuoteParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';

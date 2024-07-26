@@ -43,6 +43,7 @@ export interface MarketDataKline {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -75,6 +76,7 @@ export interface MarketDataOrderBook {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -107,6 +109,7 @@ export interface MarketDataMarketDataKlineParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -139,6 +142,7 @@ export interface MarketDataMarketDataOrderBookParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
