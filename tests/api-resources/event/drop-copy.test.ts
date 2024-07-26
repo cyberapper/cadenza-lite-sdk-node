@@ -209,9 +209,9 @@ describe('resource dropCopy', () => {
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'BINANCE',
         balances: [
-          { asset: 'BTC', free: 1, locked: 0, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, total: 1 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
         ],
         positions: [
           { amount: 0, cost: 0, entryPrice: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT' },
