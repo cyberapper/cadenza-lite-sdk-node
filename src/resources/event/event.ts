@@ -62,32 +62,12 @@ export interface Event {
     | ExecutionReportAPI.ExecutionReport
     | PortfolioAPI.ExchangeAccountPortfolio
     | OrderbookAPI.Orderbook
-    | Event.Kline;
+    | KlineAPI.Kline;
 
   /**
    * The source system or module that generated the event.
    */
   source?: string;
-}
-
-export namespace Event {
-  export interface Kline {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
 }
 
 export interface EventNewParams {
@@ -126,32 +106,12 @@ export interface EventNewParams {
     | ExecutionReportAPI.ExecutionReport
     | PortfolioAPI.ExchangeAccountPortfolio
     | OrderbookAPI.Orderbook
-    | EventNewParams.Kline;
+    | KlineAPI.Kline;
 
   /**
    * The source system or module that generated the event.
    */
   source?: string;
-}
-
-export namespace EventNewParams {
-  export interface Kline {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
 }
 
 export namespace EventResource {

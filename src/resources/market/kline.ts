@@ -4,49 +4,53 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as KlineAPI from './kline';
 
-export class Kline extends APIResource {
+export class KlineResource extends APIResource {
   /**
    * Get historical kline data
    */
-  get(query: KlineGetParams, options?: Core.RequestOptions): Core.APIPromise<KlineGetResponse> {
+  get(query: KlineGetParams, options?: Core.RequestOptions): Core.APIPromise<Kline> {
     return this._client.get('/api/v2/market/kline', { query, ...options });
   }
 }
 
-export interface Ohlcv {
-  /**
-   * Close price
-   */
-  c?: number;
+export type Candles = Array<Candles.CandleItem>;
 
-  /**
-   * High price
-   */
-  h?: number;
+export namespace Candles {
+  export interface CandleItem {
+    /**
+     * Close price
+     */
+    c?: number;
 
-  /**
-   * Low price
-   */
-  l?: number;
+    /**
+     * High price
+     */
+    h?: number;
 
-  /**
-   * Open price
-   */
-  o?: number;
+    /**
+     * Low price
+     */
+    l?: number;
 
-  /**
-   * Start time (in unix milliseconds)
-   */
-  t?: number;
+    /**
+     * Open price
+     */
+    o?: number;
 
-  /**
-   * Volume
-   */
-  v?: number;
+    /**
+     * Start time (in unix milliseconds)
+     */
+    t?: number;
+
+    /**
+     * Volume
+     */
+    v?: number;
+  }
 }
 
-export interface KlineGetResponse {
-  candles?: Array<Ohlcv>;
+export interface Kline {
+  candles?: Candles;
 
   /**
    * The unique identifier for the account.
@@ -95,8 +99,8 @@ export interface KlineGetParams {
   startTime?: number;
 }
 
-export namespace Kline {
-  export import Ohlcv = KlineAPI.Ohlcv;
-  export import KlineGetResponse = KlineAPI.KlineGetResponse;
+export namespace KlineResource {
+  export import Candles = KlineAPI.Candles;
+  export import Kline = KlineAPI.Kline;
   export import KlineGetParams = KlineAPI.KlineGetParams;
 }
