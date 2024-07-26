@@ -232,10 +232,12 @@ export namespace Cadenza {
   export import Trading = API.Trading;
 
   export import Portfolio = API.Portfolio;
+  export import BalanceEntry = API.BalanceEntry;
   export import ExchangeAccountBalance = API.ExchangeAccountBalance;
   export import ExchangeAccountCredit = API.ExchangeAccountCredit;
   export import ExchangeAccountPortfolio = API.ExchangeAccountPortfolio;
   export import ExchangeAccountPosition = API.ExchangeAccountPosition;
+  export import PositionEntry = API.PositionEntry;
   export import PortfolioListResponse = API.PortfolioListResponse;
   export import PortfolioListBalancesResponse = API.PortfolioListBalancesResponse;
   export import PortfolioListCreditResponse = API.PortfolioListCreditResponse;

@@ -66,12 +66,12 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/market/kline.ts">Ohlcv</a></code>
-- <code><a href="./src/resources/market/kline.ts">KlineGetResponse</a></code>
+- <code><a href="./src/resources/market/kline.ts">Candles</a></code>
+- <code><a href="./src/resources/market/kline.ts">Kline</a></code>
 
 Methods:
 
-- <code title="get /api/v2/market/kline">client.market.kline.<a href="./src/resources/market/kline.ts">get</a>({ ...params }) -> KlineGetResponse</code>
+- <code title="get /api/v2/market/kline">client.market.kline.<a href="./src/resources/market/kline.ts">get</a>({ ...params }) -> Kline</code>
 
 # Trading
 
@@ -118,10 +118,12 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/portfolio.ts">BalanceEntry</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountBalance</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountCredit</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPortfolio</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPosition</a></code>
+- <code><a href="./src/resources/portfolio.ts">PositionEntry</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListBalancesResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListCreditResponse</a></code>

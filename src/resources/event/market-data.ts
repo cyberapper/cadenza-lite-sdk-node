@@ -52,32 +52,12 @@ export interface MarketDataKline {
    */
   timestamp: number;
 
-  payload?: MarketDataKline.Payload;
+  payload?: KlineAPI.Kline;
 
   /**
    * The source system or module that generated the event.
    */
   source?: string;
-}
-
-export namespace MarketDataKline {
-  export interface Payload {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
 }
 
 export interface MarketDataOrderBook {
@@ -136,32 +116,12 @@ export interface MarketDataMarketDataKlineParams {
    */
   timestamp: number;
 
-  payload?: MarketDataMarketDataKlineParams.Payload;
+  payload?: KlineAPI.Kline;
 
   /**
    * The source system or module that generated the event.
    */
   source?: string;
-}
-
-export namespace MarketDataMarketDataKlineParams {
-  export interface Payload {
-    candles?: Array<KlineAPI.Ohlcv>;
-
-    /**
-     * The unique identifier for the account.
-     */
-    exchangeAccountId?: string;
-
-    /**
-     * Exchange type
-     */
-    exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
-
-    interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
-
-    symbol?: string;
-  }
 }
 
 export interface MarketDataMarketDataOrderBookParams {
