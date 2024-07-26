@@ -1,31 +1,31 @@
-# Health
+# Utility
 
 Types:
 
-- <code><a href="./src/resources/health.ts">HealthGetResponse</a></code>
+- <code><a href="./src/resources/utility.ts">UtilityHealthResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v2/health">client.health.<a href="./src/resources/health.ts">get</a>() -> string</code>
+- <code title="get /api/v2/health">client.utility.<a href="./src/resources/utility.ts">health</a>() -> string</code>
 
-# ExchangeAccounts
+# ExchangeAccount
 
 Types:
 
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccount</a></code>
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccountCreateResponse</a></code>
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccountUpdateResponse</a></code>
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccountListResponse</a></code>
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccountRemoveResponse</a></code>
-- <code><a href="./src/resources/exchange-accounts.ts">ExchangeAccountSetExchangePriorityResponse</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccount</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccountCreateResponse</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccountUpdateResponse</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccountListResponse</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccountRemoveResponse</a></code>
+- <code><a href="./src/resources/exchange-account.ts">ExchangeAccountSetExchangePriorityResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v2/exchange/addExchangeAccount">client.exchangeAccounts.<a href="./src/resources/exchange-accounts.ts">create</a>({ ...params }) -> ExchangeAccountCreateResponse</code>
-- <code title="post /api/v2/exchange/updateExchangeAccount">client.exchangeAccounts.<a href="./src/resources/exchange-accounts.ts">update</a>({ ...params }) -> ExchangeAccountUpdateResponse</code>
-- <code title="get /api/v2/exchange/listExchangeAccounts">client.exchangeAccounts.<a href="./src/resources/exchange-accounts.ts">list</a>() -> ExchangeAccountListResponse</code>
-- <code title="post /api/v2/exchange/removeExchangeAccount">client.exchangeAccounts.<a href="./src/resources/exchange-accounts.ts">remove</a>({ ...params }) -> ExchangeAccountRemoveResponse</code>
-- <code title="post /api/v2/exchange/setExchangePriority">client.exchangeAccounts.<a href="./src/resources/exchange-accounts.ts">setExchangePriority</a>({ ...params }) -> ExchangeAccountSetExchangePriorityResponse</code>
+- <code title="post /api/v2/exchange/addExchangeAccount">client.exchangeAccount.<a href="./src/resources/exchange-account.ts">create</a>({ ...params }) -> ExchangeAccountCreateResponse</code>
+- <code title="post /api/v2/exchange/updateExchangeAccount">client.exchangeAccount.<a href="./src/resources/exchange-account.ts">update</a>({ ...params }) -> ExchangeAccountUpdateResponse</code>
+- <code title="get /api/v2/exchange/listExchangeAccounts">client.exchangeAccount.<a href="./src/resources/exchange-account.ts">list</a>() -> ExchangeAccountListResponse</code>
+- <code title="post /api/v2/exchange/removeExchangeAccount">client.exchangeAccount.<a href="./src/resources/exchange-account.ts">remove</a>({ ...params }) -> ExchangeAccountRemoveResponse</code>
+- <code title="post /api/v2/exchange/setExchangePriority">client.exchangeAccount.<a href="./src/resources/exchange-account.ts">setExchangePriority</a>({ ...params }) -> ExchangeAccountSetExchangePriorityResponse</code>
 
 # Market
 

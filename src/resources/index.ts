@@ -29,9 +29,8 @@ export {
   ExchangeAccountUpdateParams,
   ExchangeAccountRemoveParams,
   ExchangeAccountSetExchangePriorityParams,
-  ExchangeAccounts,
-} from './exchange-accounts';
-export { HealthGetResponse, Health } from './health';
+} from './exchange-account';
 export { Market } from './market/market';
 export { Trading } from './trading/trading';
+export { UtilityHealthResponse, Utility } from './utility';
 export { WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
