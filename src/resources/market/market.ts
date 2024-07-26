@@ -10,7 +10,7 @@ export class Market extends APIResource {
   instrument: InstrumentAPI.InstrumentResource = new InstrumentAPI.InstrumentResource(this._client);
   ticker: TickerAPI.TickerResource = new TickerAPI.TickerResource(this._client);
   orderbook: OrderbookAPI.OrderbookResource = new OrderbookAPI.OrderbookResource(this._client);
-  kline: KlineAPI.Kline = new KlineAPI.Kline(this._client);
+  kline: KlineAPI.KlineResource = new KlineAPI.KlineResource(this._client);
 }
 
 export namespace Market {
@@ -26,8 +26,8 @@ export namespace Market {
   export import Orderbook = OrderbookAPI.Orderbook;
   export import OrderbookGetResponse = OrderbookAPI.OrderbookGetResponse;
   export import OrderbookGetParams = OrderbookAPI.OrderbookGetParams;
+  export import KlineResource = KlineAPI.KlineResource;
+  export import Candles = KlineAPI.Candles;
   export import Kline = KlineAPI.Kline;
-  export import Ohlcv = KlineAPI.Ohlcv;
-  export import KlineGetResponse = KlineAPI.KlineGetResponse;
   export import KlineGetParams = KlineAPI.KlineGetParams;
 }

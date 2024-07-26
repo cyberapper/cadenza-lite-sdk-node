@@ -76,50 +76,48 @@ export class Portfolio extends APIResource {
   }
 }
 
+export interface BalanceEntry {
+  /**
+   * Asset
+   */
+  asset: string;
+
+  /**
+   * Borrowed balance from exchange
+   */
+  borrowed: number;
+
+  /**
+   * Free balance
+   */
+  free: number;
+
+  /**
+   * Locked balance
+   */
+  locked: number;
+
+  /**
+   * Net Balance, net = total - borrowed
+   */
+  net: number;
+
+  /**
+   * Total available balance
+   */
+  total: number;
+}
+
 export interface ExchangeAccountBalance {
   /**
    * List of balances
    */
-  balances: Array<ExchangeAccountBalance.Balance>;
+  balances: Array<BalanceEntry>;
 
   /**
    * Exchange account ID
    */
   exchangeAccountId: string;
-}
-
-export namespace ExchangeAccountBalance {
-  export interface Balance {
-    /**
-     * Asset
-     */
-    asset: string;
-
-    /**
-     * Borrowed balance from exchange
-     */
-    borrowed: number;
-
-    /**
-     * Free balance
-     */
-    free: number;
-
-    /**
-     * Locked balance
-     */
-    locked: number;
-
-    /**
-     * Net Balance, net = total - borrowed
-     */
-    net: number;
-
-    /**
-     * Total available balance
-     */
-    total: number;
-  }
 }
 
 /**
@@ -215,75 +213,9 @@ export interface ExchangeAccountPortfolio {
    */
   updatedAt: number;
 
-  balances?: Array<ExchangeAccountPortfolio.Balance>;
+  balances?: Array<BalanceEntry>;
 
-  positions?: Array<ExchangeAccountPortfolio.Position>;
-}
-
-export namespace ExchangeAccountPortfolio {
-  export interface Balance {
-    /**
-     * Asset
-     */
-    asset: string;
-
-    /**
-     * Borrowed balance from exchange
-     */
-    borrowed: number;
-
-    /**
-     * Free balance
-     */
-    free: number;
-
-    /**
-     * Locked balance
-     */
-    locked: number;
-
-    /**
-     * Net Balance, net = total - borrowed
-     */
-    net: number;
-
-    /**
-     * Total available balance
-     */
-    total: number;
-  }
-
-  export interface Position {
-    /**
-     * Amount
-     */
-    amount: number;
-
-    /**
-     * Position side
-     */
-    positionSide: 'LONG' | 'SHORT';
-
-    /**
-     * Status
-     */
-    status: 'OPEN';
-
-    /**
-     * Symbol
-     */
-    symbol: string;
-
-    /**
-     * Cost
-     */
-    cost?: number;
-
-    /**
-     * Entry price
-     */
-    entryPrice?: number;
-  }
+  positions?: Array<PositionEntry>;
 }
 
 export interface ExchangeAccountPosition {
@@ -295,44 +227,39 @@ export interface ExchangeAccountPosition {
   /**
    * List of positions
    */
-  positions?: Array<ExchangeAccountPosition.Position>;
+  positions?: Array<PositionEntry>;
 }
 
-export namespace ExchangeAccountPosition {
+export interface PositionEntry {
   /**
-   * List of positions
+   * Amount
    */
-  export interface Position {
-    /**
-     * Amount
-     */
-    amount: number;
+  amount: number;
 
-    /**
-     * Position side
-     */
-    positionSide: 'LONG' | 'SHORT';
+  /**
+   * Position side
+   */
+  positionSide: 'LONG' | 'SHORT';
 
-    /**
-     * Status
-     */
-    status: 'OPEN';
+  /**
+   * Status
+   */
+  status: 'OPEN';
 
-    /**
-     * Symbol
-     */
-    symbol: string;
+  /**
+   * Symbol
+   */
+  symbol: string;
 
-    /**
-     * Cost
-     */
-    cost?: number;
+  /**
+   * Cost
+   */
+  cost?: number;
 
-    /**
-     * Entry price
-     */
-    entryPrice?: number;
-  }
+  /**
+   * Entry price
+   */
+  entryPrice?: number;
 }
 
 /**
@@ -398,10 +325,12 @@ export interface PortfolioListPositionsParams {
 }
 
 export namespace Portfolio {
+  export import BalanceEntry = PortfolioAPI.BalanceEntry;
   export import ExchangeAccountBalance = PortfolioAPI.ExchangeAccountBalance;
   export import ExchangeAccountCredit = PortfolioAPI.ExchangeAccountCredit;
   export import ExchangeAccountPortfolio = PortfolioAPI.ExchangeAccountPortfolio;
   export import ExchangeAccountPosition = PortfolioAPI.ExchangeAccountPosition;
+  export import PositionEntry = PortfolioAPI.PositionEntry;
   export import PortfolioListResponse = PortfolioAPI.PortfolioListResponse;
   export import PortfolioListBalancesResponse = PortfolioAPI.PortfolioListBalancesResponse;
   export import PortfolioListCreditResponse = PortfolioAPI.PortfolioListCreditResponse;
