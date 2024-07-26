@@ -98,27 +98,27 @@ export namespace ExchangeAccountBalance {
     /**
      * Borrowed balance from exchange
      */
-    borrowed?: number;
+    borrowed: number;
 
     /**
      * Free balance
      */
-    free?: number;
+    free: number;
 
     /**
      * Locked balance
      */
-    locked?: number;
+    locked: number;
 
     /**
      * Net Balance, net = total - borrowed
      */
-    net?: number;
+    net: number;
 
     /**
      * Total available balance
      */
-    total?: number;
+    total: number;
   }
 }
 
@@ -230,27 +230,27 @@ export namespace ExchangeAccountPortfolio {
     /**
      * Borrowed balance from exchange
      */
-    borrowed?: number;
+    borrowed: number;
 
     /**
      * Free balance
      */
-    free?: number;
+    free: number;
 
     /**
      * Locked balance
      */
-    locked?: number;
+    locked: number;
 
     /**
      * Net Balance, net = total - borrowed
      */
-    net?: number;
+    net: number;
 
     /**
      * Total available balance
      */
-    total?: number;
+    total: number;
   }
 
   export interface Position {
