@@ -35,9 +35,9 @@ describe('resource marketData', () => {
         symbol: 'symbol',
         interval: '1s',
         candles: [
-          { c: 0, h: 0, l: 0, o: 0, t: 0, v: 0 },
-          { c: 0, h: 0, l: 0, o: 0, t: 0, v: 0 },
-          { c: 0, h: 0, l: 0, o: 0, t: 0, v: 0 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
+          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
         ],
       },
       source: 'source',
