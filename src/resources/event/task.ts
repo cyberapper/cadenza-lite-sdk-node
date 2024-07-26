@@ -53,6 +53,7 @@ export interface TaskCancelOrderRequestAck {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -85,6 +86,7 @@ export interface TaskPlaceOrderRequestAck {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -117,6 +119,7 @@ export interface TaskQuoteRequestAck {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -149,6 +152,7 @@ export interface TaskTaskCancelOrderRequestAckParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -181,6 +185,7 @@ export interface TaskTaskPlaceOrderRequestAckParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -213,6 +218,7 @@ export interface TaskTaskQuoteRequestAckParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';

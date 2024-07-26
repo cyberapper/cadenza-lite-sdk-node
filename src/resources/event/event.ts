@@ -41,6 +41,7 @@ export interface Event {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
@@ -85,6 +86,7 @@ export interface EventNewParams {
     | 'cadenza.task.cancelOrderRequestAck'
     | 'cadenza.dropCopy.quote'
     | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
     | 'cadenza.dropCopy.portfolio'
     | 'cadenza.marketData.orderBook'
     | 'cadenza.marketData.kline';
