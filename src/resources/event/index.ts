@@ -8,10 +8,13 @@ export {
   DropCopyPortfolio,
   DropCopyQuote,
   DropCopyRequestAck,
+  DropCopyDropCopyCancelOrderRequestAckParams,
   DropCopyDropCopyExecutionReportParams,
   DropCopyDropCopyOrderParams,
+  DropCopyDropCopyPlaceOrderRequestAckParams,
   DropCopyDropCopyPortfolioParams,
   DropCopyDropCopyQuoteParams,
+  DropCopyDropCopyQuoteRequestAckParams,
   DropCopy,
 } from './drop-copy';
 export { Event, EventNewParams, EventResource } from './event';

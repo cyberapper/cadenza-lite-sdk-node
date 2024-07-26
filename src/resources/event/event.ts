@@ -108,10 +108,13 @@ export namespace EventResource {
   export import DropCopyPortfolio = DropCopyAPI.DropCopyPortfolio;
   export import DropCopyQuote = DropCopyAPI.DropCopyQuote;
   export import DropCopyRequestAck = DropCopyAPI.DropCopyRequestAck;
+  export import DropCopyDropCopyCancelOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyCancelOrderRequestAckParams;
   export import DropCopyDropCopyExecutionReportParams = DropCopyAPI.DropCopyDropCopyExecutionReportParams;
   export import DropCopyDropCopyOrderParams = DropCopyAPI.DropCopyDropCopyOrderParams;
+  export import DropCopyDropCopyPlaceOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyPlaceOrderRequestAckParams;
   export import DropCopyDropCopyPortfolioParams = DropCopyAPI.DropCopyDropCopyPortfolioParams;
   export import DropCopyDropCopyQuoteParams = DropCopyAPI.DropCopyDropCopyQuoteParams;
+  export import DropCopyDropCopyQuoteRequestAckParams = DropCopyAPI.DropCopyDropCopyQuoteRequestAckParams;
   export import MarketData = MarketDataAPI.MarketData;
   export import MarketDataKline = MarketDataAPI.MarketDataKline;
   export import MarketDataOrderBook = MarketDataAPI.MarketDataOrderBook;
