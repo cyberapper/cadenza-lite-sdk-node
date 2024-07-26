@@ -143,8 +143,8 @@ export class Cadenza extends Core.APIClient {
     this.bearerToken = bearerToken;
   }
 
-  health: API.Health = new API.Health(this);
-  exchangeAccounts: API.ExchangeAccounts = new API.ExchangeAccounts(this);
+  utility: API.Utility = new API.Utility(this);
+  exchangeAccount: API.ExchangeAccount = new API.ExchangeAccount(this);
   market: API.Market = new API.Market(this);
   trading: API.Trading = new API.Trading(this);
   portfolio: API.Portfolio = new API.Portfolio(this);
@@ -212,10 +212,9 @@ export namespace Cadenza {
   export import OffsetParams = Pagination.OffsetParams;
   export import OffsetResponse = Pagination.OffsetResponse;
 
-  export import Health = API.Health;
-  export import HealthGetResponse = API.HealthGetResponse;
+  export import Utility = API.Utility;
+  export import UtilityHealthResponse = API.UtilityHealthResponse;
 
-  export import ExchangeAccounts = API.ExchangeAccounts;
   export import ExchangeAccount = API.ExchangeAccount;
   export import ExchangeAccountCreateResponse = API.ExchangeAccountCreateResponse;
   export import ExchangeAccountUpdateResponse = API.ExchangeAccountUpdateResponse;
