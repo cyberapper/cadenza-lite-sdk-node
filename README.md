@@ -28,7 +28,7 @@ const client = new Cadenza({
 });
 
 async function main() {
-  const healthGetResponse = await cadenza.health.get();
+  const utilityHealthResponse = await cadenza.utility.health();
 }
 
 main();
@@ -48,7 +48,7 @@ const client = new Cadenza({
 });
 
 async function main() {
-  const healthGetResponse: string = await cadenza.health.get();
+  const utilityHealthResponse: string = await cadenza.utility.health();
 }
 
 main();
@@ -65,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const healthGetResponse = await cadenza.health.get().catch(async (err) => {
+  const utilityHealthResponse = await cadenza.utility.health().catch(async (err) => {
     if (err instanceof Cadenza.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -108,7 +108,7 @@ const client = new Cadenza({
 });
 
 // Or, configure per-request:
-await cadenza.health.get({
+await cadenza.utility.health({
   maxRetries: 5,
 });
 ```
@@ -125,7 +125,7 @@ const client = new Cadenza({
 });
 
 // Override per-request:
-await cadenza.health.get({
+await cadenza.utility.health({
   timeout: 5 * 1000,
 });
 ```
@@ -146,13 +146,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Cadenza();
 
-const response = await cadenza.health.get().asResponse();
+const response = await cadenza.utility.health().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: healthGetResponse, response: raw } = await cadenza.health.get().withResponse();
+const { data: utilityHealthResponse, response: raw } = await cadenza.utility.health().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(healthGetResponse);
+console.log(utilityHealthResponse);
 ```
 
 ### Making custom/undocumented requests
@@ -256,7 +256,7 @@ const client = new Cadenza({
 });
 
 // Override per-request:
-await cadenza.health.get({
+await cadenza.utility.health({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

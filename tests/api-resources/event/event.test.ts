@@ -30,20 +30,12 @@ describe('resource event', () => {
       eventType: 'cadenza.task.quoteRequestAck',
       timestamp: 1632933600000,
       payload: {
-        asks: [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-        ],
-        bids: [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-        ],
-        exchangeType: 'exchangeType',
+        baseCurrency: 'baseCurrency',
+        quoteCurrency: 'quoteCurrency',
+        orderSide: 'orderSide',
+        quantity: 0,
+        quoteQuantity: 0,
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        symbol: 'symbol',
-        level: 0,
       },
       source: 'source',
     });
