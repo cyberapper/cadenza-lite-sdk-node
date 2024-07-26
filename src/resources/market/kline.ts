@@ -3,6 +3,7 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as KlineAPI from './kline';
+import * as PortfolioAPI from '../portfolio';
 
 export class KlineResource extends APIResource {
   /**
@@ -50,7 +51,7 @@ export namespace Candles {
 }
 
 export interface Kline {
-  candles?: Candles;
+  candles?: Array<PortfolioAPI.BalanceEntry>;
 
   /**
    * The unique identifier for the account.
