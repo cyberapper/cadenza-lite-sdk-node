@@ -246,7 +246,6 @@ export namespace Cadenza {
   export import PortfolioListPositionsParams = API.PortfolioListPositionsParams;
 
   export import Webhook = API.Webhook;
-  export import Event = API.Event;
   export import WebhookPubsubResponse = API.WebhookPubsubResponse;
   export import WebhookPubsubParams = API.WebhookPubsubParams;
 

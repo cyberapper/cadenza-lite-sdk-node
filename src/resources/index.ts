@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export { Event, EventNewParams, EventResource } from './event/event';
-export { Event, WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
 export {
   ExchangeAccount,
   ExchangeAccountCreateResponse,
@@ -33,3 +32,4 @@ export {
 export { HealthGetResponse, Health } from './health';
 export { Market } from './market/market';
 export { Trading } from './trading/trading';
+export { WebhookPubsubResponse, WebhookPubsubParams, Webhook } from './webhook/webhook';
