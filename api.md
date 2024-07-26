@@ -138,7 +138,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/webhook/webhook.ts">Event</a></code>
 - <code><a href="./src/resources/webhook/webhook.ts">WebhookPubsubResponse</a></code>
 
 Methods:
