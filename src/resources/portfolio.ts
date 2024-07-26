@@ -185,8 +185,6 @@ export interface ExchangeAccountCredit {
 }
 
 export interface ExchangeAccountPortfolio {
-  balances: Array<ExchangeAccountPortfolio.Balance>;
-
   /**
    * Exchange Account Credit Info
    */
@@ -202,12 +200,14 @@ export interface ExchangeAccountPortfolio {
    */
   exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 
-  positions: Array<ExchangeAccountPortfolio.Position>;
-
   /**
    * The timestamp when the portfolio information was updated.
    */
   updatedAt: number;
+
+  balances?: Array<ExchangeAccountPortfolio.Balance>;
+
+  positions?: Array<ExchangeAccountPortfolio.Position>;
 }
 
 export namespace ExchangeAccountPortfolio {
