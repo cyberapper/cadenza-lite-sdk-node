@@ -10,6 +10,16 @@ import * as QuoteAPI from '../trading/quote';
 
 export class DropCopy extends APIResource {
   /**
+   * PubSub event handler placeholder for cancel order request acknowledgment event
+   */
+  dropCopyCancelOrderRequestAck(
+    body: DropCopyDropCopyCancelOrderRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DropCopyCancelOrderRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/dropCopy/cancelOrderRequestAck', { body, ...options });
+  }
+
+  /**
    * PubSub event handler for execution report drop copy event
    */
   dropCopyExecutionReport(
@@ -30,6 +40,16 @@ export class DropCopy extends APIResource {
   }
 
   /**
+   * PubSub event handler placeholder for place order request acknowledgment event
+   */
+  dropCopyPlaceOrderRequestAck(
+    body: DropCopyDropCopyPlaceOrderRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DropCopyPlaceOrderRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/dropCopy/placeOrderRequestAck', { body, ...options });
+  }
+
+  /**
    * PubSub event handler placeholder for portfolio event
    */
   dropCopyPortfolio(
@@ -47,6 +67,16 @@ export class DropCopy extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<DropCopyQuote> {
     return this._client.post('/api/v2/webhook/pubsub/dropCopy/quote', { body, ...options });
+  }
+
+  /**
+   * PubSub event handler placeholder for quote request acknowledgment event
+   */
+  dropCopyQuoteRequestAck(
+    body: DropCopyDropCopyQuoteRequestAckParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DropCopyRequestAck> {
+    return this._client.post('/api/v2/webhook/pubsub/dropCopy/quoteRequestAck', { body, ...options });
   }
 }
 
@@ -288,6 +318,40 @@ export interface DropCopyRequestAck {
   source?: string;
 }
 
+export interface DropCopyDropCopyCancelOrderRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: OrderAPI.CancelOrderRequest;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
 export interface DropCopyDropCopyExecutionReportParams {
   /**
    * A unique identifier for the event.
@@ -349,6 +413,40 @@ export interface DropCopyDropCopyOrderParams {
   timestamp: number;
 
   payload?: OrderAPI.Order;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
+export interface DropCopyDropCopyPlaceOrderRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: OrderAPI.PlaceOrderRequest;
 
   /**
    * The source system or module that generated the event.
@@ -424,6 +522,40 @@ export interface DropCopyDropCopyQuoteParams {
   source?: string;
 }
 
+export interface DropCopyDropCopyQuoteRequestAckParams {
+  /**
+   * A unique identifier for the event.
+   */
+  eventId: string;
+
+  /**
+   * Event Type
+   */
+  eventType:
+    | 'cadenza.task.quote'
+    | 'cadenza.dropCopy.quoteRequestAck'
+    | 'cadenza.dropCopy.placeOrderRequestAck'
+    | 'cadenza.dropCopy.cancelOrderRequestAck'
+    | 'cadenza.dropCopy.quote'
+    | 'cadenza.dropCopy.order'
+    | 'cadenza.dropCopy.executionReport'
+    | 'cadenza.dropCopy.portfolio'
+    | 'cadenza.marketData.orderBook'
+    | 'cadenza.marketData.kline';
+
+  /**
+   * Unix timestamp in milliseconds when the event was generated.
+   */
+  timestamp: number;
+
+  payload?: QuoteAPI.QuoteRequest;
+
+  /**
+   * The source system or module that generated the event.
+   */
+  source?: string;
+}
+
 export namespace DropCopy {
   export import DropCopyCancelOrderRequestAck = DropCopyAPI.DropCopyCancelOrderRequestAck;
   export import DropCopyExecutionReport = DropCopyAPI.DropCopyExecutionReport;
@@ -432,8 +564,11 @@ export namespace DropCopy {
   export import DropCopyPortfolio = DropCopyAPI.DropCopyPortfolio;
   export import DropCopyQuote = DropCopyAPI.DropCopyQuote;
   export import DropCopyRequestAck = DropCopyAPI.DropCopyRequestAck;
+  export import DropCopyDropCopyCancelOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyCancelOrderRequestAckParams;
   export import DropCopyDropCopyExecutionReportParams = DropCopyAPI.DropCopyDropCopyExecutionReportParams;
   export import DropCopyDropCopyOrderParams = DropCopyAPI.DropCopyDropCopyOrderParams;
+  export import DropCopyDropCopyPlaceOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyPlaceOrderRequestAckParams;
   export import DropCopyDropCopyPortfolioParams = DropCopyAPI.DropCopyDropCopyPortfolioParams;
   export import DropCopyDropCopyQuoteParams = DropCopyAPI.DropCopyDropCopyQuoteParams;
+  export import DropCopyDropCopyQuoteRequestAckParams = DropCopyAPI.DropCopyDropCopyQuoteRequestAckParams;
 }
