@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.0 (2024-07-26)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#78](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/78)) ([8abc11c](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/8abc11c92728bf686f8192f2d23eed2bd87ad0e9))
+
 ## 0.11.0 (2024-07-26)
 
 Full Changelog: [v0.10.1...v0.11.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.10.1...v0.11.0)
