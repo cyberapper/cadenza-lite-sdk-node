@@ -190,10 +190,13 @@ Types:
 
 Methods:
 
+- <code title="post /api/v2/webhook/pubsub/dropCopy/cancelOrderRequestAck">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyCancelOrderRequestAck</a>({ ...params }) -> DropCopyCancelOrderRequestAck</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/executionReport">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyExecutionReport</a>({ ...params }) -> DropCopyExecutionReport</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/order">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyOrder</a>({ ...params }) -> DropCopyOrder</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/placeOrderRequestAck">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyPlaceOrderRequestAck</a>({ ...params }) -> DropCopyPlaceOrderRequestAck</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/portfolio">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyPortfolio</a>({ ...params }) -> DropCopyPortfolio</code>
 - <code title="post /api/v2/webhook/pubsub/dropCopy/quote">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyQuote</a>({ ...params }) -> DropCopyQuote</code>
+- <code title="post /api/v2/webhook/pubsub/dropCopy/quoteRequestAck">client.event.dropCopy.<a href="./src/resources/event/drop-copy.ts">dropCopyQuoteRequestAck</a>({ ...params }) -> DropCopyRequestAck</code>
 
 ## MarketData
 

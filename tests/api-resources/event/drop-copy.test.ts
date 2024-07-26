@@ -9,6 +9,31 @@ const cadenza = new Cadenza({
 });
 
 describe('resource dropCopy', () => {
+  test('dropCopyCancelOrderRequestAck: only required params', async () => {
+    const responsePromise = cadenza.event.dropCopy.dropCopyCancelOrderRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('dropCopyCancelOrderRequestAck: required and optional params', async () => {
+    const response = await cadenza.event.dropCopy.dropCopyCancelOrderRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+      payload: { orderId: 'orderId' },
+      source: 'source',
+    });
+  });
+
   test('dropCopyExecutionReport: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyExecutionReport({
       eventId: 'eventId',
@@ -185,6 +210,48 @@ describe('resource dropCopy', () => {
     });
   });
 
+  test('dropCopyPlaceOrderRequestAck: only required params', async () => {
+    const responsePromise = cadenza.event.dropCopy.dropCopyPlaceOrderRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('dropCopyPlaceOrderRequestAck: required and optional params', async () => {
+    const response = await cadenza.event.dropCopy.dropCopyPlaceOrderRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+      payload: {
+        quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        leverage: 0,
+        orderSide: 'BUY',
+        orderType: 'MARKET',
+        positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        price: 0,
+        priceSlippageTolerance: 0,
+        quantity: 0,
+        quoteQuantity: 0,
+        symbol: 'BTC/USDT',
+        timeInForce: 'DAY',
+        routePolicy: 'PRIORITY',
+        priority: ['exchange_account_id_1', 'exchange_account_id_2', 'exchange_account_id_3'],
+        quoteId: 'quoteId',
+        tenantId: 'tenantId',
+      },
+      source: 'source',
+    });
+  });
+
   test('dropCopyPortfolio: only required params', async () => {
     const responsePromise = cadenza.event.dropCopy.dropCopyPortfolio({
       eventId: 'eventId',
@@ -274,6 +341,38 @@ describe('resource dropCopy', () => {
         expiredAt: 1632933600000,
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'BINANCE',
+      },
+      source: 'source',
+    });
+  });
+
+  test('dropCopyQuoteRequestAck: only required params', async () => {
+    const responsePromise = cadenza.event.dropCopy.dropCopyQuoteRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('dropCopyQuoteRequestAck: required and optional params', async () => {
+    const response = await cadenza.event.dropCopy.dropCopyQuoteRequestAck({
+      eventId: 'eventId',
+      eventType: 'cadenza.task.quote',
+      timestamp: 1632933600000,
+      payload: {
+        baseCurrency: 'baseCurrency',
+        quoteCurrency: 'quoteCurrency',
+        orderSide: 'orderSide',
+        quantity: 0,
+        quoteQuantity: 0,
+        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       },
       source: 'source',
     });
