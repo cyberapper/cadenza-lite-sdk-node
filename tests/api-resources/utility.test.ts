@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource utility', () => {
   test('health', async () => {
-    const responsePromise = cadenza.utility.health();
+    const responsePromise = client.utility.health();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource utility', () => {
 
   test('health: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.utility.health({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.utility.health({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });

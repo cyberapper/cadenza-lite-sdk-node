@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource dropCopy', () => {
   test('dropCopyCancelOrderRequestAck: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyCancelOrderRequestAck({
+    const responsePromise = client.event.dropCopy.dropCopyCancelOrderRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -25,7 +25,7 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyCancelOrderRequestAck: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyCancelOrderRequestAck({
+    const response = await client.event.dropCopy.dropCopyCancelOrderRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -35,7 +35,7 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyExecutionReport: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyExecutionReport({
+    const responsePromise = client.event.dropCopy.dropCopyExecutionReport({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -50,130 +50,130 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyExecutionReport: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyExecutionReport({
+    const response = await client.event.dropCopy.dropCopyExecutionReport({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         baseCurrency: 'BTC',
+        cost: 42859.99,
+        createdAt: 1632933600000,
+        filled: 1,
         quoteCurrency: 'USDT',
         routePolicy: 'PRIORITY',
-        order: {
-          cost: 0,
-          createdAt: 1703052635110,
-          exchangeType: 'BINANCE',
-          exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-          filled: 0,
-          orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-          orderSide: 'BUY',
-          orderType: 'MARKET',
-          positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-          price: 0,
-          quantity: 0,
-          quoteQuantity: 0,
-          status: 'SUBMITTED',
-          symbol: 'BTC/USDT',
-          baseCurrency: 'BTC',
-          quoteCurrency: 'USDT',
-          timeInForce: 'DAY',
-          updatedAt: 1703052635111,
-          userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-          fee: 0,
-          feeCurrency: 'USDT',
-          tenantId: 'tenantId',
-        },
-        filled: 1,
-        cost: 42859.99,
+        status: 'SUBMITTED',
+        updatedAt: 1632933600000,
+        id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        executions: [
+          {
+            cost: 0,
+            createdAt: 1703052635110,
+            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            exchangeType: 'BINANCE',
+            filled: 0,
+            orderSide: 'BUY',
+            orderType: 'MARKET',
+            quantity: 0,
+            status: 'SUBMITTED',
+            symbol: 'BTC/USDT',
+            timeInForce: 'DAY',
+            updatedAt: 1703052635111,
+            baseCurrency: 'BTC',
+            fee: 0,
+            feeCurrency: 'USDT',
+            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            price: 0,
+            quoteCurrency: 'USDT',
+            quoteQuantity: 0,
+            tenantId: 'tenantId',
+            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          },
+          {
+            cost: 0,
+            createdAt: 1703052635110,
+            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            exchangeType: 'BINANCE',
+            filled: 0,
+            orderSide: 'BUY',
+            orderType: 'MARKET',
+            quantity: 0,
+            status: 'SUBMITTED',
+            symbol: 'BTC/USDT',
+            timeInForce: 'DAY',
+            updatedAt: 1703052635111,
+            baseCurrency: 'BTC',
+            fee: 0,
+            feeCurrency: 'USDT',
+            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            price: 0,
+            quoteCurrency: 'USDT',
+            quoteQuantity: 0,
+            tenantId: 'tenantId',
+            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          },
+          {
+            cost: 0,
+            createdAt: 1703052635110,
+            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            exchangeType: 'BINANCE',
+            filled: 0,
+            orderSide: 'BUY',
+            orderType: 'MARKET',
+            quantity: 0,
+            status: 'SUBMITTED',
+            symbol: 'BTC/USDT',
+            timeInForce: 'DAY',
+            updatedAt: 1703052635111,
+            baseCurrency: 'BTC',
+            fee: 0,
+            feeCurrency: 'USDT',
+            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            price: 0,
+            quoteCurrency: 'USDT',
+            quoteQuantity: 0,
+            tenantId: 'tenantId',
+            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          },
+        ],
         fees: [
           { asset: 'asset', quantity: 0 },
           { asset: 'asset', quantity: 0 },
           { asset: 'asset', quantity: 0 },
         ],
-        status: 'SUBMITTED',
-        createdAt: 1632933600000,
-        updatedAt: 1632933600000,
-        executions: [
-          {
-            cost: 0,
-            createdAt: 1703052635110,
-            exchangeType: 'BINANCE',
-            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            filled: 0,
-            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            orderSide: 'BUY',
-            orderType: 'MARKET',
-            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            price: 0,
-            quantity: 0,
-            quoteQuantity: 0,
-            status: 'SUBMITTED',
-            symbol: 'BTC/USDT',
-            baseCurrency: 'BTC',
-            quoteCurrency: 'USDT',
-            timeInForce: 'DAY',
-            updatedAt: 1703052635111,
-            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            fee: 0,
-            feeCurrency: 'USDT',
-            tenantId: 'tenantId',
-          },
-          {
-            cost: 0,
-            createdAt: 1703052635110,
-            exchangeType: 'BINANCE',
-            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            filled: 0,
-            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            orderSide: 'BUY',
-            orderType: 'MARKET',
-            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            price: 0,
-            quantity: 0,
-            quoteQuantity: 0,
-            status: 'SUBMITTED',
-            symbol: 'BTC/USDT',
-            baseCurrency: 'BTC',
-            quoteCurrency: 'USDT',
-            timeInForce: 'DAY',
-            updatedAt: 1703052635111,
-            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            fee: 0,
-            feeCurrency: 'USDT',
-            tenantId: 'tenantId',
-          },
-          {
-            cost: 0,
-            createdAt: 1703052635110,
-            exchangeType: 'BINANCE',
-            exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            filled: 0,
-            orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            orderSide: 'BUY',
-            orderType: 'MARKET',
-            positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            price: 0,
-            quantity: 0,
-            quoteQuantity: 0,
-            status: 'SUBMITTED',
-            symbol: 'BTC/USDT',
-            baseCurrency: 'BTC',
-            quoteCurrency: 'USDT',
-            timeInForce: 'DAY',
-            updatedAt: 1703052635111,
-            userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-            fee: 0,
-            feeCurrency: 'USDT',
-            tenantId: 'tenantId',
-          },
-        ],
+        order: {
+          cost: 0,
+          createdAt: 1703052635110,
+          exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          exchangeType: 'BINANCE',
+          filled: 0,
+          orderSide: 'BUY',
+          orderType: 'MARKET',
+          quantity: 0,
+          status: 'SUBMITTED',
+          symbol: 'BTC/USDT',
+          timeInForce: 'DAY',
+          updatedAt: 1703052635111,
+          baseCurrency: 'BTC',
+          fee: 0,
+          feeCurrency: 'USDT',
+          orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+          price: 0,
+          quoteCurrency: 'USDT',
+          quoteQuantity: 0,
+          tenantId: 'tenantId',
+          userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        },
       },
       source: 'source',
     });
   });
 
   test('dropCopyOrder: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyOrder({
+    const responsePromise = client.event.dropCopy.dropCopyOrder({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -188,40 +188,40 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyOrder: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyOrder({
+    const response = await client.event.dropCopy.dropCopyOrder({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         cost: 0,
         createdAt: 1703052635110,
-        exchangeType: 'BINANCE',
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        exchangeType: 'BINANCE',
         filled: 0,
-        orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         orderSide: 'BUY',
         orderType: 'MARKET',
-        positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        price: 0,
         quantity: 0,
-        quoteQuantity: 0,
         status: 'SUBMITTED',
         symbol: 'BTC/USDT',
-        baseCurrency: 'BTC',
-        quoteCurrency: 'USDT',
         timeInForce: 'DAY',
         updatedAt: 1703052635111,
-        userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        baseCurrency: 'BTC',
         fee: 0,
         feeCurrency: 'USDT',
+        orderId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        price: 0,
+        quoteCurrency: 'USDT',
+        quoteQuantity: 0,
         tenantId: 'tenantId',
+        userId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       },
       source: 'source',
     });
   });
 
   test('dropCopyPlaceOrderRequestAck: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyPlaceOrderRequestAck({
+    const responsePromise = client.event.dropCopy.dropCopyPlaceOrderRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -236,12 +236,12 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyPlaceOrderRequestAck: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyPlaceOrderRequestAck({
+    const response = await client.event.dropCopy.dropCopyPlaceOrderRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        routePolicy: 'PRIORITY',
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         leverage: 0,
         orderSide: 'BUY',
@@ -249,21 +249,21 @@ describe('resource dropCopy', () => {
         positionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         price: 0,
         priceSlippageTolerance: 0,
-        quantity: 0,
-        quoteQuantity: 0,
-        symbol: 'BTC/USDT',
-        timeInForce: 'DAY',
-        routePolicy: 'PRIORITY',
         priority: ['exchange_account_id_1', 'exchange_account_id_2', 'exchange_account_id_3'],
+        quantity: 0,
         quoteId: 'quoteId',
+        quoteQuantity: 0,
+        quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        symbol: 'BTC/USDT',
         tenantId: 'tenantId',
+        timeInForce: 'DAY',
       },
       source: 'source',
     });
   });
 
   test('dropCopyPortfolio: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyPortfolio({
+    const responsePromise = client.event.dropCopy.dropCopyPortfolio({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -278,47 +278,47 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyPortfolio: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyPortfolio({
+    const response = await client.event.dropCopy.dropCopyPortfolio({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        exchangeType: 'BINANCE',
-        balances: [
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-        ],
-        positions: [
-          { amount: 0, cost: 0, entryPrice: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT' },
-          { amount: 0, cost: 0, entryPrice: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT' },
-          { amount: 0, cost: 0, entryPrice: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT' },
-        ],
         credit: {
+          accountType: 'SPOT',
+          credit: 10000,
+          currency: 'USDT',
           exchangeAccountId: '018e41a1-cebc-7b49-a729-ae2c1c41e297',
           exchangeType: 'BINANCE',
-          accountType: 'SPOT',
-          currency: 'USDT',
           leverage: 1,
-          credit: 10000,
           margin: 5000,
+          marginLevel: 0.89,
           marginLoan: 3000,
           marginRequirement: 1500,
           marginUsage: 0.5,
-          marginLevel: 0.89,
-          riskExposure: 5677517.76,
           maxRiskExposure: 5000000,
+          riskExposure: 5677517.76,
           riskExposureRate: 0.89,
         },
+        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        exchangeType: 'BINANCE',
         updatedAt: 1632933600000,
+        balances: [
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+        ],
+        positions: [
+          { amount: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT', cost: 0, entryPrice: 0 },
+          { amount: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT', cost: 0, entryPrice: 0 },
+          { amount: 0, positionSide: 'LONG', status: 'OPEN', symbol: 'BTC/USDT', cost: 0, entryPrice: 0 },
+        ],
       },
       source: 'source',
     });
   });
 
   test('dropCopyQuote: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyQuote({
+    const responsePromise = client.event.dropCopy.dropCopyQuote({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -333,31 +333,31 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyQuote: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyQuote({
+    const response = await client.event.dropCopy.dropCopyQuote({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         baseCurrency: 'BTC',
         quoteCurrency: 'USDT',
+        quoteRequestId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        timestamp: 1632933600000,
+        validUntil: 1632933600000,
         askPrice: 42859.99,
         askQuantity: 1,
         bidPrice: 42859.71,
         bidQuantity: 1,
-        timestamp: 1632933600000,
         createdAt: 1632933600000,
-        validUntil: 1632933600000,
-        expiredAt: 1632933600000,
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'BINANCE',
+        expiredAt: 1632933600000,
       },
       source: 'source',
     });
   });
 
   test('dropCopyQuoteRequestAck: only required params', async () => {
-    const responsePromise = cadenza.event.dropCopy.dropCopyQuoteRequestAck({
+    const responsePromise = client.event.dropCopy.dropCopyQuoteRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -372,17 +372,17 @@ describe('resource dropCopy', () => {
   });
 
   test('dropCopyQuoteRequestAck: required and optional params', async () => {
-    const response = await cadenza.event.dropCopy.dropCopyQuoteRequestAck({
+    const response = await client.event.dropCopy.dropCopyQuoteRequestAck({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
         baseCurrency: 'baseCurrency',
-        quoteCurrency: 'quoteCurrency',
         orderSide: 'orderSide',
+        quoteCurrency: 'quoteCurrency',
+        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         quantity: 0,
         quoteQuantity: 0,
-        exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       },
       source: 'source',
     });
