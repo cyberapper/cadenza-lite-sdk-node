@@ -9,8 +9,8 @@ const cadenza = new Cadenza({
 });
 
 describe('resource quote', () => {
-  test('get: only required params', async () => {
-    const responsePromise = cadenza.trading.quote.get({
+  test('post: only required params', async () => {
+    const responsePromise = cadenza.trading.quote.post({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
@@ -24,8 +24,34 @@ describe('resource quote', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('get: required and optional params', async () => {
-    const response = await cadenza.trading.quote.get({
+  test('post: required and optional params', async () => {
+    const response = await cadenza.trading.quote.post({
+      baseCurrency: 'baseCurrency',
+      orderSide: 'orderSide',
+      quoteCurrency: 'quoteCurrency',
+      exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+      quantity: 0,
+      quoteQuantity: 0,
+    });
+  });
+
+  test('requestForQuote: only required params', async () => {
+    const responsePromise = cadenza.trading.quote.requestForQuote({
+      baseCurrency: 'baseCurrency',
+      orderSide: 'orderSide',
+      quoteCurrency: 'quoteCurrency',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('requestForQuote: required and optional params', async () => {
+    const response = await cadenza.trading.quote.requestForQuote({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',

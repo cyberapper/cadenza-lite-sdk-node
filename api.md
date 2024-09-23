@@ -96,11 +96,13 @@ Types:
 
 - <code><a href="./src/resources/trading/quote.ts">Quote</a></code>
 - <code><a href="./src/resources/trading/quote.ts">QuoteRequest</a></code>
-- <code><a href="./src/resources/trading/quote.ts">QuoteGetResponse</a></code>
+- <code><a href="./src/resources/trading/quote.ts">QuotePostResponse</a></code>
+- <code><a href="./src/resources/trading/quote.ts">QuoteRequestForQuoteResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v2/trading/fetchQuotes">client.trading.quote.<a href="./src/resources/trading/quote.ts">get</a>({ ...params }) -> QuoteGetResponse</code>
+- <code title="post /api/v2/trading/fetchQuotes">client.trading.quote.<a href="./src/resources/trading/quote.ts">post</a>({ ...params }) -> QuotePostResponse</code>
+- <code title="post /api/v2/trading/fetchQuotes">client.trading.quote.<a href="./src/resources/trading/quote.ts">requestForQuote</a>({ ...params }) -> QuoteRequestForQuoteResponse</code>
 
 ## ExecutionReport
 
@@ -111,8 +113,8 @@ Types:
 
 Methods:
 
-- <code title="get /api/v2/trading/listExecutionReports">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">list</a>({ ...params }) -> ExecutionReport</code>
-- <code title="get /api/v2/trading/getQuoteExecutionReport">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">getQuoteExecutionReport</a>({ ...params }) -> QuoteExecutionReport</code>
+- <code title="get /api/v2/trading/listExecutionReports">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">list</a>({ ...params }) -> ExecutionReportsOffset</code>
+- <code title="get /api/v2/trading/getQuoteExecutionReport">client.trading.executionReport.<a href="./src/resources/trading/execution-report.ts">getQuoteExecutionReport</a>({ ...params }) -> ExecutionReport</code>
 
 # Portfolio
 
