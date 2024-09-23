@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource webhook', () => {
   test('pubsub: only required params', async () => {
-    const responsePromise = cadenza.webhook.pubsub({ message: { id: 'id' }, subscription: 'subscription' });
+    const responsePromise = client.webhook.pubsub({ message: { id: 'id' }, subscription: 'subscription' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +21,8 @@ describe('resource webhook', () => {
   });
 
   test('pubsub: required and optional params', async () => {
-    const response = await cadenza.webhook.pubsub({
-      message: { data: 'U3RhaW5sZXNzIHJvY2tz', id: 'id' },
+    const response = await client.webhook.pubsub({
+      message: { id: 'id', data: 'U3RhaW5sZXNzIHJvY2tz' },
       subscription: 'subscription',
     });
   });

@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource marketData', () => {
   test('marketDataKline: only required params', async () => {
-    const responsePromise = cadenza.event.marketData.marketDataKline({
+    const responsePromise = client.event.marketData.marketDataKline({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -25,27 +25,27 @@ describe('resource marketData', () => {
   });
 
   test('marketDataKline: required and optional params', async () => {
-    const response = await cadenza.event.marketData.marketDataKline({
+    const response = await client.event.marketData.marketDataKline({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
+        candles: [
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
+        ],
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'BINANCE',
-        symbol: 'symbol',
         interval: '1s',
-        candles: [
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-          { asset: 'BTC', free: 1, locked: 0, borrowed: 3, net: -2, total: 1 },
-        ],
+        symbol: 'symbol',
       },
       source: 'source',
     });
   });
 
   test('marketDataOrderBook: only required params', async () => {
-    const responsePromise = cadenza.event.marketData.marketDataOrderBook({
+    const responsePromise = client.event.marketData.marketDataOrderBook({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -60,7 +60,7 @@ describe('resource marketData', () => {
   });
 
   test('marketDataOrderBook: required and optional params', async () => {
-    const response = await cadenza.event.marketData.marketDataOrderBook({
+    const response = await client.event.marketData.marketDataOrderBook({
       eventId: 'eventId',
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
@@ -75,10 +75,10 @@ describe('resource marketData', () => {
           [0, 0],
           [0, 0],
         ],
-        exchangeType: 'exchangeType',
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        symbol: 'symbol',
+        exchangeType: 'exchangeType',
         level: 0,
+        symbol: 'symbol',
       },
       source: 'source',
     });

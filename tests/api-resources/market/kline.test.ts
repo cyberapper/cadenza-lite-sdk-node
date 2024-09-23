@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource kline', () => {
   test('get: only required params', async () => {
-    const responsePromise = cadenza.market.kline.get({
+    const responsePromise = client.market.kline.get({
       exchangeType: 'BINANCE',
       interval: '1s',
       symbol: 'BTC/USDT',
@@ -25,7 +25,7 @@ describe('resource kline', () => {
   });
 
   test('get: required and optional params', async () => {
-    const response = await cadenza.market.kline.get({
+    const response = await client.market.kline.get({
       exchangeType: 'BINANCE',
       interval: '1s',
       symbol: 'BTC/USDT',

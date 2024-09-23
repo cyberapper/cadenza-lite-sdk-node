@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource order', () => {
   test('create: only required params', async () => {
-    const responsePromise = cadenza.trading.order.create({ routePolicy: 'PRIORITY' });
+    const responsePromise = client.trading.order.create({ routePolicy: 'PRIORITY' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource order', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await cadenza.trading.order.create({
+    const response = await client.trading.order.create({
       routePolicy: 'PRIORITY',
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       leverage: 0,
@@ -43,7 +43,7 @@ describe('resource order', () => {
   });
 
   test('list', async () => {
-    const responsePromise = cadenza.trading.order.list();
+    const responsePromise = client.trading.order.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -55,7 +55,7 @@ describe('resource order', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.trading.order.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.trading.order.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -63,7 +63,7 @@ describe('resource order', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.trading.order.list(
+      client.trading.order.list(
         {
           endTime: 1632933600000,
           exchangeAccountId: 'exchangeAccountId',
@@ -81,7 +81,7 @@ describe('resource order', () => {
   });
 
   test('cancel: only required params', async () => {
-    const responsePromise = cadenza.trading.order.cancel({ orderId: 'orderId' });
+    const responsePromise = client.trading.order.cancel({ orderId: 'orderId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -92,6 +92,6 @@ describe('resource order', () => {
   });
 
   test('cancel: required and optional params', async () => {
-    const response = await cadenza.trading.order.cancel({ orderId: 'orderId' });
+    const response = await client.trading.order.cancel({ orderId: 'orderId' });
   });
 });
