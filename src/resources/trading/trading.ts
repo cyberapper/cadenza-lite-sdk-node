@@ -24,10 +24,13 @@ export namespace Trading {
   export import QuoteResource = QuoteAPI.QuoteResource;
   export import Quote = QuoteAPI.Quote;
   export import QuoteRequest = QuoteAPI.QuoteRequest;
-  export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
-  export import QuoteGetParams = QuoteAPI.QuoteGetParams;
+  export import QuotePostResponse = QuoteAPI.QuotePostResponse;
+  export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
+  export import QuotePostParams = QuoteAPI.QuotePostParams;
+  export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
+  export import ExecutionReportsOffset = ExecutionReportAPI.ExecutionReportsOffset;
   export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
 }

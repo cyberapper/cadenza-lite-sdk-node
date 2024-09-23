@@ -16,6 +16,15 @@ export {
   QuoteExecutionReport,
   ExecutionReportListParams,
   ExecutionReportGetQuoteExecutionReportParams,
+  ExecutionReportsOffset,
 } from './execution-report';
-export { Quote, QuoteRequest, QuoteGetResponse, QuoteGetParams, QuoteResource } from './quote';
+export {
+  Quote,
+  QuoteRequest,
+  QuotePostResponse,
+  QuoteRequestForQuoteResponse,
+  QuotePostParams,
+  QuoteRequestForQuoteParams,
+  QuoteResource,
+} from './quote';
 export { Trading } from './trading';
