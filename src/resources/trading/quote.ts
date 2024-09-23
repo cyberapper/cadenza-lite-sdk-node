@@ -8,7 +8,17 @@ export class QuoteResource extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  get(body: QuoteGetParams, options?: Core.RequestOptions): Core.APIPromise<QuoteGetResponse> {
+  post(body: QuotePostParams, options?: Core.RequestOptions): Core.APIPromise<QuotePostResponse> {
+    return this._client.post('/api/v2/trading/fetchQuotes', { body, ...options });
+  }
+
+  /**
+   * Quote will give the best quote from all available exchange accounts
+   */
+  requestForQuote(
+    body: QuoteRequestForQuoteParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<QuoteRequestForQuoteResponse> {
     return this._client.post('/api/v2/trading/fetchQuotes', { body, ...options });
   }
 }
@@ -113,9 +123,44 @@ export interface QuoteRequest {
   quoteQuantity?: number;
 }
 
-export type QuoteGetResponse = Array<Quote>;
+export type QuotePostResponse = Array<Quote>;
 
-export interface QuoteGetParams {
+export type QuoteRequestForQuoteResponse = Array<Quote>;
+
+export interface QuotePostParams {
+  /**
+   * Base currency is the currency you want to buy or sell
+   */
+  baseCurrency: string;
+
+  /**
+   * Order side, BUY or SELL
+   */
+  orderSide: string;
+
+  /**
+   * Quote currency is the currency you want to pay or receive, and the price of the
+   * base currency is quoted in the quote currency
+   */
+  quoteCurrency: string;
+
+  /**
+   * The identifier for the exchange account
+   */
+  exchangeAccountId?: string;
+
+  /**
+   * Amount of the base currency
+   */
+  quantity?: number;
+
+  /**
+   * Amount of the quote currency
+   */
+  quoteQuantity?: number;
+}
+
+export interface QuoteRequestForQuoteParams {
   /**
    * Base currency is the currency you want to buy or sell
    */
@@ -151,6 +196,8 @@ export interface QuoteGetParams {
 export namespace QuoteResource {
   export import Quote = QuoteAPI.Quote;
   export import QuoteRequest = QuoteAPI.QuoteRequest;
-  export import QuoteGetResponse = QuoteAPI.QuoteGetResponse;
-  export import QuoteGetParams = QuoteAPI.QuoteGetParams;
+  export import QuotePostResponse = QuoteAPI.QuotePostResponse;
+  export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
+  export import QuotePostParams = QuoteAPI.QuotePostParams;
+  export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
 }

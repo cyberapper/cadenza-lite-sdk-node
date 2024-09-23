@@ -147,6 +147,11 @@ export interface Order {
   updatedAt: number;
 
   /**
+   * Base currency
+   */
+  baseCurrency?: string;
+
+  /**
    * Fee
    */
   fee?: number;
@@ -167,6 +172,11 @@ export interface Order {
    * Price
    */
   price?: number;
+
+  /**
+   * Quote currency
+   */
+  quoteCurrency?: string;
 
   /**
    * Quote Quantity

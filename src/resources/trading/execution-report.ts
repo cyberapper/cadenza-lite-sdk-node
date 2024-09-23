@@ -5,21 +5,28 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as ExecutionReportAPI from './execution-report';
 import * as OrderAPI from './order';
+import { Offset, type OffsetParams } from '../../pagination';
 
 export class ExecutionReport extends APIResource {
   /**
    * Quote will give the best quote from all available exchange accounts
    */
-  list(query?: ExecutionReportListParams, options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
-  list(options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
+  list(
+    query?: ExecutionReportListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ExecutionReportsOffset, ExecutionReport>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ExecutionReportsOffset, ExecutionReport>;
   list(
     query: ExecutionReportListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ExecutionReport> {
+  ): Core.PagePromise<ExecutionReportsOffset, ExecutionReport> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/api/v2/trading/listExecutionReports', { query, ...options });
+    return this._client.getAPIList('/api/v2/trading/listExecutionReports', ExecutionReportsOffset, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -28,18 +35,20 @@ export class ExecutionReport extends APIResource {
   getQuoteExecutionReport(
     query?: ExecutionReportGetQuoteExecutionReportParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<QuoteExecutionReport>;
-  getQuoteExecutionReport(options?: Core.RequestOptions): Core.APIPromise<QuoteExecutionReport>;
+  ): Core.APIPromise<ExecutionReport>;
+  getQuoteExecutionReport(options?: Core.RequestOptions): Core.APIPromise<ExecutionReport>;
   getQuoteExecutionReport(
     query: ExecutionReportGetQuoteExecutionReportParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<QuoteExecutionReport> {
+  ): Core.APIPromise<ExecutionReport> {
     if (isRequestOptions(query)) {
       return this.getQuoteExecutionReport({}, query);
     }
     return this._client.get('/api/v2/trading/getQuoteExecutionReport', { query, ...options });
   }
 }
+
+export class ExecutionReportsOffset extends Offset<ExecutionReport> {}
 
 export interface ExecutionReport {
   /**
@@ -98,9 +107,9 @@ export interface ExecutionReport {
   updatedAt: number;
 
   /**
-   * Order request ID, Client Order ID
+   * Execution Report ID
    */
-  clOrdId?: string;
+  id?: string;
 
   /**
    * List of executions to fulfill the order, the order status should only have
@@ -142,21 +151,11 @@ export interface QuoteExecutionReport extends ExecutionReport {
   validUntil: number;
 }
 
-export interface ExecutionReportListParams {
+export interface ExecutionReportListParams extends OffsetParams {
   /**
    * End time (in unix milliseconds)
    */
   endTime?: number;
-
-  /**
-   * Limit the number of returned results.
-   */
-  limit?: number;
-
-  /**
-   * Offset of the returned results. Default: 0
-   */
-  offset?: number;
 
   /**
    * Quote Request ID
@@ -179,6 +178,7 @@ export interface ExecutionReportGetQuoteExecutionReportParams {
 export namespace ExecutionReport {
   export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
   export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
+  export import ExecutionReportsOffset = ExecutionReportAPI.ExecutionReportsOffset;
   export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
   export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
 }
