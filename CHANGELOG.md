@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.21.1 (2024-09-23)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.21.0...v0.21.1)
+
+### Bug Fixes
+
+* **types:** remove leftover polyfill usage ([#110](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/110)) ([95f58a3](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/95f58a313d8cd154519efa06e0132bc239f2c4d7))
+
+
+### Chores
+
+* **internal:** codegen related update ([#106](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/106)) ([e4ec465](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/e4ec4656352b3b512e68cf6b343d51e455032625))
+
 ## 0.21.0 (2024-09-23)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.20.0...v0.21.0)
