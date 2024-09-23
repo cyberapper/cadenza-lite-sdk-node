@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource instrument', () => {
   test('list', async () => {
-    const responsePromise = cadenza.market.instrument.list();
+    const responsePromise = client.market.instrument.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource instrument', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.market.instrument.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.market.instrument.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -30,7 +30,7 @@ describe('resource instrument', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.market.instrument.list(
+      client.market.instrument.list(
         { detail: false, exchangeType: 'BINANCE', symbol: 'symbol' },
         { path: '/_stainless_unknown_path' },
       ),

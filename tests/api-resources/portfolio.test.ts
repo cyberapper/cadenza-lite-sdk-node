@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource portfolio', () => {
   test('list', async () => {
-    const responsePromise = cadenza.portfolio.list();
+    const responsePromise = client.portfolio.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource portfolio', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.portfolio.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.portfolio.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -30,7 +30,7 @@ describe('resource portfolio', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.portfolio.list(
+      client.portfolio.list(
         { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
@@ -38,7 +38,7 @@ describe('resource portfolio', () => {
   });
 
   test('listBalances', async () => {
-    const responsePromise = cadenza.portfolio.listBalances();
+    const responsePromise = client.portfolio.listBalances();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -50,7 +50,7 @@ describe('resource portfolio', () => {
 
   test('listBalances: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.portfolio.listBalances({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.portfolio.listBalances({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -58,7 +58,7 @@ describe('resource portfolio', () => {
   test('listBalances: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.portfolio.listBalances(
+      client.portfolio.listBalances(
         { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
@@ -66,7 +66,7 @@ describe('resource portfolio', () => {
   });
 
   test('listCredit', async () => {
-    const responsePromise = cadenza.portfolio.listCredit();
+    const responsePromise = client.portfolio.listCredit();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,7 +78,7 @@ describe('resource portfolio', () => {
 
   test('listCredit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.portfolio.listCredit({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.portfolio.listCredit({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -86,7 +86,7 @@ describe('resource portfolio', () => {
   test('listCredit: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.portfolio.listCredit(
+      client.portfolio.listCredit(
         { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
@@ -94,7 +94,7 @@ describe('resource portfolio', () => {
   });
 
   test('listPositions', async () => {
-    const responsePromise = cadenza.portfolio.listPositions();
+    const responsePromise = client.portfolio.listPositions();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -106,7 +106,7 @@ describe('resource portfolio', () => {
 
   test('listPositions: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.portfolio.listPositions({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.portfolio.listPositions({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
@@ -114,7 +114,7 @@ describe('resource portfolio', () => {
   test('listPositions: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      cadenza.portfolio.listPositions(
+      client.portfolio.listPositions(
         { exchangeAccountId: 'exchangeAccountId', hideEmptyValue: true },
         { path: '/_stainless_unknown_path' },
       ),
