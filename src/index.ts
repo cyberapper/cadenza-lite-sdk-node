@@ -167,6 +167,7 @@ export class Cadenza extends Core.APIClient {
   }
 
   static Cadenza = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static CadenzaError = Errors.CadenzaError;
   static APIError = Errors.APIError;

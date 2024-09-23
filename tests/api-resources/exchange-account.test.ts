@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource exchangeAccount', () => {
   test('create: only required params', async () => {
-    const responsePromise = cadenza.exchangeAccount.create({
+    const responsePromise = client.exchangeAccount.create({
       apiKey: 'my_api_key',
       apiSecret: 'my_api_secret',
       environment: 0,
@@ -27,7 +27,7 @@ describe('resource exchangeAccount', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await cadenza.exchangeAccount.create({
+    const response = await client.exchangeAccount.create({
       apiKey: 'my_api_key',
       apiSecret: 'my_api_secret',
       environment: 0,
@@ -37,7 +37,7 @@ describe('resource exchangeAccount', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = cadenza.exchangeAccount.update({
+    const responsePromise = client.exchangeAccount.update({
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -50,7 +50,7 @@ describe('resource exchangeAccount', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await cadenza.exchangeAccount.update({
+    const response = await client.exchangeAccount.update({
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       apiKey: 'my_api_key',
       apiSecret: 'my_api_secret',
@@ -59,7 +59,7 @@ describe('resource exchangeAccount', () => {
   });
 
   test('list', async () => {
-    const responsePromise = cadenza.exchangeAccount.list();
+    const responsePromise = client.exchangeAccount.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -71,13 +71,13 @@ describe('resource exchangeAccount', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(cadenza.exchangeAccount.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.exchangeAccount.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Cadenza.NotFoundError,
     );
   });
 
   test('remove: only required params', async () => {
-    const responsePromise = cadenza.exchangeAccount.remove({
+    const responsePromise = client.exchangeAccount.remove({
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -90,13 +90,13 @@ describe('resource exchangeAccount', () => {
   });
 
   test('remove: required and optional params', async () => {
-    const response = await cadenza.exchangeAccount.remove({
+    const response = await client.exchangeAccount.remove({
       exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
     });
   });
 
   test('setExchangePriority: only required params', async () => {
-    const responsePromise = cadenza.exchangeAccount.setExchangePriority({
+    const responsePromise = client.exchangeAccount.setExchangePriority({
       priority: ['my_exchange_1', 'my_exchange_2', 'my_exchange_3'],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -109,7 +109,7 @@ describe('resource exchangeAccount', () => {
   });
 
   test('setExchangePriority: required and optional params', async () => {
-    const response = await cadenza.exchangeAccount.setExchangePriority({
+    const response = await client.exchangeAccount.setExchangePriority({
       priority: ['my_exchange_1', 'my_exchange_2', 'my_exchange_3'],
     });
   });

@@ -3,14 +3,14 @@
 import Cadenza from 'cadenza-sdk';
 import { Response } from 'node-fetch';
 
-const cadenza = new Cadenza({
+const client = new Cadenza({
   bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource quote', () => {
   test('post: only required params', async () => {
-    const responsePromise = cadenza.trading.quote.post({
+    const responsePromise = client.trading.quote.post({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
@@ -25,7 +25,7 @@ describe('resource quote', () => {
   });
 
   test('post: required and optional params', async () => {
-    const response = await cadenza.trading.quote.post({
+    const response = await client.trading.quote.post({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
@@ -36,7 +36,7 @@ describe('resource quote', () => {
   });
 
   test('requestForQuote: only required params', async () => {
-    const responsePromise = cadenza.trading.quote.requestForQuote({
+    const responsePromise = client.trading.quote.requestForQuote({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
@@ -51,7 +51,7 @@ describe('resource quote', () => {
   });
 
   test('requestForQuote: required and optional params', async () => {
-    const response = await cadenza.trading.quote.requestForQuote({
+    const response = await client.trading.quote.requestForQuote({
       baseCurrency: 'baseCurrency',
       orderSide: 'orderSide',
       quoteCurrency: 'quoteCurrency',
