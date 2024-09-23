@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.0 (2024-09-23)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* **api:** manual updates ([#105](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/105)) ([cdd52d0](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/cdd52d009d49d9cb12805a54cd1bbaa3bac641ea))
+
 ## 0.20.0 (2024-07-26)
 
 Full Changelog: [v0.19.0...v0.20.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.19.0...v0.20.0)
