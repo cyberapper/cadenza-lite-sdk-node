@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.22.0 (2024-09-29)
+
+Full Changelog: [v0.21.1...v0.22.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.21.1...v0.22.0)
+
+### Features
+
+* **client:** send retry count header ([#112](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/112)) ([89a9889](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/89a98898586c49eb7a81d4644234947c4411f97a))
+
+
+### Chores
+
+* **internal:** codegen related update ([#114](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/114)) ([53db1cc](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/53db1cc677f75fdca439f3436b423218c2fd3bcd))
+
 ## 0.21.1 (2024-09-23)
 
 Full Changelog: [v0.21.0...v0.21.1](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.21.0...v0.21.1)
