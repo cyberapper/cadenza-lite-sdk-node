@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as QuoteAPI from './quote';
 
 export class QuoteResource extends APIResource {
   /**
@@ -193,11 +192,13 @@ export interface QuoteRequestForQuoteParams {
   quoteQuantity?: number;
 }
 
-export namespace QuoteResource {
-  export import Quote = QuoteAPI.Quote;
-  export import QuoteRequest = QuoteAPI.QuoteRequest;
-  export import QuotePostResponse = QuoteAPI.QuotePostResponse;
-  export import QuoteRequestForQuoteResponse = QuoteAPI.QuoteRequestForQuoteResponse;
-  export import QuotePostParams = QuoteAPI.QuotePostParams;
-  export import QuoteRequestForQuoteParams = QuoteAPI.QuoteRequestForQuoteParams;
+export declare namespace QuoteResource {
+  export {
+    type Quote as Quote,
+    type QuoteRequest as QuoteRequest,
+    type QuotePostResponse as QuotePostResponse,
+    type QuoteRequestForQuoteResponse as QuoteRequestForQuoteResponse,
+    type QuotePostParams as QuotePostParams,
+    type QuoteRequestForQuoteParams as QuoteRequestForQuoteParams,
+  };
 }

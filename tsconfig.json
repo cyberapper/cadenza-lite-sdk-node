@@ -11,7 +11,7 @@
     "paths": {
       "cadenza-sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
       "cadenza-sdk/*": ["src/*"],
-      "cadenza-sdk": ["src/index.ts"],
+      "cadenza-sdk": ["src/index.ts"]
     },
     "noEmit": true,
 
@@ -32,6 +32,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+		"isolatedModules": false,
 
     "skipLibCheck": true
   }

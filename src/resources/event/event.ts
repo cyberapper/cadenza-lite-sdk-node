@@ -2,10 +2,34 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as EventAPI from './event';
 import * as DropCopyAPI from './drop-copy';
+import {
+  DropCopy,
+  DropCopyCancelOrderRequestAck,
+  DropCopyDropCopyCancelOrderRequestAckParams,
+  DropCopyDropCopyExecutionReportParams,
+  DropCopyDropCopyOrderParams,
+  DropCopyDropCopyPlaceOrderRequestAckParams,
+  DropCopyDropCopyPortfolioParams,
+  DropCopyDropCopyQuoteParams,
+  DropCopyDropCopyQuoteRequestAckParams,
+  DropCopyExecutionReport,
+  DropCopyOrder,
+  DropCopyPlaceOrderRequestAck,
+  DropCopyPortfolio,
+  DropCopyQuote,
+  DropCopyRequestAck,
+} from './drop-copy';
 import * as MarketDataAPI from './market-data';
+import {
+  MarketData,
+  MarketDataKline,
+  MarketDataMarketDataKlineParams,
+  MarketDataMarketDataOrderBookParams,
+  MarketDataOrderBook,
+} from './market-data';
 import * as TaskAPI from './task';
+import { Task, TaskQuote, TaskTaskQuoteParams } from './task';
 
 export class EventResource extends APIResource {
   task: TaskAPI.Task = new TaskAPI.Task(this._client);
@@ -94,30 +118,38 @@ export interface EventNewParams {
   source?: string;
 }
 
-export namespace EventResource {
-  export import Event = EventAPI.Event;
-  export import EventNewParams = EventAPI.EventNewParams;
-  export import Task = TaskAPI.Task;
-  export import TaskQuote = TaskAPI.TaskQuote;
-  export import TaskTaskQuoteParams = TaskAPI.TaskTaskQuoteParams;
-  export import DropCopy = DropCopyAPI.DropCopy;
-  export import DropCopyCancelOrderRequestAck = DropCopyAPI.DropCopyCancelOrderRequestAck;
-  export import DropCopyExecutionReport = DropCopyAPI.DropCopyExecutionReport;
-  export import DropCopyOrder = DropCopyAPI.DropCopyOrder;
-  export import DropCopyPlaceOrderRequestAck = DropCopyAPI.DropCopyPlaceOrderRequestAck;
-  export import DropCopyPortfolio = DropCopyAPI.DropCopyPortfolio;
-  export import DropCopyQuote = DropCopyAPI.DropCopyQuote;
-  export import DropCopyRequestAck = DropCopyAPI.DropCopyRequestAck;
-  export import DropCopyDropCopyCancelOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyCancelOrderRequestAckParams;
-  export import DropCopyDropCopyExecutionReportParams = DropCopyAPI.DropCopyDropCopyExecutionReportParams;
-  export import DropCopyDropCopyOrderParams = DropCopyAPI.DropCopyDropCopyOrderParams;
-  export import DropCopyDropCopyPlaceOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyPlaceOrderRequestAckParams;
-  export import DropCopyDropCopyPortfolioParams = DropCopyAPI.DropCopyDropCopyPortfolioParams;
-  export import DropCopyDropCopyQuoteParams = DropCopyAPI.DropCopyDropCopyQuoteParams;
-  export import DropCopyDropCopyQuoteRequestAckParams = DropCopyAPI.DropCopyDropCopyQuoteRequestAckParams;
-  export import MarketData = MarketDataAPI.MarketData;
-  export import MarketDataKline = MarketDataAPI.MarketDataKline;
-  export import MarketDataOrderBook = MarketDataAPI.MarketDataOrderBook;
-  export import MarketDataMarketDataKlineParams = MarketDataAPI.MarketDataMarketDataKlineParams;
-  export import MarketDataMarketDataOrderBookParams = MarketDataAPI.MarketDataMarketDataOrderBookParams;
+EventResource.Task = Task;
+EventResource.DropCopy = DropCopy;
+EventResource.MarketData = MarketData;
+
+export declare namespace EventResource {
+  export { type Event as Event, type EventNewParams as EventNewParams };
+
+  export { Task as Task, type TaskQuote as TaskQuote, type TaskTaskQuoteParams as TaskTaskQuoteParams };
+
+  export {
+    DropCopy as DropCopy,
+    type DropCopyCancelOrderRequestAck as DropCopyCancelOrderRequestAck,
+    type DropCopyExecutionReport as DropCopyExecutionReport,
+    type DropCopyOrder as DropCopyOrder,
+    type DropCopyPlaceOrderRequestAck as DropCopyPlaceOrderRequestAck,
+    type DropCopyPortfolio as DropCopyPortfolio,
+    type DropCopyQuote as DropCopyQuote,
+    type DropCopyRequestAck as DropCopyRequestAck,
+    type DropCopyDropCopyCancelOrderRequestAckParams as DropCopyDropCopyCancelOrderRequestAckParams,
+    type DropCopyDropCopyExecutionReportParams as DropCopyDropCopyExecutionReportParams,
+    type DropCopyDropCopyOrderParams as DropCopyDropCopyOrderParams,
+    type DropCopyDropCopyPlaceOrderRequestAckParams as DropCopyDropCopyPlaceOrderRequestAckParams,
+    type DropCopyDropCopyPortfolioParams as DropCopyDropCopyPortfolioParams,
+    type DropCopyDropCopyQuoteParams as DropCopyDropCopyQuoteParams,
+    type DropCopyDropCopyQuoteRequestAckParams as DropCopyDropCopyQuoteRequestAckParams,
+  };
+
+  export {
+    MarketData as MarketData,
+    type MarketDataKline as MarketDataKline,
+    type MarketDataOrderBook as MarketDataOrderBook,
+    type MarketDataMarketDataKlineParams as MarketDataMarketDataKlineParams,
+    type MarketDataMarketDataOrderBookParams as MarketDataMarketDataOrderBookParams,
+  };
 }

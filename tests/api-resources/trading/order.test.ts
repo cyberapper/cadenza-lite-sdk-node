@@ -65,6 +65,7 @@ describe('resource order', () => {
     await expect(
       client.trading.order.list(
         {
+          ascending: true,
           endTime: 1632933600000,
           exchangeAccountId: 'exchangeAccountId',
           limit: 100,

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as TaskAPI from './task';
 import * as QuoteAPI from '../trading/quote';
 
 export class Task extends APIResource {
@@ -82,7 +81,6 @@ export interface TaskTaskQuoteParams {
   source?: string;
 }
 
-export namespace Task {
-  export import TaskQuote = TaskAPI.TaskQuote;
-  export import TaskTaskQuoteParams = TaskAPI.TaskTaskQuoteParams;
+export declare namespace Task {
+  export { type TaskQuote as TaskQuote, type TaskTaskQuoteParams as TaskTaskQuoteParams };
 }

@@ -32,6 +32,7 @@ describe('resource executionReport', () => {
     await expect(
       client.trading.executionReport.list(
         {
+          ascending: true,
           endTime: 1632933600000,
           limit: 100,
           offset: 0,
