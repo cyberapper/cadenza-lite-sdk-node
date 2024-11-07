@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as TickerAPI from './ticker';
 
 export class TickerResource extends APIResource {
   /**
@@ -74,8 +73,10 @@ export interface TickerGetParams {
   exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
 }
 
-export namespace TickerResource {
-  export import Ticker = TickerAPI.Ticker;
-  export import TickerGetResponse = TickerAPI.TickerGetResponse;
-  export import TickerGetParams = TickerAPI.TickerGetParams;
+export declare namespace TickerResource {
+  export {
+    type Ticker as Ticker,
+    type TickerGetResponse as TickerGetResponse,
+    type TickerGetParams as TickerGetParams,
+  };
 }

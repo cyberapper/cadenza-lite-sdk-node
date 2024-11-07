@@ -126,14 +126,12 @@ Types:
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPortfolio</a></code>
 - <code><a href="./src/resources/portfolio.ts">ExchangeAccountPosition</a></code>
 - <code><a href="./src/resources/portfolio.ts">PositionEntry</a></code>
-- <code><a href="./src/resources/portfolio.ts">PortfolioListResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListBalancesResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListCreditResponse</a></code>
 - <code><a href="./src/resources/portfolio.ts">PortfolioListPositionsResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v2/portfolio/listSummaries">client.portfolio.<a href="./src/resources/portfolio.ts">list</a>({ ...params }) -> PortfolioListResponse</code>
 - <code title="get /api/v2/portfolio/listBalances">client.portfolio.<a href="./src/resources/portfolio.ts">listBalances</a>({ ...params }) -> PortfolioListBalancesResponse</code>
 - <code title="get /api/v2/portfolio/listCredit">client.portfolio.<a href="./src/resources/portfolio.ts">listCredit</a>({ ...params }) -> PortfolioListCreditResponse</code>
 - <code title="get /api/v2/portfolio/listPositions">client.portfolio.<a href="./src/resources/portfolio.ts">listPositions</a>({ ...params }) -> PortfolioListPositionsResponse</code>

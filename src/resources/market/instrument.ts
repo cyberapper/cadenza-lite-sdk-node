@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as InstrumentAPI from './instrument';
 
 export class InstrumentResource extends APIResource {
   /**
@@ -157,8 +156,10 @@ export interface InstrumentListParams {
   symbol?: string;
 }
 
-export namespace InstrumentResource {
-  export import Instrument = InstrumentAPI.Instrument;
-  export import InstrumentListResponse = InstrumentAPI.InstrumentListResponse;
-  export import InstrumentListParams = InstrumentAPI.InstrumentListParams;
+export declare namespace InstrumentResource {
+  export {
+    type Instrument as Instrument,
+    type InstrumentListResponse as InstrumentListResponse,
+    type InstrumentListParams as InstrumentListParams,
+  };
 }

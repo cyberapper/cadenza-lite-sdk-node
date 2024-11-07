@@ -2,8 +2,8 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as WebhookAPI from './webhook';
 import * as CloudSchedulerAPI from './cloud-scheduler';
+import { CloudScheduler, CloudSchedulerUpdatePortfolioRoutineResponse } from './cloud-scheduler';
 
 export class Webhook extends APIResource {
   cloudScheduler: CloudSchedulerAPI.CloudScheduler = new CloudSchedulerAPI.CloudScheduler(this._client);
@@ -43,9 +43,16 @@ export namespace WebhookPubsubParams {
   }
 }
 
-export namespace Webhook {
-  export import WebhookPubsubResponse = WebhookAPI.WebhookPubsubResponse;
-  export import WebhookPubsubParams = WebhookAPI.WebhookPubsubParams;
-  export import CloudScheduler = CloudSchedulerAPI.CloudScheduler;
-  export import CloudSchedulerUpdatePortfolioRoutineResponse = CloudSchedulerAPI.CloudSchedulerUpdatePortfolioRoutineResponse;
+Webhook.CloudScheduler = CloudScheduler;
+
+export declare namespace Webhook {
+  export {
+    type WebhookPubsubResponse as WebhookPubsubResponse,
+    type WebhookPubsubParams as WebhookPubsubParams,
+  };
+
+  export {
+    CloudScheduler as CloudScheduler,
+    type CloudSchedulerUpdatePortfolioRoutineResponse as CloudSchedulerUpdatePortfolioRoutineResponse,
+  };
 }
