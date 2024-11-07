@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as UtilityAPI from './utility';
 
 export class Utility extends APIResource {
   /**
@@ -18,6 +17,6 @@ export class Utility extends APIResource {
 
 export type UtilityHealthResponse = string;
 
-export namespace Utility {
-  export import UtilityHealthResponse = UtilityAPI.UtilityHealthResponse;
+export declare namespace Utility {
+  export { type UtilityHealthResponse as UtilityHealthResponse };
 }

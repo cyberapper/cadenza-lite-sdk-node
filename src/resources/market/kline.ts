@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as KlineAPI from './kline';
 import * as PortfolioAPI from '../portfolio';
 
 export class KlineResource extends APIResource {
@@ -100,8 +99,6 @@ export interface KlineGetParams {
   startTime?: number;
 }
 
-export namespace KlineResource {
-  export import Candles = KlineAPI.Candles;
-  export import Kline = KlineAPI.Kline;
-  export import KlineGetParams = KlineAPI.KlineGetParams;
+export declare namespace KlineResource {
+  export { type Candles as Candles, type Kline as Kline, type KlineGetParams as KlineGetParams };
 }

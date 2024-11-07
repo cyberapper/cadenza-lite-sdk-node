@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as DropCopyAPI from './drop-copy';
 import * as PortfolioAPI from '../portfolio';
 import * as ExecutionReportAPI from '../trading/execution-report';
 import * as OrderAPI from '../trading/order';
@@ -556,19 +555,21 @@ export interface DropCopyDropCopyQuoteRequestAckParams {
   source?: string;
 }
 
-export namespace DropCopy {
-  export import DropCopyCancelOrderRequestAck = DropCopyAPI.DropCopyCancelOrderRequestAck;
-  export import DropCopyExecutionReport = DropCopyAPI.DropCopyExecutionReport;
-  export import DropCopyOrder = DropCopyAPI.DropCopyOrder;
-  export import DropCopyPlaceOrderRequestAck = DropCopyAPI.DropCopyPlaceOrderRequestAck;
-  export import DropCopyPortfolio = DropCopyAPI.DropCopyPortfolio;
-  export import DropCopyQuote = DropCopyAPI.DropCopyQuote;
-  export import DropCopyRequestAck = DropCopyAPI.DropCopyRequestAck;
-  export import DropCopyDropCopyCancelOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyCancelOrderRequestAckParams;
-  export import DropCopyDropCopyExecutionReportParams = DropCopyAPI.DropCopyDropCopyExecutionReportParams;
-  export import DropCopyDropCopyOrderParams = DropCopyAPI.DropCopyDropCopyOrderParams;
-  export import DropCopyDropCopyPlaceOrderRequestAckParams = DropCopyAPI.DropCopyDropCopyPlaceOrderRequestAckParams;
-  export import DropCopyDropCopyPortfolioParams = DropCopyAPI.DropCopyDropCopyPortfolioParams;
-  export import DropCopyDropCopyQuoteParams = DropCopyAPI.DropCopyDropCopyQuoteParams;
-  export import DropCopyDropCopyQuoteRequestAckParams = DropCopyAPI.DropCopyDropCopyQuoteRequestAckParams;
+export declare namespace DropCopy {
+  export {
+    type DropCopyCancelOrderRequestAck as DropCopyCancelOrderRequestAck,
+    type DropCopyExecutionReport as DropCopyExecutionReport,
+    type DropCopyOrder as DropCopyOrder,
+    type DropCopyPlaceOrderRequestAck as DropCopyPlaceOrderRequestAck,
+    type DropCopyPortfolio as DropCopyPortfolio,
+    type DropCopyQuote as DropCopyQuote,
+    type DropCopyRequestAck as DropCopyRequestAck,
+    type DropCopyDropCopyCancelOrderRequestAckParams as DropCopyDropCopyCancelOrderRequestAckParams,
+    type DropCopyDropCopyExecutionReportParams as DropCopyDropCopyExecutionReportParams,
+    type DropCopyDropCopyOrderParams as DropCopyDropCopyOrderParams,
+    type DropCopyDropCopyPlaceOrderRequestAckParams as DropCopyDropCopyPlaceOrderRequestAckParams,
+    type DropCopyDropCopyPortfolioParams as DropCopyDropCopyPortfolioParams,
+    type DropCopyDropCopyQuoteParams as DropCopyDropCopyQuoteParams,
+    type DropCopyDropCopyQuoteRequestAckParams as DropCopyDropCopyQuoteRequestAckParams,
+  };
 }

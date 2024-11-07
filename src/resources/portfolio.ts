@@ -3,24 +3,8 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as PortfolioAPI from './portfolio';
 
 export class Portfolio extends APIResource {
-  /**
-   * List Portfolio Summary
-   */
-  list(query?: PortfolioListParams, options?: Core.RequestOptions): Core.APIPromise<PortfolioListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<PortfolioListResponse>;
-  list(
-    query: PortfolioListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PortfolioListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.get('/api/v2/portfolio/listSummaries', { query, ...options });
-  }
-
   /**
    * List balances
    */
@@ -262,11 +246,6 @@ export interface PositionEntry {
   entryPrice?: number;
 }
 
-/**
- * List of account portfolio summaries
- */
-export type PortfolioListResponse = Array<ExchangeAccountPortfolio>;
-
 export type PortfolioListBalancesResponse = Array<ExchangeAccountBalance>;
 
 /**
@@ -275,18 +254,6 @@ export type PortfolioListBalancesResponse = Array<ExchangeAccountBalance>;
 export type PortfolioListCreditResponse = Array<ExchangeAccountCredit>;
 
 export type PortfolioListPositionsResponse = Array<ExchangeAccountPosition>;
-
-export interface PortfolioListParams {
-  /**
-   * Exchange account ID
-   */
-  exchangeAccountId?: string;
-
-  /**
-   * Hide small account
-   */
-  hideEmptyValue?: boolean;
-}
 
 export interface PortfolioListBalancesParams {
   /**
@@ -324,19 +291,19 @@ export interface PortfolioListPositionsParams {
   hideEmptyValue?: boolean;
 }
 
-export namespace Portfolio {
-  export import BalanceEntry = PortfolioAPI.BalanceEntry;
-  export import ExchangeAccountBalance = PortfolioAPI.ExchangeAccountBalance;
-  export import ExchangeAccountCredit = PortfolioAPI.ExchangeAccountCredit;
-  export import ExchangeAccountPortfolio = PortfolioAPI.ExchangeAccountPortfolio;
-  export import ExchangeAccountPosition = PortfolioAPI.ExchangeAccountPosition;
-  export import PositionEntry = PortfolioAPI.PositionEntry;
-  export import PortfolioListResponse = PortfolioAPI.PortfolioListResponse;
-  export import PortfolioListBalancesResponse = PortfolioAPI.PortfolioListBalancesResponse;
-  export import PortfolioListCreditResponse = PortfolioAPI.PortfolioListCreditResponse;
-  export import PortfolioListPositionsResponse = PortfolioAPI.PortfolioListPositionsResponse;
-  export import PortfolioListParams = PortfolioAPI.PortfolioListParams;
-  export import PortfolioListBalancesParams = PortfolioAPI.PortfolioListBalancesParams;
-  export import PortfolioListCreditParams = PortfolioAPI.PortfolioListCreditParams;
-  export import PortfolioListPositionsParams = PortfolioAPI.PortfolioListPositionsParams;
+export declare namespace Portfolio {
+  export {
+    type BalanceEntry as BalanceEntry,
+    type ExchangeAccountBalance as ExchangeAccountBalance,
+    type ExchangeAccountCredit as ExchangeAccountCredit,
+    type ExchangeAccountPortfolio as ExchangeAccountPortfolio,
+    type ExchangeAccountPosition as ExchangeAccountPosition,
+    type PositionEntry as PositionEntry,
+    type PortfolioListBalancesResponse as PortfolioListBalancesResponse,
+    type PortfolioListCreditResponse as PortfolioListCreditResponse,
+    type PortfolioListPositionsResponse as PortfolioListPositionsResponse,
+    type PortfolioListBalancesParams as PortfolioListBalancesParams,
+    type PortfolioListCreditParams as PortfolioListCreditParams,
+    type PortfolioListPositionsParams as PortfolioListPositionsParams,
+  };
 }

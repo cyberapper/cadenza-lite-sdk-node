@@ -1,11 +1,44 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
 import * as Pagination from './pagination';
+import { type OffsetParams, OffsetResponse } from './pagination';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import {
+  ExchangeAccount,
+  ExchangeAccountCreateParams,
+  ExchangeAccountCreateResponse,
+  ExchangeAccountListResponse,
+  ExchangeAccountRemoveParams,
+  ExchangeAccountRemoveResponse,
+  ExchangeAccountSetExchangePriorityParams,
+  ExchangeAccountSetExchangePriorityResponse,
+  ExchangeAccountUpdateParams,
+  ExchangeAccountUpdateResponse,
+} from './resources/exchange-account';
+import {
+  BalanceEntry,
+  ExchangeAccountBalance,
+  ExchangeAccountCredit,
+  ExchangeAccountPortfolio,
+  ExchangeAccountPosition,
+  Portfolio,
+  PortfolioListBalancesParams,
+  PortfolioListBalancesResponse,
+  PortfolioListCreditParams,
+  PortfolioListCreditResponse,
+  PortfolioListPositionsParams,
+  PortfolioListPositionsResponse,
+  PositionEntry,
+} from './resources/portfolio';
+import { Utility, UtilityHealthResponse } from './resources/utility';
+import { Event, EventNewParams, EventResource } from './resources/event/event';
+import { Market } from './resources/market/market';
+import { Trading } from './resources/trading/trading';
+import { Webhook, WebhookPubsubParams, WebhookPubsubResponse } from './resources/webhook/webhook';
 
 const environments = {
   prod: 'https://cadenza-lite.algo724.com',
@@ -187,7 +220,7 @@ export class Cadenza extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   CadenzaError,
   APIError,
   APIConnectionError,
@@ -201,59 +234,66 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Cadenza {
-  export import RequestOptions = Core.RequestOptions;
+Cadenza.Utility = Utility;
+Cadenza.Market = Market;
+Cadenza.Trading = Trading;
+Cadenza.Portfolio = Portfolio;
+Cadenza.Webhook = Webhook;
+Cadenza.EventResource = EventResource;
+
+export declare namespace Cadenza {
+  export type RequestOptions = Core.RequestOptions;
 
   export import Offset = Pagination.Offset;
-  export import OffsetParams = Pagination.OffsetParams;
-  export import OffsetResponse = Pagination.OffsetResponse;
+  export { type OffsetParams as OffsetParams, type OffsetResponse as OffsetResponse };
 
-  export import Utility = API.Utility;
-  export import UtilityHealthResponse = API.UtilityHealthResponse;
+  export { Utility as Utility, type UtilityHealthResponse as UtilityHealthResponse };
 
-  export import ExchangeAccount = API.ExchangeAccount;
-  export import ExchangeAccountCreateResponse = API.ExchangeAccountCreateResponse;
-  export import ExchangeAccountUpdateResponse = API.ExchangeAccountUpdateResponse;
-  export import ExchangeAccountListResponse = API.ExchangeAccountListResponse;
-  export import ExchangeAccountRemoveResponse = API.ExchangeAccountRemoveResponse;
-  export import ExchangeAccountSetExchangePriorityResponse = API.ExchangeAccountSetExchangePriorityResponse;
-  export import ExchangeAccountCreateParams = API.ExchangeAccountCreateParams;
-  export import ExchangeAccountUpdateParams = API.ExchangeAccountUpdateParams;
-  export import ExchangeAccountRemoveParams = API.ExchangeAccountRemoveParams;
-  export import ExchangeAccountSetExchangePriorityParams = API.ExchangeAccountSetExchangePriorityParams;
+  export {
+    type ExchangeAccount as ExchangeAccount,
+    type ExchangeAccountCreateResponse as ExchangeAccountCreateResponse,
+    type ExchangeAccountUpdateResponse as ExchangeAccountUpdateResponse,
+    type ExchangeAccountListResponse as ExchangeAccountListResponse,
+    type ExchangeAccountRemoveResponse as ExchangeAccountRemoveResponse,
+    type ExchangeAccountSetExchangePriorityResponse as ExchangeAccountSetExchangePriorityResponse,
+    type ExchangeAccountCreateParams as ExchangeAccountCreateParams,
+    type ExchangeAccountUpdateParams as ExchangeAccountUpdateParams,
+    type ExchangeAccountRemoveParams as ExchangeAccountRemoveParams,
+    type ExchangeAccountSetExchangePriorityParams as ExchangeAccountSetExchangePriorityParams,
+  };
 
-  export import Market = API.Market;
+  export { Market as Market };
 
-  export import Trading = API.Trading;
+  export { Trading as Trading };
 
-  export import Portfolio = API.Portfolio;
-  export import BalanceEntry = API.BalanceEntry;
-  export import ExchangeAccountBalance = API.ExchangeAccountBalance;
-  export import ExchangeAccountCredit = API.ExchangeAccountCredit;
-  export import ExchangeAccountPortfolio = API.ExchangeAccountPortfolio;
-  export import ExchangeAccountPosition = API.ExchangeAccountPosition;
-  export import PositionEntry = API.PositionEntry;
-  export import PortfolioListResponse = API.PortfolioListResponse;
-  export import PortfolioListBalancesResponse = API.PortfolioListBalancesResponse;
-  export import PortfolioListCreditResponse = API.PortfolioListCreditResponse;
-  export import PortfolioListPositionsResponse = API.PortfolioListPositionsResponse;
-  export import PortfolioListParams = API.PortfolioListParams;
-  export import PortfolioListBalancesParams = API.PortfolioListBalancesParams;
-  export import PortfolioListCreditParams = API.PortfolioListCreditParams;
-  export import PortfolioListPositionsParams = API.PortfolioListPositionsParams;
+  export {
+    Portfolio as Portfolio,
+    type BalanceEntry as BalanceEntry,
+    type ExchangeAccountBalance as ExchangeAccountBalance,
+    type ExchangeAccountCredit as ExchangeAccountCredit,
+    type ExchangeAccountPortfolio as ExchangeAccountPortfolio,
+    type ExchangeAccountPosition as ExchangeAccountPosition,
+    type PositionEntry as PositionEntry,
+    type PortfolioListBalancesResponse as PortfolioListBalancesResponse,
+    type PortfolioListCreditResponse as PortfolioListCreditResponse,
+    type PortfolioListPositionsResponse as PortfolioListPositionsResponse,
+    type PortfolioListBalancesParams as PortfolioListBalancesParams,
+    type PortfolioListCreditParams as PortfolioListCreditParams,
+    type PortfolioListPositionsParams as PortfolioListPositionsParams,
+  };
 
-  export import Webhook = API.Webhook;
-  export import WebhookPubsubResponse = API.WebhookPubsubResponse;
-  export import WebhookPubsubParams = API.WebhookPubsubParams;
+  export {
+    Webhook as Webhook,
+    type WebhookPubsubResponse as WebhookPubsubResponse,
+    type WebhookPubsubParams as WebhookPubsubParams,
+  };
 
-  export import EventResource = API.EventResource;
-  export import Event = API.Event;
-  export import EventNewParams = API.EventNewParams;
+  export { EventResource as EventResource, type Event as Event, type EventNewParams as EventNewParams };
 }
 
 export default Cadenza;

@@ -32,8 +32,8 @@ export class Offset<Item> extends AbstractPage<Item> implements OffsetResponse<I
     super(client, response, body, options);
 
     this.data = body.data || [];
-    this.offset = body.offset || 0;
-    this.limit = body.limit || 0;
+    this.offset = body.offset || null;
+    this.limit = body.limit || null;
   }
 
   getPaginatedItems(): Item[] {

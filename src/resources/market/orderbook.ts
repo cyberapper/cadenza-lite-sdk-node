@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as OrderbookAPI from './orderbook';
 
 export class OrderbookResource extends APIResource {
   /**
@@ -52,8 +51,10 @@ export interface OrderbookGetParams {
   limit?: number;
 }
 
-export namespace OrderbookResource {
-  export import Orderbook = OrderbookAPI.Orderbook;
-  export import OrderbookGetResponse = OrderbookAPI.OrderbookGetResponse;
-  export import OrderbookGetParams = OrderbookAPI.OrderbookGetParams;
+export declare namespace OrderbookResource {
+  export {
+    type Orderbook as Orderbook,
+    type OrderbookGetResponse as OrderbookGetResponse,
+    type OrderbookGetParams as OrderbookGetParams,
+  };
 }

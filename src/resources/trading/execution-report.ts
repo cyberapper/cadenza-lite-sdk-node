@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ExecutionReportAPI from './execution-report';
 import * as OrderAPI from './order';
 import { Offset, type OffsetParams } from '../../pagination';
 
@@ -153,6 +152,11 @@ export interface QuoteExecutionReport extends ExecutionReport {
 
 export interface ExecutionReportListParams extends OffsetParams {
   /**
+   * Return records in ascending order
+   */
+  ascending?: boolean;
+
+  /**
    * End time (in unix milliseconds)
    */
   endTime?: number;
@@ -175,10 +179,14 @@ export interface ExecutionReportGetQuoteExecutionReportParams {
   quoteRequestId?: string;
 }
 
-export namespace ExecutionReport {
-  export import ExecutionReport = ExecutionReportAPI.ExecutionReport;
-  export import QuoteExecutionReport = ExecutionReportAPI.QuoteExecutionReport;
-  export import ExecutionReportsOffset = ExecutionReportAPI.ExecutionReportsOffset;
-  export import ExecutionReportListParams = ExecutionReportAPI.ExecutionReportListParams;
-  export import ExecutionReportGetQuoteExecutionReportParams = ExecutionReportAPI.ExecutionReportGetQuoteExecutionReportParams;
+ExecutionReport.ExecutionReportsOffset = ExecutionReportsOffset;
+
+export declare namespace ExecutionReport {
+  export {
+    type ExecutionReport as ExecutionReport,
+    type QuoteExecutionReport as QuoteExecutionReport,
+    ExecutionReportsOffset as ExecutionReportsOffset,
+    type ExecutionReportListParams as ExecutionReportListParams,
+    type ExecutionReportGetQuoteExecutionReportParams as ExecutionReportGetQuoteExecutionReportParams,
+  };
 }

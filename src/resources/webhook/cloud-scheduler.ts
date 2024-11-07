@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CloudSchedulerAPI from './cloud-scheduler';
 
 export class CloudScheduler extends APIResource {
   /**
@@ -19,6 +18,6 @@ export interface CloudSchedulerUpdatePortfolioRoutineResponse {
   data?: string;
 }
 
-export namespace CloudScheduler {
-  export import CloudSchedulerUpdatePortfolioRoutineResponse = CloudSchedulerAPI.CloudSchedulerUpdatePortfolioRoutineResponse;
+export declare namespace CloudScheduler {
+  export { type CloudSchedulerUpdatePortfolioRoutineResponse as CloudSchedulerUpdatePortfolioRoutineResponse };
 }
