@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ExchangeAccountAPI from './exchange-account';
 
 export class ExchangeAccount extends APIResource {
   /**
@@ -166,15 +165,17 @@ export interface ExchangeAccountSetExchangePriorityParams {
   priority: Array<string>;
 }
 
-export namespace ExchangeAccount {
-  export import ExchangeAccount = ExchangeAccountAPI.ExchangeAccount;
-  export import ExchangeAccountCreateResponse = ExchangeAccountAPI.ExchangeAccountCreateResponse;
-  export import ExchangeAccountUpdateResponse = ExchangeAccountAPI.ExchangeAccountUpdateResponse;
-  export import ExchangeAccountListResponse = ExchangeAccountAPI.ExchangeAccountListResponse;
-  export import ExchangeAccountRemoveResponse = ExchangeAccountAPI.ExchangeAccountRemoveResponse;
-  export import ExchangeAccountSetExchangePriorityResponse = ExchangeAccountAPI.ExchangeAccountSetExchangePriorityResponse;
-  export import ExchangeAccountCreateParams = ExchangeAccountAPI.ExchangeAccountCreateParams;
-  export import ExchangeAccountUpdateParams = ExchangeAccountAPI.ExchangeAccountUpdateParams;
-  export import ExchangeAccountRemoveParams = ExchangeAccountAPI.ExchangeAccountRemoveParams;
-  export import ExchangeAccountSetExchangePriorityParams = ExchangeAccountAPI.ExchangeAccountSetExchangePriorityParams;
+export declare namespace ExchangeAccount {
+  export {
+    type ExchangeAccount as ExchangeAccount,
+    type ExchangeAccountCreateResponse as ExchangeAccountCreateResponse,
+    type ExchangeAccountUpdateResponse as ExchangeAccountUpdateResponse,
+    type ExchangeAccountListResponse as ExchangeAccountListResponse,
+    type ExchangeAccountRemoveResponse as ExchangeAccountRemoveResponse,
+    type ExchangeAccountSetExchangePriorityResponse as ExchangeAccountSetExchangePriorityResponse,
+    type ExchangeAccountCreateParams as ExchangeAccountCreateParams,
+    type ExchangeAccountUpdateParams as ExchangeAccountUpdateParams,
+    type ExchangeAccountRemoveParams as ExchangeAccountRemoveParams,
+    type ExchangeAccountSetExchangePriorityParams as ExchangeAccountSetExchangePriorityParams,
+  };
 }

@@ -2,9 +2,13 @@
 
 import { APIResource } from '../../resource';
 import * as InstrumentAPI from './instrument';
+import { Instrument, InstrumentListParams, InstrumentListResponse, InstrumentResource } from './instrument';
 import * as KlineAPI from './kline';
+import { Candles, Kline, KlineGetParams, KlineResource } from './kline';
 import * as OrderbookAPI from './orderbook';
+import { Orderbook, OrderbookGetParams, OrderbookGetResponse, OrderbookResource } from './orderbook';
 import * as TickerAPI from './ticker';
+import { Ticker, TickerGetParams, TickerGetResponse, TickerResource } from './ticker';
 
 export class Market extends APIResource {
   instrument: InstrumentAPI.InstrumentResource = new InstrumentAPI.InstrumentResource(this._client);
@@ -13,21 +17,37 @@ export class Market extends APIResource {
   kline: KlineAPI.KlineResource = new KlineAPI.KlineResource(this._client);
 }
 
-export namespace Market {
-  export import InstrumentResource = InstrumentAPI.InstrumentResource;
-  export import Instrument = InstrumentAPI.Instrument;
-  export import InstrumentListResponse = InstrumentAPI.InstrumentListResponse;
-  export import InstrumentListParams = InstrumentAPI.InstrumentListParams;
-  export import TickerResource = TickerAPI.TickerResource;
-  export import Ticker = TickerAPI.Ticker;
-  export import TickerGetResponse = TickerAPI.TickerGetResponse;
-  export import TickerGetParams = TickerAPI.TickerGetParams;
-  export import OrderbookResource = OrderbookAPI.OrderbookResource;
-  export import Orderbook = OrderbookAPI.Orderbook;
-  export import OrderbookGetResponse = OrderbookAPI.OrderbookGetResponse;
-  export import OrderbookGetParams = OrderbookAPI.OrderbookGetParams;
-  export import KlineResource = KlineAPI.KlineResource;
-  export import Candles = KlineAPI.Candles;
-  export import Kline = KlineAPI.Kline;
-  export import KlineGetParams = KlineAPI.KlineGetParams;
+Market.InstrumentResource = InstrumentResource;
+Market.TickerResource = TickerResource;
+Market.OrderbookResource = OrderbookResource;
+Market.KlineResource = KlineResource;
+
+export declare namespace Market {
+  export {
+    InstrumentResource as InstrumentResource,
+    type Instrument as Instrument,
+    type InstrumentListResponse as InstrumentListResponse,
+    type InstrumentListParams as InstrumentListParams,
+  };
+
+  export {
+    TickerResource as TickerResource,
+    type Ticker as Ticker,
+    type TickerGetResponse as TickerGetResponse,
+    type TickerGetParams as TickerGetParams,
+  };
+
+  export {
+    OrderbookResource as OrderbookResource,
+    type Orderbook as Orderbook,
+    type OrderbookGetResponse as OrderbookGetResponse,
+    type OrderbookGetParams as OrderbookGetParams,
+  };
+
+  export {
+    KlineResource as KlineResource,
+    type Candles as Candles,
+    type Kline as Kline,
+    type KlineGetParams as KlineGetParams,
+  };
 }

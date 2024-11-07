@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as OrderAPI from './order';
 import { Offset, type OffsetParams } from '../../pagination';
 
 export class OrderResource extends APIResource {
@@ -421,6 +420,11 @@ export interface OrderCreateParams {
 
 export interface OrderListParams extends OffsetParams {
   /**
+   * Return records in ascending order
+   */
+  ascending?: boolean;
+
+  /**
    * End time (in unix milliseconds)
    */
   endTime?: number;
@@ -473,13 +477,17 @@ export interface OrderCancelParams {
   orderId: string;
 }
 
-export namespace OrderResource {
-  export import CancelOrderRequest = OrderAPI.CancelOrderRequest;
-  export import Order = OrderAPI.Order;
-  export import PlaceOrderRequest = OrderAPI.PlaceOrderRequest;
-  export import OrderCreateResponse = OrderAPI.OrderCreateResponse;
-  export import OrdersOffset = OrderAPI.OrdersOffset;
-  export import OrderCreateParams = OrderAPI.OrderCreateParams;
-  export import OrderListParams = OrderAPI.OrderListParams;
-  export import OrderCancelParams = OrderAPI.OrderCancelParams;
+OrderResource.OrdersOffset = OrdersOffset;
+
+export declare namespace OrderResource {
+  export {
+    type CancelOrderRequest as CancelOrderRequest,
+    type Order as Order,
+    type PlaceOrderRequest as PlaceOrderRequest,
+    type OrderCreateResponse as OrderCreateResponse,
+    OrdersOffset as OrdersOffset,
+    type OrderCreateParams as OrderCreateParams,
+    type OrderListParams as OrderListParams,
+    type OrderCancelParams as OrderCancelParams,
+  };
 }

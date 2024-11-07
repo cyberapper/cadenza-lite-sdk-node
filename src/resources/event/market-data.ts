@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as MarketDataAPI from './market-data';
 import * as KlineAPI from '../market/kline';
 import * as OrderbookAPI from '../market/orderbook';
 
@@ -164,9 +163,11 @@ export interface MarketDataMarketDataOrderBookParams {
   source?: string;
 }
 
-export namespace MarketData {
-  export import MarketDataKline = MarketDataAPI.MarketDataKline;
-  export import MarketDataOrderBook = MarketDataAPI.MarketDataOrderBook;
-  export import MarketDataMarketDataKlineParams = MarketDataAPI.MarketDataMarketDataKlineParams;
-  export import MarketDataMarketDataOrderBookParams = MarketDataAPI.MarketDataMarketDataOrderBookParams;
+export declare namespace MarketData {
+  export {
+    type MarketDataKline as MarketDataKline,
+    type MarketDataOrderBook as MarketDataOrderBook,
+    type MarketDataMarketDataKlineParams as MarketDataMarketDataKlineParams,
+    type MarketDataMarketDataOrderBookParams as MarketDataMarketDataOrderBookParams,
+  };
 }
