@@ -45,7 +45,6 @@ const environments = {
   uat: 'https://cadenza-lite.uat.algo724.com',
 };
 type Environment = keyof typeof environments;
-
 export interface ClientOptions {
   /**
    * Defaults to process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'].
@@ -220,32 +219,12 @@ export class Cadenza extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  CadenzaError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Cadenza.Utility = Utility;
 Cadenza.Market = Market;
 Cadenza.Trading = Trading;
 Cadenza.Portfolio = Portfolio;
 Cadenza.Webhook = Webhook;
 Cadenza.EventResource = EventResource;
-
 export declare namespace Cadenza {
   export type RequestOptions = Core.RequestOptions;
 
@@ -295,5 +274,22 @@ export declare namespace Cadenza {
 
   export { EventResource as EventResource, type Event as Event, type EventNewParams as EventNewParams };
 }
+
+export { toFile, fileFromPath } from 'cadenza-sdk/uploads';
+export {
+  CadenzaError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from 'cadenza-sdk/error';
 
 export default Cadenza;
