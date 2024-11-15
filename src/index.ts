@@ -275,7 +275,7 @@ export declare namespace Cadenza {
   export { EventResource as EventResource, type Event as Event, type EventNewParams as EventNewParams };
 }
 
-export { toFile, fileFromPath } from 'cadenza-sdk/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   CadenzaError,
   APIError,
@@ -290,6 +290,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'cadenza-sdk/error';
+} from './error';
 
 export default Cadenza;
