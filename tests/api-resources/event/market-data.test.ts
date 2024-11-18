@@ -30,11 +30,7 @@ describe('resource marketData', () => {
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        candles: [
-          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
-          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
-          { asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 },
-        ],
+        candles: [{ asset: 'BTC', borrowed: 3, free: 1, locked: 0, net: -2, total: 1 }],
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'BINANCE',
         interval: '1s',
@@ -65,16 +61,8 @@ describe('resource marketData', () => {
       eventType: 'cadenza.task.quote',
       timestamp: 1632933600000,
       payload: {
-        asks: [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-        ],
-        bids: [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-        ],
+        asks: [[0, 0]],
+        bids: [[0, 0]],
         exchangeAccountId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         exchangeType: 'exchangeType',
         level: 0,
