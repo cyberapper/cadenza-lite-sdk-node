@@ -71,7 +71,7 @@ export interface ExchangeAccount {
   /**
    * Exchange type
    */
-  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX' | 'CUMBERLAND';
 
   /**
    * Name of the exchange account
@@ -126,7 +126,7 @@ export interface ExchangeAccountCreateParams {
   /**
    * Exchange type
    */
-  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX' | 'CUMBERLAND';
 }
 
 export interface ExchangeAccountUpdateParams {
