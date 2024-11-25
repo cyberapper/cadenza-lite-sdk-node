@@ -16,7 +16,7 @@ export interface Ticker {
   /**
    * Exchange type
    */
-  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX' | 'CUMBERLAND';
 
   /**
    * Symbol
@@ -70,7 +70,14 @@ export interface TickerGetParams {
   /**
    * Exchange type
    */
-  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType?:
+    | 'BINANCE'
+    | 'BINANCE_MARGIN'
+    | 'B2C2'
+    | 'WINTERMUTE'
+    | 'BLOCKFILLS'
+    | 'STONEX'
+    | 'CUMBERLAND';
 }
 
 export declare namespace TickerResource {
