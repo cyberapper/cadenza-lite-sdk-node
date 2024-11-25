@@ -125,7 +125,14 @@ export interface ExchangeAccountCredit {
   /**
    * Exchange type
    */
-  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType?:
+    | 'BINANCE'
+    | 'BINANCE_MARGIN'
+    | 'B2C2'
+    | 'WINTERMUTE'
+    | 'BLOCKFILLS'
+    | 'STONEX'
+    | 'CUMBERLAND';
 
   /**
    * The maximum leverage the account have
@@ -190,7 +197,7 @@ export interface ExchangeAccountPortfolio {
   /**
    * Exchange type
    */
-  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX' | 'CUMBERLAND';
 
   /**
    * The timestamp when the portfolio information was updated.

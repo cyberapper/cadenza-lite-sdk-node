@@ -81,7 +81,14 @@ export interface Quote {
   /**
    * Exchange type
    */
-  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType?:
+    | 'BINANCE'
+    | 'BINANCE_MARGIN'
+    | 'B2C2'
+    | 'WINTERMUTE'
+    | 'BLOCKFILLS'
+    | 'STONEX'
+    | 'CUMBERLAND';
 
   /**
    * Expiration time of the quote
