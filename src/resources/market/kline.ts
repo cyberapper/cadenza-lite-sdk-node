@@ -60,7 +60,14 @@ export interface Kline {
   /**
    * Exchange type
    */
-  exchangeType?: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType?:
+    | 'BINANCE'
+    | 'BINANCE_MARGIN'
+    | 'B2C2'
+    | 'WINTERMUTE'
+    | 'BLOCKFILLS'
+    | 'STONEX'
+    | 'CUMBERLAND';
 
   interval?: '1s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '1d' | '1w';
 
@@ -71,7 +78,7 @@ export interface KlineGetParams {
   /**
    * Exchange type
    */
-  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX';
+  exchangeType: 'BINANCE' | 'BINANCE_MARGIN' | 'B2C2' | 'WINTERMUTE' | 'BLOCKFILLS' | 'STONEX' | 'CUMBERLAND';
 
   /**
    * Kline interval
