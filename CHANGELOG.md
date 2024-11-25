@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.23.0 (2024-11-25)
+
+Full Changelog: [v0.22.0...v0.23.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.22.0...v0.23.0)
+
+### Features
+
+* **api:** api update ([#124](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/124)) ([f55c375](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/f55c3752715dc9ca0e3bd49eb47f73ca733b544e))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#117](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/117)) ([f7443d4](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/f7443d4cde0d7258640c1bd60b55f57b8ac861c0))
+* rebuild project due to codegen change ([#119](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/119)) ([29973ea](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/29973eac7b22d6726b323659ea812beb1e2f11ae))
+* rebuild project due to codegen change ([#120](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/120)) ([701ef50](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/701ef502906ef05c1d58c75ae7e4800056c71510))
+* rebuild project due to codegen change ([#121](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/121)) ([2376e21](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/2376e21283a0d808bf216e98bf96e131114ed04b))
+* remove redundant word in comment ([#123](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/123)) ([297b68b](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/297b68b07d023e2764e570b99bc6dc99f00a624f))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#122](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/122)) ([4ae957b](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/4ae957ba872ee50a37c45d6fef8999c0b1f8d05f))
+
 ## 0.22.0 (2024-11-07)
 
 Full Changelog: [v0.21.1...v0.22.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.21.1...v0.22.0)
