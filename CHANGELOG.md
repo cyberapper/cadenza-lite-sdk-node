@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.24.0 (2024-12-10)
+
+Full Changelog: [v0.23.0...v0.24.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.23.0...v0.24.0)
+
+### Features
+
+* **internal:** make git install file structure match npm ([#126](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/126)) ([ae956bd](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/ae956bdd1402696c3f17caf443f053c96cdbc984))
+
+
+### Chores
+
+* **internal:** remove unnecessary getRequestClient function ([#128](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/128)) ([259b6ee](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/259b6ee9811de00e97456c1975095cde635b50e9))
+
 ## 0.23.0 (2024-11-25)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.22.0...v0.23.0)
