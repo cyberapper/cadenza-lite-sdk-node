@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.24.0 (2024-12-18)
+
+Full Changelog: [v0.23.0...v0.24.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.23.0...v0.24.0)
+
+### Features
+
+* **internal:** make git install file structure match npm ([#126](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/126)) ([ae956bd](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/ae956bdd1402696c3f17caf443f053c96cdbc984))
+
+
+### Chores
+
+* **internal:** codegen related update ([#129](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/129)) ([f2bf5c2](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/f2bf5c2b199c70fe72643c013163182da1d88277))
+* **internal:** codegen related update ([#130](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/130)) ([324f1fb](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/324f1fbcdff98bbbb42143d8d46f7fbf90c4de36))
+* **internal:** codegen related update ([#131](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/131)) ([2e37da4](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/2e37da4c406c2c3b97a1e6ce073b1fd998317db6))
+* **internal:** codegen related update ([#132](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/132)) ([e7cd2a8](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/e7cd2a8dfb337f5df70037d9b7122d117cdc118d))
+* **internal:** codegen related update ([#133](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/133)) ([63f3c7e](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/63f3c7eaed3646fd1e0537c0f2b1375cb3a42106))
+* **internal:** codegen related update ([#134](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/134)) ([b2a723d](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/b2a723d56538345b5ddac17b22d73b75257ecffc))
+* **internal:** remove unnecessary getRequestClient function ([#128](https://github.com/cyberapper/cadenza-lite-sdk-node/issues/128)) ([259b6ee](https://github.com/cyberapper/cadenza-lite-sdk-node/commit/259b6ee9811de00e97456c1975095cde635b50e9))
+
 ## 0.23.0 (2024-11-25)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/cyberapper/cadenza-lite-sdk-node/compare/v0.22.0...v0.23.0)
