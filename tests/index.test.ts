@@ -196,7 +196,7 @@ describe('instantiate client', () => {
     expect(client.bearerToken).toBe('My Bearer Token');
   });
 
-  test('with overridden environment variable arguments', () => {
+  test('with overriden environment variable arguments', () => {
     // set options via env var
     process.env['CADENZA_CLIENT_SDK_BEARER_TOKEN'] = 'another My Bearer Token';
     const client = new Cadenza({ bearerToken: 'My Bearer Token' });
